@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <!-- RC Pair app icon: a phone (home-indicator pill) with an outside node (orange) docked into a socket in its edge across a constant gap. Full-bleed opaque square, no baked corners; the OS masks it. -->
+  <!-- RC Pair app icon: a phone (Dynamic Island pill at the top) with an outside node (orange) docked into a socket in its edge across a constant gap. Full-bleed opaque square, no baked corners; the OS masks it. -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D3148"/><stop offset="1" stop-color="#1C1E2A"/></linearGradient><radialGradient id="hl" cx="0.5" cy="0" r="0.85"><stop offset="0" stop-color="#4A5070" stop-opacity="0.5"/><stop offset="1" stop-color="#4A5070" stop-opacity="0"/></radialGradient>
     <linearGradient id="dev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6E9F1"/></linearGradient>
@@ -7,6 +7,6 @@
   </defs>
   <rect width="1024" height="1024" fill="url(#bg)"/>
   <rect width="1024" height="1024" fill="url(#hl)"/>
-  <path fill="url(#dev)" fill-rule="evenodd" d="M488 150H656A97 97 0 0 1 753 247V777A97 97 0 0 1 656 874H488A97 97 0 0 1 391 777V630.08A176 176 0 0 0 391 278.08V247A97 97 0 0 1 488 150ZM521 801H623A15 15 0 0 1 623 831H521A15 15 0 0 1 521 801Z"/>
+  <path fill="url(#dev)" fill-rule="evenodd" d="M488 150H656A97 97 0 0 1 753 247V777A97 97 0 0 1 656 874H488A97 97 0 0 1 391 777V630.08A176 176 0 0 0 391 278.08V247A97 97 0 0 1 488 150ZM521 193H623A15 15 0 0 1 623 223H521A15 15 0 0 1 521 193Z"/>
   <circle cx="391" cy="454.08" r="120" fill="url(#node)"/>
 </svg>
