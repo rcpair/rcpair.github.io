@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-265 -386 530 772" width="530" height="772">
+  <!-- RC Pair mark: chalk phone + orange node docked across a constant gap. Transparent; the gap and home-indicator pill are true holes. For dark (navy) backgrounds. -->
+  <path fill="#F0F2F7" fill-rule="evenodd" d="M-24 -362H144A97 97 0 0 1 241 -265V265A97 97 0 0 1 144 362H-24A97 97 0 0 1 -121 265V118.08A176 176 0 0 0 -121 -233.92V-265A97 97 0 0 1 -24 -362ZM9 289H111A15 15 0 0 1 111 319H9A15 15 0 0 1 9 289Z"/>
+  <circle cx="-121" cy="-57.92" r="120" fill="#FF5600"/>
+</svg>

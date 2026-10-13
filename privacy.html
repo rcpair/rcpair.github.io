@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#242735">
+<title>Privacy | RC Pair</title>
+<meta name="description" content="How RC Pair handles data. We run no server for it. Nothing about your device comes to us unless you email us, share crash reports with developers or test RC Pair through TestFlight.">
+<link rel="canonical" href="https://rcpair.si/privacy.html">
+<meta property="og:title" content="RC Pair privacy">
+<meta property="og:image" content="https://rcpair.si/brand/og.png">
+<link rel="icon" href="brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+
+  :root{
+    --navy:#242735; --navy-hi:#2D3148; --navy-lo:#1C1E2A;
+    --orange:#FF5600; --chalk:#F0F2F7; --white:#FFFFFF;
+    --ink:#242735; --ink-dim:#4A5068; --line:#D8DCE6;
+    --on-navy:#F0F2F7; --on-navy-dim:#B8BED0; --navy-line:#3A3F57;
+    --maxw:1080px; --gutter:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--chalk); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:Manrope,Inter,sans-serif; line-height:1.15; margin:0; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  a{color:inherit; text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:2px; text-underline-offset:3px}
+  a:hover{text-decoration-thickness:3px}
+  :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:4px}
+  .dark :focus-visible{outline-color:var(--orange)}
+  .wrap{max-width:calc(var(--maxw) + 2*var(--gutter)); margin:0 auto; padding:0 var(--gutter)}
+  .skip{position:absolute; left:-999px; top:8px; background:var(--orange); color:var(--navy); padding:8px 12px; border-radius:8px; font-weight:700; z-index:10}
+  .skip:focus{left:8px}
+  .dark{background:var(--navy); color:var(--on-navy)}
+  .dark .dim{color:var(--on-navy-dim)}
+  .dim{color:var(--ink-dim)}
+
+  /* buttons: navy text on orange, bold */
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:16px; line-height:1.2; padding:13px 20px; border-radius:12px; text-decoration:none; white-space:nowrap}
+  .btn-solid{background:var(--orange); color:var(--navy)}
+  .btn-solid:hover{background:#FF6A1A; text-decoration:none}
+  .btn-ghost{color:var(--on-navy); box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--on-navy-dim); text-decoration:none}
+  .btn .node{width:10px; height:10px; border-radius:50%; background:var(--navy)}
+
+  /* top */
+  .top{background:linear-gradient(180deg,var(--navy-hi) 0%,var(--navy) 55%,var(--navy-lo) 100%)}
+  nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+  .logo{display:block; line-height:0; text-decoration:none}
+  .logo img{display:block; height:64px; width:auto; margin:-14px 0 -14px -30px}
+  .nav-links{display:flex; gap:24px; align-items:center; font-size:15px}
+  .nav-links a{color:var(--on-navy-dim); text-decoration:none}
+  .nav-links a:hover{color:var(--on-navy)}
+  .nav-links a.btn{color:var(--navy); padding:10px 16px; font-size:15px}
+  .menu{display:none; position:relative}
+  .menu summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--on-navy); padding:10px 14px; border-radius:12px; box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu summary::after{content:""; width:8px; height:8px; margin-top:-4px; border-right:2.5px solid var(--orange); border-bottom:2.5px solid var(--orange); transform:rotate(45deg); transition:transform .2s}
+  .menu[open] summary::after{transform:rotate(225deg); margin-top:4px}
+  .menu-panel{position:absolute; right:0; top:calc(100% + 8px); z-index:20; width:min(260px, calc(100vw - 32px)); background:var(--navy-lo); border:1px solid var(--navy-line); border-radius:16px; padding:8px; box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .menu-panel a{display:block; padding:12px 14px; border-radius:10px; color:var(--on-navy); text-decoration:none; font-size:16px}
+  .menu-panel a:hover{background:var(--navy-hi)}
+  .menu-panel a.btn{display:flex; justify-content:center; margin-top:6px; color:var(--navy)}
+  .menu-panel a.btn:hover{background:#FF6A1A}
+  /* The lockup file has clear space around the art. This box crops to the art so it lines up with text. */
+  .lockup{position:relative; overflow:hidden; aspect-ratio:1041/276; display:block; width:150px}
+  .lockup img{position:absolute; width:153.70%; max-width:none; left:-26.90%; top:-40.58%; height:auto}
+
+  .kicker{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; margin:0 0 12px}
+  .kicker::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange); flex:none}
+
+  .phero{padding:36px 0 64px; max-width:780px}
+  .phero .eyebrow{display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; margin:0 0 14px}
+  .phero .eyebrow::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange)}
+  .phero h1{font-size:clamp(36px,5.6vw,54px); font-weight:800; margin-bottom:14px}
+  .phero .date{color:var(--on-navy-dim); font-size:15px; margin:0 0 24px}
+  .phero .summary{background:var(--navy-lo); border:1px solid var(--navy-line); border-left:4px solid var(--orange); border-radius:0 14px 14px 0; padding:18px 20px; font-size:17px; margin:0}
+  .layout{display:grid; grid-template-columns:230px minmax(0,1fr); gap:56px; padding-top:56px; padding-bottom:72px; align-items:start}
+  .toc{display:block; position:sticky; top:24px}
+  .toc p{font-size:13px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-dim); margin:0 0 10px}
+  .toc ol{list-style:none; margin:0; padding:0; border-left:2px solid var(--line)}
+  .toc li a{display:block; padding:6px 0 6px 14px; margin-left:-2px; border-left:2px solid transparent; color:var(--ink-dim); text-decoration:none; font-size:15px; line-height:1.35}
+  .toc li a:hover{color:var(--ink); border-left-color:var(--orange)}
+  .doc{max-width:720px; overflow-wrap:anywhere; min-width:0}
+  .doc section.block{padding:0 0 40px; margin:0 0 40px; border-bottom:1px solid var(--line); scroll-margin-top:16px}
+  .doc section.block:last-child{border-bottom:0; margin-bottom:0}
+  .doc h2{font-size:clamp(24px,3.6vw,30px); font-weight:800; margin-bottom:16px; display:flex; align-items:center; gap:12px}
+  .doc h2::before{content:""; width:12px; height:12px; border-radius:50%; background:var(--orange); flex:none}
+  .doc p,.doc li{color:var(--ink-dim); font-size:16px}
+  .doc ul{margin:0 0 14px; padding-left:22px}
+  .doc li{margin-bottom:10px; padding-left:4px}
+  .doc li::marker{color:var(--navy)}
+  .toc-mobile{display:none}
+  .toc-mobile summary{cursor:pointer; list-style:none; padding:16px 20px; font-weight:700; position:relative; color:var(--ink)}
+  .toc-mobile summary::-webkit-details-marker{display:none}
+  .toc-mobile summary::after{content:""; position:absolute; right:22px; top:50%; width:10px; height:10px; margin-top:-8px; border-right:3px solid var(--orange); border-bottom:3px solid var(--orange); transform:rotate(45deg); transition:transform .2s}
+  .toc-mobile[open] summary::after{transform:rotate(225deg); margin-top:-2px}
+  .toc-mobile ol{margin:0; padding:0 20px 16px 42px; color:var(--ink-dim)}
+  .toc-mobile li{padding:5px 0}
+  .toc-mobile a{color:var(--ink)}
+  .note{border-left:4px solid var(--orange); background:var(--white); border-radius:0 12px 12px 0; padding:14px 18px; color:var(--ink)!important}
+  footer.dark{background:var(--navy-lo); color:var(--on-navy-dim); padding:44px 0 56px; font-size:14px}
+  .foot-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+  .foot-links{display:flex; gap:10px 22px; flex-wrap:wrap}
+  .foot-links a{color:var(--on-navy); text-decoration-color:var(--orange)}
+  .fine{margin:18px 0 0; max-width:640px; line-height:1.6}
+
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr; gap:24px; padding-top:32px; padding-bottom:56px}
+    .toc{display:none}
+    .toc-mobile{display:block; background:var(--white); border:1px solid var(--line); border-radius:16px}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .menu{display:block}
+    .logo img{height:54px; margin:-12px 0 -12px -25px}
+    .nav-links a.btn{padding:9px 13px; font-size:14px}
+    .phero{padding:20px 0 48px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="top dark">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="205" height="64"></a>
+      <div class="nav-links">
+        <a href="./#how">How it works</a>
+        <a href="./#consent">Consent</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+      </div>
+      <details class="menu">
+        <summary>Menu</summary>
+        <div class="menu-panel">
+          <a href="./#how">How it works</a>
+          <a href="./#consent">Consent</a>
+          <a href="./#stop">How to stop</a>
+          <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+        </div>
+      </details>
+    </nav>
+    <header class="phero">
+      <p class="eyebrow">Privacy</p>
+      <h1>RC Pair privacy</h1>
+      <p class="date">Effective 13 October 2026</p>
+      <p class="summary">RC Pair pairs your iPhone or iPad with a computer you own. We run no server for it. Nothing about your device, its screen or the pairing comes to us unless you email us, share crash reports with developers or test RC Pair through TestFlight. If you email us, we use that email only to answer you and fix what you report.</p>
+    </header>
+  </div>
+</div>
+<div class="wrap layout">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ol>
+          <li><a href="#device">What stays on your device</a></li>
+          <li><a href="#network">What your network can see</a></li>
+          <li><a href="#computer">Your computer and your agent</a></li>
+          <li><a href="#never">What we don't receive unless you send it</a></li>
+          <li><a href="#apple">Apple's part</a></li>
+          <li><a href="#email">If you email us</a></li>
+          <li><a href="#site">This website</a></li>
+          <li><a href="#stop">How to stop and delete</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#who">Who is responsible</a></li>
+          <li><a href="#changes">Changes to this page</a></li>
+    </ol>
+  </nav>
+  <details class="toc-mobile">
+    <summary>On this page</summary>
+    <ol>
+          <li><a href="#device">What stays on your device</a></li>
+          <li><a href="#network">What your network can see</a></li>
+          <li><a href="#computer">Your computer and your agent</a></li>
+          <li><a href="#never">What we don't receive unless you send it</a></li>
+          <li><a href="#apple">Apple's part</a></li>
+          <li><a href="#email">If you email us</a></li>
+          <li><a href="#site">This website</a></li>
+          <li><a href="#stop">How to stop and delete</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#who">Who is responsible</a></li>
+          <li><a href="#changes">Changes to this page</a></li>
+    </ol>
+  </details>
+  <main class="doc" id="main">
+
+    <section class="block" id="device">
+      <h2>What stays on your device</h2>
+      <p>RC Pair keeps these on your iPhone or iPad.</p>
+      <ul>
+        <li>A pairing not yet sent. It holds the pairing key and this device's name, model and ID. RC Pair deletes this copy when your computer confirms it saved them. If the send fails, the copy stays here so you can try again. A send that looks failed may still have reached your computer.</li>
+        <li>RC Pair's own random identity, including its keys. The pairing key you send is this identity's key, so RC Pair still holds its private half after a send. <b>Start over</b> pairs again with the same key, so a computer that got an earlier pairing can still use it. <b>Delete RC Pair data on this device</b> makes a new key for your next pairing. It does not take back a key a computer already has.</li>
+        <li>Your consent record. It holds which version of the consent wording you agreed to, the two switches you turned on, when you tapped, the app version, whether this is an iPhone or iPad, and a fingerprint of the exact wording you saw.</li>
+        <li>Setup progress and a few settings, such as which step you are on, whether a pairing has been sent and the name of the computer it went to. They also include when you reached the Developer Mode step and when this device last started, so RC Pair can tell it restarted.</li>
+        <li>A pairing code. It shows in RC Pair, in a notification and in iOS's progress display while you pair. iOS may also show that notification on the Lock Screen and on a paired Apple Watch. It sits on this device's clipboard for up to 2 minutes. When the attempt ends, RC Pair clears the clipboard if it still holds the code.</li>
+        <li>A short log of what the app is doing, for troubleshooting. It can include this device's name, model and ID, network addresses, and the name and address of any computer whose link you scanned or pasted. It is kept only in memory and is gone when the app closes.</li>
+      </ul>
+      <p>iOS includes RC Pair's settings and consent record in your device backups, such as iCloud Backup. Its keys and any unsent pairing never restore to another device.</p>
+      <p>RC Pair also checks whether Developer Mode is on, when the device last restarted and whether you are on Wi-Fi. It uses these only to guide you through setup and never sends them anywhere.</p>
+      <p>While <b>Only accept pairing from this device</b> is on, RC Pair reads this device's own network addresses, which can include VPN addresses. It uses them to turn away pairing requests from other devices. If it turns one away, it notes those addresses in the troubleshooting log. The switch is on by default. If you turn it off, another device on your network can ask to pair with RC Pair. It still needs the code RC Pair shows on this device.</p>
+      <p>When you tap <b>Paste link</b>, RC Pair reads your clipboard once to find its link. It ignores anything else there and does not keep it. If RC Pair showed a pairing code, it checks the clipboard again when that attempt ends, so it can remove the code. If you copied something else since, iOS may ask whether to allow the paste. RC Pair does not keep what it finds.</p>
+      <p>Its notifications are created on the device. We send no push messages.</p>
+      <p>RC Pair does not use your contacts, photos, location, camera or microphone.</p>
+    </section>
+
+    <section class="block" id="network">
+      <h2>What your network can see</h2>
+      <p>While you set up and pair, other devices on your Wi-Fi network can see that RC Pair is running on this device. They see this device's network address and an identifier that stays the same, even if you reinstall RC Pair, until you tap <b>Delete RC Pair data on this device</b>. This stops when setup ends, and each broadcast lasts at most 10 minutes.</p>
+    </section>
+
+    <section class="block" id="computer">
+      <h2>Your computer and your agent</h2>
+      <p>RC Pair sends the pairing key to one computer you choose, and only when you confirm. On that computer you run rcpair-receive, which shows a QR code. Scan it with the Camera app, or copy its link and tap <b>Paste link</b> in RC Pair. RC Pair then shows a sheet with that computer's name and address. The pairing is not sent until you tap <b>Send</b>.</p>
+      <p>RC Pair sends only to a private address, on your own network or on a private network such as Tailscale. It encrypts the pairing for that computer alone. If the link gives a computer name instead of an address, RC Pair asks the DNS server your device uses for that name's address before it shows the sheet. That server can be outside your private network, such as your carrier's.</p>
+      <p>Your computer receives the pairing key, this device's name, model and device ID, the RC Pair version, and a copy of your consent record. The copy leaves out whether this is an iPhone or iPad. rcpair-receive saves them in two files, set so only your user account can read them. By default they go in a .rcpair folder in your home folder. It also notes the network address this device sent from and the time the pairing arrived. It prints the device's name, model, address and ID in the terminal, so if an agent runs rcpair-receive, the agent sees them. If you give rcpair-receive a command to run when a pairing arrives, that command gets both files. None of it comes to us.</p>
+      <p>The pairing key works like a key to this device. Software on a computer that holds it, including any AI agent you run there, can see the screen and control it, the same as someone holding it. It can also list, open, install and remove apps, see running processes, read the system log and crash logs, read and change the clipboard, set a simulated location and restart the device. Apple's developer services on a paired device also include backup and network capture. Treat the key as full access to this device.</p>
+      <p>You run that computer and the agent. We do not. Your agent may send what it sees to the company that runs it, under that company's own privacy terms. Your private network provider carries traffic between this device and your computer under its own privacy terms.</p>
+      <p>If the software on your computer tells RC Pair a session has started, RC Pair shows a Live Activity on the Lock Screen and in the Dynamic Island with the name that computer gives itself. RC Pair cannot tell on its own that it is being controlled. The name is never sent to us. iOS may also show it on a paired Apple Watch or Mac. With the open tools available today, no computer can start it yet, so you will not see it. You can always stop control on the device.</p>
+    </section>
+
+    <section class="block" id="never">
+      <h2>What we don't receive unless you send it</h2>
+      <ul>
+        <li>Your screen or anything on it, except screenshots you choose to attach to an email or TestFlight feedback.</li>
+        <li>The pairing key.</li>
+        <li>Your device's name, model, ID or network addresses, unless you send them in a support email. Crash reports and TestFlight data from Apple do include details about the device, such as its model and iOS version.</li>
+        <li>Your passcode or Apple Account password. RC Pair never asks for them.</li>
+      </ul>
+      <p>RC Pair has no analytics or ads, and no outside code that collects data. There is nothing to sign up for. We pass no data from RC Pair to anyone. We do not sell or share personal information.</p>
+      <p>These companies handle personal data connected with RC Pair. Porkbun, in the US, receives email sent to support@rcpair.si and forwards it to our Microsoft 365 mailbox. Microsoft, in the US, stores that email for us. Each gets your email address, what you write and anything you attach. GitHub, in the US, hosts this website and gets your IP address when you visit it. DigitalOcean, in the US, hosts the server that counts visits to this website and stores the records described under This website. Apple handles crash reports and TestFlight data under its own terms.</p>
+    </section>
+
+    <section class="block" id="apple">
+      <h2>Apple's part</h2>
+      <p>This page covers RC Pair from the App Store and from TestFlight testing.</p>
+      <ul>
+        <li>Apple handles downloads and updates under Apple's own privacy policy. Apple shows us totals, such as download counts, that do not identify you.</li>
+        <li>If you turned on <b>Share With App Developers</b> in Settings &gt; Privacy &amp; Security &gt; Analytics &amp; Improvements, Apple may pass us crash reports for RC Pair. We read them only in Apple's tools and use them only to fix bugs.</li>
+        <li>If you test RC Pair through TestFlight, Apple passes us the feedback, screenshots and crash reports you choose to send, with your email address if you use the feedback form. If we invited you by email, we also see the name and email address we invited. With each piece of feedback or crash, Apple includes details about the device, such as model, iOS version, language, time zone, battery level, free storage and network type. For each tester, Apple also shows us whether the build is installed and how many sessions and crashes it had. We use all of this only to fix the app. We delete feedback and screenshots after 12 months. Crash reports stay in Apple's tools.</li>
+      </ul>
+      <p>Our legal basis for crash reports and TestFlight data is our legitimate interest in fixing the app. Crash reports stay in Apple's tools, and Apple keeps them under its own terms.</p>
+    </section>
+
+    <section class="block" id="email">
+      <h2>If you email us</h2>
+      <p>Write to <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question">support@rcpair.si</a> any time. We get your email address, what you write and anything you attach. Emailing us is up to you. Nothing in RC Pair needs it.</p>
+      <p><b>Email support</b> in the app opens a blank email to us with the subject RC Pair support. RC Pair adds nothing else to it.</p>
+      <p><b>Copy diagnostic report</b> is a separate button. It puts a report on this device's clipboard so you can read it and paste it into an email if you want to. RC Pair never sends it on its own. The report holds these.</p>
+      <ul>
+        <li>The RC Pair version and build, and the version of its pairing engine.</li>
+        <li>Whether this is an iPhone or iPad, and its iOS version.</li>
+        <li>Whether <b>Only accept pairing from this device</b> is on.</li>
+        <li>The app's recent activity, up to its last 200 notes. These can include this device's name and model, the name and address of any computer whose link you scanned or pasted, even if you did not send to it, network addresses of pairing connections, and error codes from a failed send.</li>
+        <li>The pairing engine's log. It can include RC Pair's own identifier, this device's name, model and ID, and network addresses of pairing connections. If RC Pair turned a pairing request away, it also lists all of this device's network addresses, which can include public and VPN addresses.</li>
+      </ul>
+      <p>The report never holds your screen, the pairing key or the pairing code. It stays on the clipboard until something replaces it, and iOS can share it with your other Apple devices through Universal Clipboard.</p>
+      <p>We use your email only to answer you and fix the problem you report. Our legal basis is our legitimate interest in answering you and keeping the app working. We make no automated decisions about you and build no profiles.</p>
+      <p>We keep a support conversation for 12 months after it ends, then delete it. Ask and we will delete it sooner.</p>
+      <p>Email to support@rcpair.si goes to Porkbun, in the US, which forwards it to our Microsoft 365 mailbox. Microsoft, in the US, stores it there for us. Both get your email address, what you write and anything you attach. Our reply comes from a Rising Creek Construction email address.</p>
+    </section>
+
+    <section class="block" id="site">
+      <h2>This website</h2>
+      <p>This site counts visits so we can see how many people come and which of our posts brought them. It sets no cookies, stores nothing on your device and loads no scripts from other companies.</p>
+      <p>Each page asks our counter at t.rcpair.si for a blank image. That request tells it which page you opened, the tag in the link you followed if it had one (such as ?r=x-launch), the name of the site that sent you (such as x.com), any link you tap that leaves the page and, when you leave, how long you stayed and how far you scrolled. Our server records this with the time and your browser type. It removes the last part of your IP address before anything is saved, so we never store your full address. DigitalOcean, in the US, hosts that server. We use these records only to count visits and we delete them after 12 months. Our legal basis is our legitimate interest in knowing whether this site reaches people.</p>
+      <p>GitHub, in the US, hosts the pages themselves on GitHub Pages. When you visit, GitHub gets your IP address, the page you ask for and your browser type. GitHub logs and stores visitors' IP addresses for security, whether or not they are signed in to GitHub, and describes its practices in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>. We do not receive or keep those logs. Our legal basis for using GitHub is our legitimate interest in running a secure site.</p>
+    </section>
+
+    <section class="block" id="stop">
+      <h2>How to stop and delete</h2>
+      <ul>
+        <li>To stop remote control right away, turn off Developer Mode in Settings &gt; Privacy &amp; Security. Then delete both files rcpair-receive saved on every computer you sent a pairing to. By default they are in ~/.rcpair, named with this device's ID and ending in .rppair.plist and .json. If Developer Mode is turned on again, a computer that still has the key may be able to connect again.</li>
+        <li><b>Delete RC Pair data on this device</b> removes RC Pair's identity and keys, any pairing not yet sent and your consent record. It also removes the name of the computer you sent to, the note that a pairing was sent and your choice for the <b>Only accept pairing from this device</b> switch, which goes back on. It puts setup back at the first step.</li>
+        <li><b>Start over</b> removes any pairing not yet sent, your consent record and the name of the computer you sent to. It puts setup back at the first step.</li>
+        <li><b>Start over</b> keeps RC Pair's identity, the <b>Only accept pairing from this device</b> switch and the note that a pairing was sent. Settings shows the same RC Pair, and your next pairing uses the same key as the last one. To pair with a new key, use <b>Delete RC Pair data on this device</b> instead.</li>
+        <li>Neither one clears the troubleshooting log. That log is gone when the app closes. Neither one can reach your computer.</li>
+        <li>RC Pair's keys and pairing data can stay on the device after you remove the app. Tap <b>Delete RC Pair data on this device</b> first.</li>
+      </ul>
+      <p class="note">Didn't set this up? Turn off Developer Mode, change your passcode and delete RC Pair. <a href="https://stopstalkerware.org">stopstalkerware.org</a> can help.</p>
+    </section>
+
+    <section class="block" id="children">
+      <h2>Children</h2>
+      <p>RC Pair is for people 18 and older, and it asks you to confirm your age before setup. It is not meant for children, and we do not knowingly collect personal information from anyone under 13. If we learn that a child has emailed us, we will delete the message. A parent can also ask us to.</p>
+    </section>
+
+    <section class="block" id="rights">
+      <h2>Your rights</h2>
+      <p>The personal data we hold is email you send us, the visit records described under This website, and the crash reports, TestFlight data and TestFlight tester details Apple passes to us. GitHub keeps its own records of visits to this website, and we cannot see them. You can ask for access, correction, deletion, restriction or a portable copy, and you can object to our use of it. Crash reports do not name you, so we may not be able to find yours. Visit records do not name you either and keep only part of your IP address. Email <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question">support@rcpair.si</a> and we will answer within one month.</p>
+      <p>Everything else stays on your device, its backups or your computer, so you control it directly.</p>
+      <p>If you are in the EU or UK, you can complain to your data protection authority. In the UK that is the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner's Office</a>.</p>
+    </section>
+
+    <section class="block" id="who">
+      <h2>Who is responsible</h2>
+      <p>RC Pair is published by Rising Creek Construction LLC, a Texas company. It is responsible for the personal data described on this page. Reach us at <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question">support@rcpair.si</a>.</p>
+    </section>
+
+    <section class="block" id="changes">
+      <h2>Changes to this page</h2>
+      <p>If we change how RC Pair handles data, we will update this page and its date before the change reaches the app.</p>
+    </section>
+  </main>
+</div>
+<footer class="dark">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="lockup" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="1600" height="500"></a>
+      <div class="foot-links">
+        <a href="./#how">How it works</a>
+        <a href="./#consent">Consent design</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20misuse%20report" data-t="report-misuse">Report misuse</a>
+      </div>
+    </div>
+    <p class="fine">RC Pair is made by Rising Creek Construction LLC, a Texas company. Operate only your own device, or one whose user knows about it and agreed.
+      Using software to access, watch, or control someone's phone without their knowledge and
+      permission can be a serious crime.</p>
+    <p class="fine">Apple, iPhone, iPad, iPadOS, Mac, Xcode, TestFlight, App Store and the other Apple product names on this site are trademarks of Apple Inc., registered in the U.S. and other countries. iOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license. RC Pair is not affiliated with or endorsed by Apple.</p>
+    <p class="fine">© 2026 Rising Creek Construction LLC. RC Pair™ is a trademark of Rising Creek Construction LLC. Patent pending.</p>
+  </div>
+</footer>
+<script>
+  // Close the phone menu after a link in it is chosen.
+  document.querySelectorAll('.menu-panel a').forEach(function(a){
+    a.addEventListener('click', function(){ var d=a.closest('details'); if(d){ d.open=false; } });
+  });
+</script>
+<script src="t.js" defer></script>
+</body>
+</html>

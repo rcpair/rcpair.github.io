@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#242735">
+<title>RC Pair for App Review</title>
+<link rel="icon" href="../brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+
+  :root{
+    --navy:#242735; --navy-hi:#2D3148; --navy-lo:#1C1E2A;
+    --orange:#FF5600; --chalk:#F0F2F7; --white:#FFFFFF;
+    --ink:#242735; --ink-dim:#4A5068; --line:#D8DCE6;
+    --on-navy:#F0F2F7; --on-navy-dim:#B8BED0; --navy-line:#3A3F57;
+    --maxw:1080px; --gutter:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--chalk); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:Manrope,Inter,sans-serif; line-height:1.15; margin:0; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  a{color:inherit; text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:2px; text-underline-offset:3px}
+  a:hover{text-decoration-thickness:3px}
+  :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:4px}
+  .dark :focus-visible{outline-color:var(--orange)}
+  .wrap{max-width:calc(var(--maxw) + 2*var(--gutter)); margin:0 auto; padding:0 var(--gutter)}
+  .skip{position:absolute; left:-999px; top:8px; background:var(--orange); color:var(--navy); padding:8px 12px; border-radius:8px; font-weight:700; z-index:10}
+  .skip:focus{left:8px}
+  .dark{background:var(--navy); color:var(--on-navy)}
+  .dark .dim{color:var(--on-navy-dim)}
+  .dim{color:var(--ink-dim)}
+
+  /* buttons: navy text on orange, bold */
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:16px; line-height:1.2; padding:13px 20px; border-radius:12px; text-decoration:none; white-space:nowrap}
+  .btn-solid{background:var(--orange); color:var(--navy)}
+  .btn-solid:hover{background:#FF6A1A; text-decoration:none}
+  .btn-ghost{color:var(--on-navy); box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--on-navy-dim); text-decoration:none}
+  .btn .node{width:10px; height:10px; border-radius:50%; background:var(--navy)}
+
+  /* top */
+  .top{background:linear-gradient(180deg,var(--navy-hi) 0%,var(--navy) 55%,var(--navy-lo) 100%)}
+  nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+  .logo{display:block; line-height:0; text-decoration:none}
+  .logo img{display:block; height:64px; width:auto; margin:-14px 0 -14px -30px}
+  .nav-links{display:flex; gap:24px; align-items:center; font-size:15px}
+  .nav-links a{color:var(--on-navy-dim); text-decoration:none}
+  .nav-links a:hover{color:var(--on-navy)}
+  .nav-links a.btn{color:var(--navy); padding:10px 16px; font-size:15px}
+  .menu{display:none; position:relative}
+  .menu summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--on-navy); padding:10px 14px; border-radius:12px; box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu summary::after{content:""; width:8px; height:8px; margin-top:-4px; border-right:2.5px solid var(--orange); border-bottom:2.5px solid var(--orange); transform:rotate(45deg); transition:transform .2s}
+  .menu[open] summary::after{transform:rotate(225deg); margin-top:4px}
+  .menu-panel{position:absolute; right:0; top:calc(100% + 8px); z-index:20; width:min(260px, calc(100vw - 32px)); background:var(--navy-lo); border:1px solid var(--navy-line); border-radius:16px; padding:8px; box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .menu-panel a{display:block; padding:12px 14px; border-radius:10px; color:var(--on-navy); text-decoration:none; font-size:16px}
+  .menu-panel a:hover{background:var(--navy-hi)}
+  .menu-panel a.btn{display:flex; justify-content:center; margin-top:6px; color:var(--navy)}
+  .menu-panel a.btn:hover{background:#FF6A1A}
+  /* The lockup file has clear space around the art. This box crops to the art so it lines up with text. */
+  .lockup{position:relative; overflow:hidden; aspect-ratio:1041/276; display:block; width:150px}
+  .lockup img{position:absolute; width:153.70%; max-width:none; left:-26.90%; top:-40.58%; height:auto}
+
+
+  .phero{padding:36px 0 60px; max-width:780px}
+  .phero .eyebrow{display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; margin:0 0 14px}
+  .phero .eyebrow::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange)}
+  .phero h1{font-size:clamp(34px,5.6vw,50px); font-weight:800; margin-bottom:18px}
+  .phero p{color:var(--on-navy-dim); font-size:17px}
+  .doc{overflow-wrap:anywhere; padding-top:56px; padding-bottom:72px}
+  .doc section.block{padding:0 0 48px}
+  .doc section.block + section.block{border-top:1px solid var(--line); padding-top:48px}
+  .doc h2{font-size:clamp(24px,3.6vw,32px); font-weight:800; margin-bottom:14px; display:flex; align-items:center; gap:12px}
+  .doc h2::before{content:""; width:12px; height:12px; border-radius:50%; background:var(--orange); flex:none}
+  .doc p{color:var(--ink-dim); max-width:46em}
+  .codes{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px}
+  .code{background:var(--white); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; min-width:0}
+  .code h3{font-size:20px; margin-bottom:8px}
+  .code p{font-size:15px}
+  .code img{display:block; width:100%; max-width:280px; height:auto; margin:8px auto 18px; border-radius:10px; image-rendering:pixelated; background:#fff; border:1px solid var(--line)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; line-height:1.55;
+    background:var(--navy); border-radius:12px; padding:14px 16px; color:var(--on-navy)!important;
+    overflow-wrap:anywhere; word-break:break-all; margin:auto 0 0; max-width:none!important}
+  .mono a{color:var(--on-navy); text-decoration-color:var(--orange)}
+  pre.mono{white-space:pre-wrap; word-break:normal; margin:0}
+  .doc .btn{background:var(--orange); color:var(--navy); margin:6px 0 20px; text-decoration:none}
+  .doc .btn:hover{background:#FF6A1A}
+  footer.dark{background:var(--navy-lo); color:var(--on-navy-dim); padding:44px 0 56px; font-size:14px}
+  .foot-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+  .foot-links{display:flex; gap:10px 22px; flex-wrap:wrap}
+  .foot-links a{color:var(--on-navy); text-decoration-color:var(--orange)}
+  .fine{margin:18px 0 0; max-width:640px; line-height:1.6}
+
+
+  @media (max-width:760px){
+    .codes{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu{display:block}
+    .logo img{height:54px; margin:-12px 0 -12px -25px}
+    .nav-links a.btn{padding:9px 13px; font-size:14px}
+    .phero{padding:20px 0 44px}
+    .code{padding:20px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="top dark">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="../"><img src="../brand/lockup-dark.svg" alt="RC Pair" width="205" height="64"></a>
+      <div class="nav-links">
+        <a href="../">Home</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+      </div>
+      <details class="menu">
+        <summary>Menu</summary>
+        <div class="menu-panel">
+          <a href="../">Home</a>
+          <a href="../privacy.html">Privacy</a>
+          <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+        </div>
+      </details>
+    </nav>
+    <header class="phero">
+      <p class="eyebrow">App Review</p>
+      <h1>RC Pair for App Review</h1>
+      <p>RC Pair pairs an iPhone or iPad with a computer the user chooses, from the device itself. The app sends nothing to us.</p>
+      <p>This page holds the two sample QR codes and the computer script named in the Review Notes.</p>
+      <p>Steps 1 to 4 happen on the device, with no computer. Finish step 4 and see Paired first. If you scan a code before that, RC Pair says there is no pairing to send yet.</p>
+    </header>
+  </div>
+</div>
+<main class="doc wrap">
+
+    <section class="block" id="samples">
+      <h2>Sample codes</h2>
+      <p>Scan each code with the Camera app on the device. If you opened this page on the device itself, tap the link under the code instead. Neither link has a receiver behind it, and both use keys whose private halves were thrown away, so nothing sent to them can be read.</p>
+      <div class="codes">
+        <div class="code">
+          <h3>A. Private address</h3>
+          <p>RC Pair shows the confirm sheet with the computer name and address. Tap Cancel. Send would fail and the pairing would stay on the device.</p>
+          <img src="qr-a.png" width="342" height="342" alt="QR code A, a link to a private link-local address">
+          <p class="mono"><a href="rcpair://send?v=1&amp;h=169.254.77.77&amp;p=47820&amp;k=UO0yRrehTB7c_4YVTVzVZasYugWH3L2VLch9qPxh7sk&amp;t=s_x_uHHk1QneBRFoiJcONw&amp;n=App%20Review%20sample">rcpair://send?v=1&amp;h=169.254.77.77&amp;p=47820&amp;k=UO0yRrehTB7c_4YVTVzVZasYugWH3L2VLch9qPxh7sk&amp;t=s_x_uHHk1QneBRFoiJcONw&amp;n=App%20Review%20sample</a></p>
+        </div>
+        <div class="code">
+          <h3>B. Public address</h3>
+          <p>This link points to a public address. RC Pair refuses it and sends nothing.</p>
+          <img src="qr-b.png" width="342" height="342" alt="QR code B, a link to a public test address">
+          <p class="mono"><a href="rcpair://send?v=1&amp;h=192.0.2.10&amp;p=47820&amp;k=usrGcd_uWj5AFSfc0HXVwYJd062Lfm3nT-0RYfeW5W8&amp;t=kUizoXMKi8OVA-hv7VQCdw&amp;n=Public%20address%20test">rcpair://send?v=1&amp;h=192.0.2.10&amp;p=47820&amp;k=usrGcd_uWj5AFSfc0HXVwYJd062Lfm3nT-0RYfeW5W8&amp;t=kUizoXMKi8OVA-hv7VQCdw&amp;n=Public%20address%20test</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="computer">
+      <h2>With a computer</h2>
+      <p>Optional. You need a Mac or Linux computer on the same Wi-Fi as the device, with Python 3.9 or later. The first command below installs the two packages the script uses, cryptography and qrcode.</p>
+      <a class="btn" href="rcpair-receive.py" download>Download rcpair-receive.py</a>
+      <p>In the folder where you saved it, run these two commands.</p>
+      <pre class="mono">python3 -m venv rc &amp;&amp; rc/bin/pip install cryptography qrcode
+rc/bin/python rcpair-receive.py --name Review</pre>
+      <p style="margin-top:14px">After step 4, scan the QR code the script shows and tap Send. The script saves the pairing in ~/.rcpair and exits, and RC Pair shows All set.</p>
+    </section>
+  </main>
+<footer class="dark">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="lockup" href="../"><img src="../brand/lockup-dark.svg" alt="RC Pair" width="1600" height="500"></a>
+      <div class="foot-links">
+        <a href="../">Home</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question">support@rcpair.si</a>
+      </div>
+    </div>
+    <p class="fine">RC Pair is made by Rising Creek Construction LLC, a Texas company. Apple, iPhone, iPad, iPadOS, Mac, Xcode, TestFlight, App Store and the other Apple product names on this site are trademarks of Apple Inc., registered in the U.S. and other countries. iOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license. RC Pair is not affiliated with or endorsed by Apple.</p>
+    <p class="fine">© 2026 Rising Creek Construction LLC. RC Pair™ is a trademark of Rising Creek Construction LLC. Patent pending.</p>
+  </div>
+</footer>
+<script>
+  // Close the phone menu after a link in it is chosen.
+  document.querySelectorAll('.menu-panel a').forEach(function(a){
+    a.addEventListener('click', function(){ var d=a.closest('details'); if(d){ d.open=false; } });
+  });
+</script>
+<script src="../t.js" defer></script>
+</body>
+</html>
