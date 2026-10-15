@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>No Mac needed to drive your iPhone | RC Pair</title>
-<meta name="description" content="RC Pair pairs your iPhone or iPad straight to your own Linux or Mac computer, so your AI agent can drive it with no Mac left running. One setup step needs a Mac, once per device and after each iOS update. The app sends us nothing. Made by Rising Creek Construction LLC.">
+<meta name="description" content="RC Pair pairs your iPhone or iPad straight to your own Linux or Mac computer, so your AI agent can drive it with no Mac left running. One setup step puts Apple's disk image on the device, from a Mac with Xcode or a pinned public GitHub copy. The app sends us nothing. Made by Rising Creek Construction LLC.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#242735">
 <link rel="canonical" href="https://rcpair.si/">
@@ -309,7 +309,7 @@
         <p class="eyebrow"><span class="node"></span>Early release for iPhone and iPad</p>
         <h1>No Mac needed to drive your iPhone.</h1>
         <p class="sub">RC Pair pairs your iPhone or iPad straight to a Linux or Mac computer you choose, over your own network. An AI agent or program on that computer can then see the screen and tap and type on it. No mirroring window, and no Mac left running.</p>
-        <p class="sub dim">One setup step still needs a Mac with Xcode to put Apple's developer disk image on it, once per device and again after each iOS update. The disk image is Apple's developer tools for the device, and only Apple supplies it. After that, your agent works the phone from your own computer.</p>
+        <p class="sub dim">One setup step puts Apple's developer disk image in a folder on your computer. Copying it from a Mac with Xcode is recommended, and a pinned public GitHub copy works too. The disk image is Apple's developer tools for the device. After that, your agent works the phone from your own computer.</p>
         <p class="sub dim">You set it up on the device itself, with your own Apple account. The app sends nothing to us. You bring the computer and the agent.</p>
         <div class="cta-row">
           <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
@@ -457,8 +457,8 @@
           </div>
           <div>
             <h3>Put Apple's disk image on the phone</h3>
-            <p>The control tools need Apple's developer disk image on the phone. On our iPhone running iOS 27 it stayed through a restart. An iOS update removes it, so you connect to the Mac again after each update.</p>
-            <p class="who">You do this, and it is the one part we cannot give you. Today it means connecting the phone to a Mac with Xcode, and again after each iOS update.</p>
+            <p>The control tools need Apple's developer disk image on the phone. On our iPhone running iOS 27 it stayed through a restart. An iOS update removes it, and you put it back from the same folder.</p>
+            <p class="who">You do this, and we never host or supply the file.</p>
           </div>
         </li>
         <li class="cs">
@@ -528,7 +528,7 @@
           </li>
           <li>
             <span class="ni"><svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="none" stroke="#F0F2F7" stroke-width="2"/><circle cx="11" cy="11" r="3.4" fill="#FF5600"/></svg></span>
-            <div><b>A Mac with Xcode, for setup and after iOS updates</b><span>Controlling the device after pairing needs a Mac with Xcode to put Apple's developer disk image on it, once per device and again after each iOS update. Xcode is Apple's developer app for Mac. rcpair-receive then runs on that Mac or on a Linux computer on the same Wi-Fi, with Python 3.9 or later, the cryptography package, and qrcode or the qrencode command to show the QR code.</span></div>
+            <div><b>Apple's disk image, once per device and after iOS updates</b><span>From Xcode on a Mac (recommended), or a pinned public GitHub copy of Apple's file on any computer. rcpair-receive runs on a Mac or on a Linux computer on the same Wi-Fi, with Python 3.9 or later, the cryptography package, and qrcode or the qrencode command to show the QR code.</span></div>
           </li>
           <li>
             <span class="ni"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M4 6l5 5-5 5" fill="none" stroke="#F0F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="15" r="2.6" fill="#FF5600"/></svg></span>
@@ -536,13 +536,13 @@
           </li>
           <li>
             <span class="ni"><svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="none" stroke="#F0F2F7" stroke-width="2"/><path d="M11 6.5V11l3 2" fill="none" stroke="#FF5600" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-            <div><b>About five minutes to pair</b><span>That covers the steps on the device, which restarts once. The Mac step is extra.</span></div>
+            <div><b>About five minutes to pair</b><span>That covers the steps on the device, which restarts once. The disk image step is extra.</span></div>
           </li>
         </ul>
         <div class="mac">
           <p>A computer is needed after pairing too. The app pairs the phone. Your computer then talks to
             Apple's developer services on the device, as described under <a href="#computer">On your computer</a>.
-            On our iPhone running iOS 27 it stayed through a restart. An iOS update removes it, so you connect to the Mac again after each update. We do not host or supply the disk image.</p>
+            Apple's disk image stayed through a restart on our iPhone running iOS 27. An iOS update removes it, and you put it back from the same folder. We do not host or supply the disk image.</p>
         </div>
       </div>
     </div>
@@ -812,7 +812,7 @@
         </details>
         <details>
           <summary>Do I need a Mac?</summary>
-          <div class="a"><p>Not to run it. Day to day, your agent drives the phone from a Linux or Mac computer, and no Mac has to stay on. You need a Mac with Xcode for setup, and again after each iOS update, to put Apple's developer disk image on it. On our iPhone running iOS 27 it stayed through a restart. rcpair-receive itself runs on a Mac or
+          <div class="a"><p>Not to run it. Day to day, your agent drives the phone from a Linux or Mac computer, and no Mac has to stay on. For the disk image, Xcode on a Mac is the recommended source. Without one, the setup scripts can pull a pinned public GitHub copy of Apple's file instead. On our iPhone running iOS 27 the image stayed through a restart. rcpair-receive itself runs on a Mac or
             Linux computer. We do not host or supply the disk image, and the RC Pair computer app will not include it.</p></div>
         </details>
         <details>
