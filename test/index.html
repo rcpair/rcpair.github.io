@@ -83,6 +83,8 @@
   .doc p{color:var(--ink-dim); max-width:46em}
   .doc ol,.doc ul{color:var(--ink-dim); max-width:46em; margin:0 0 14px; padding-left:24px}
   .doc li{margin:0 0 8px}
+  .doc details{margin:8px 0 0}
+  .doc details summary{cursor:pointer; font-weight:700; color:var(--ink); padding:6px 0}
   .codes{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px}
   .code{background:var(--white); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; min-width:0}
   .code h3{font-size:20px; margin-bottom:8px}
@@ -136,7 +138,7 @@
       <p class="eyebrow">TestFlight</p>
       <h1>Test RC Pair</h1>
       <p>RC Pair pairs an iPhone or iPad with a computer you choose, so an AI coding agent on that computer can work with the phone. This page is for developers who installed the TestFlight build and have a computer with an agent such as Claude Code or Codex.</p>
-      <p>The five steps on the phone take about five minutes. Building the tools and getting Apple's disk image take longer. The list near the bottom says what is still rough.</p>
+      <p>The five steps on the phone take about five minutes. On a Mac, the computer side is now an app you download and open. The list near the bottom says what is still rough.</p>
     </header>
   </div>
 </div>
@@ -147,8 +149,8 @@
       <p>An iPhone or iPad on iOS or iPadOS 17 or later, and the TestFlight build.</p>
       <a class="btn" href="https://testflight.apple.com/join/jECT6VHj">Open the TestFlight link</a>
       <p>The phone has to be on Wi-Fi. A hotspot from another phone works. The phone's own cellular data does not.</p>
-      <p>A Mac or Linux computer the phone can reach on a private address, usually the same Wi-Fi. It needs Python 3.9 or later, git, and an AI coding agent. The phone sends only to a private address and refuses a public one.</p>
-      <p>To go past pairing you also need a recent Rust toolchain (1.85 or later, from rustup) and a C compiler to build the tools, Apple's developer disk image, and for the one-time disk image step a USB cable to the computer. On Linux that step also needs the usbmuxd service. The computer section below covers each one.</p>
+      <p>A Mac the phone can reach on a private address, usually the same Wi-Fi, with an AI coding agent such as Claude Code or Codex. The phone sends only to a private address and refuses a public one. Linux works from source (below). Windows is not ready yet.</p>
+      <p>Apple's developer disk image goes on the phone before an agent can drive it. The Mac app gets it for you from Xcode or from GitHub. The source route on Linux also needs a Rust toolchain, a C compiler and, for the one-time disk image step, a USB cable and the usbmuxd service.</p>
     </section>
 
     <section class="block" id="phone">
@@ -159,39 +161,55 @@
         <li>Show Developer Mode. Tap Start in RC Pair.</li>
         <li>Turn on Developer Mode in Settings. The phone restarts once. Open RC Pair again after the restart.</li>
         <li>Pair. In Settings, go to Privacy &amp; Security &gt; Developer Mode, tap RC Pair under Other Devices, then tap Pair. RC Pair shows a 6-digit code, and you type it in Settings.</li>
-        <li>Send to your computer. Start the receiver from the computer section below first, because this step needs it running.</li>
+        <li>Send to your computer. Open RC Pair on your Mac and click Add a phone first (the section below), because this step needs its QR code on screen.</li>
       </ol>
       <p>On iOS 17 to 25, RC Pair gets about 30 seconds once you leave it, so go straight to Settings when it sends you there. On 26 and later it keeps running while you are in Settings.</p>
     </section>
 
     <section class="block" id="computer">
-      <h2>Set up your computer</h2>
-      <p>Step 5 needs rcpair-receive running on your computer. It is in phone-open, the companion repo for RC Pair, which is source available under the Functional Source License. Clone it and start the receiver. On Debian or Ubuntu, install python3-venv first.</p>
-      <pre class="mono">git clone https://github.com/rcpair/phone-open.git
+      <h2>Set up your Mac</h2>
+      <p>Download the RC Pair computer app. No terminal, Python or Xcode needed for this part.</p>
+      <a class="btn" href="RC-Pair-0.1.0-macos.dmg" download>Download RC Pair for Mac</a>
+      <p class="dim">macOS 12 or later, Apple silicon or Intel. 15 MB. SHA-256 <code style="word-break:break-all">fe26cf114e50b20270849a23f79b64068eab528da79ac8b4445aa124827e84a2</code>.</p>
+      <ol>
+        <li>Open the downloaded file and drag RC Pair to Applications.</li>
+        <li>Open RC Pair from Applications. This test build is not notarized by Apple yet, so macOS stops it the first time. Click Done, open System Settings, go to Privacy &amp; Security, scroll down to the line about RC Pair, click Open Anyway, and confirm with your password. After that it opens normally.</li>
+        <li>Tick the box on the first screen and click Continue.</li>
+        <li>Click Add a phone. The app shows a QR code. If your Mac asks to let RC Pair find devices on your local network, or to accept incoming connections, click Allow.</li>
+        <li>On the phone, do step 5: scan the QR code with the Camera app and tap Open in RC Pair, check the computer's name, and tap Send. The app says Phone added. If RC Pair says there is no pairing to send, or that it already went to another computer (for example because you ran rcpair-receive.py before), tap Start over in RC Pair and pair again in Settings.</li>
+        <li>Under Apple's disk image, click Copy from Xcode on this Mac if you have Xcode, or Download from GitHub. The download is a pinned copy of Apple's file from a third party's GitHub repo, and the app checks every file against fingerprints built into it.</li>
+        <li>Under Connect your agent, copy the line for Claude Code or Codex into your agent.</li>
+      </ol>
+      <p>Pairing and the disk image are tested. Driving a phone from the Mac app has not been run with a phone yet, because we have no Mac with a phone here. Your Mac is the first. If the agent cannot reach the phone, tell us what it said (the last section has how).</p>
+      <details>
+        <summary>Linux, or building from source</summary>
+        <p style="margin-top:14px">There is no Linux or Windows app yet. On Linux, use the receiver script from phone-open, the companion repo for RC Pair, which is source available under the Functional Source License. On Debian or Ubuntu, install python3-venv first.</p>
+        <pre class="mono">git clone https://github.com/rcpair/phone-open.git
 cd phone-open
 python3 -m venv .venv
 .venv/bin/pip install cryptography qrcode
 .venv/bin/python scripts/rcpair-receive.py</pre>
-      <p style="margin-top:14px">The script shows a QR code and a link, then waits ten minutes for one upload. On the phone, scan the QR code with the Camera app and tap Open in RC Pair, or copy the link and tap Paste link in RC Pair. Check the computer's name and address, then tap Send. The script saves the pairing in ~/.rcpair and exits. If you only want the script, it is also at <a href="../review/rcpair-receive.py">rcpair.si/review/rcpair-receive.py</a>.</p>
-      <p>Next, in the same folder, get the tools and Apple's disk image.</p>
-      <pre class="mono">scripts/fetch-deps.sh
+        <p style="margin-top:14px">The script shows a QR code and a link, then waits ten minutes for one upload. It saves the pairing in ~/.rcpair and exits. If you only want the script, it is also at <a href="../review/rcpair-receive.py">rcpair.si/review/rcpair-receive.py</a>. Then get the tools and Apple's disk image:</p>
+        <pre class="mono">scripts/fetch-deps.sh
 scripts/ddi-from-xcode.sh --mac you@your-mac
 scripts/connect.sh</pre>
-      <p style="margin-top:14px">The second line copies the disk image from a Mac with Xcode over ssh. Run it without --mac if you are on that Mac. Xcode has to have prepared a device once (Window &gt; Devices and Simulators shows it ready) before the image is there to copy. Skip the second line if you have no Mac. When the image folder is empty, connect.sh runs scripts/ddi-from-github.sh for you, which pulls a pinned copy of Apple's file from a third party's GitHub repo and checks it against hashes in phone-open. Set RCPAIR_DDI_FETCH=0 to stop that.</p>
-      <p>The third line builds the tools, which is slow the first time, and prints the remaining steps. The README and docs/ARCHITECTURE.md in the repo go through each one.</p>
+        <p style="margin-top:14px">The second line copies the disk image from a Mac with Xcode over ssh. Skip it if you have no Mac: when the image folder is empty, connect.sh runs scripts/ddi-from-github.sh, which pulls the same pinned third-party copy and checks it against hashes in phone-open. Set RCPAIR_DDI_FETCH=0 to stop that. The third line builds the tools and prints the remaining steps.</p>
+      </details>
     </section>
 
     <section class="block" id="try">
       <h2>What to try once it works</h2>
-      <p>First, finish step 5 and check that ~/.rcpair holds a .rppair.plist file and a .json file for your phone. That is the pairing hand-off, and it is the part the app covers.</p>
-      <p>Then follow the steps connect.sh prints to open the tunnel and put the disk image on the phone. After that, give your agent the idevice tools for reading the screen, tapping, dragging, typing and launching apps, and see how far it gets on a simple task such as opening an app and searching in it.</p>
+      <p>First, finish step 5. The Mac app lists the phone under Phones once the pairing arrives.</p>
+      <p>Then add RC Pair to your agent with the line from Connect your agent, keep the phone unlocked on the same Wi-Fi, and ask the agent for something simple, such as opening an app and searching in it.</p>
     </section>
 
     <section class="block" id="rough">
       <h2>What does not work yet</h2>
       <ul>
-        <li>There is no packaged driver, MCP server or agent hookup. phone-open gives your agent the tools. What to tap is up to your agent.</li>
-        <li>With the pinned tools the disk image goes onto the phone over USB, or from Xcode on a Mac. An iOS update removes it, and it goes back on the same way.</li>
+        <li>The Mac app is not signed with an Apple Developer ID yet, so macOS asks you to allow it the first time. A signed and notarized build replaces it soon.</li>
+        <li>Driving a phone from the Mac app has not been run with a phone yet. Your report is the first.</li>
+        <li>No Windows app yet. Driving the phone from Windows is not built.</li>
+        <li>An iOS update removes Apple's disk image from the phone, and it has to go back on.</li>
         <li>Changing networks can mean pairing again. Across a VPN such as Tailscale, use the computer's IP address, because device discovery does not cross a VPN.</li>
         <li>scripts/rcpair-session.sh cannot work with the pinned tools and exits with status 3.</li>
       </ul>
