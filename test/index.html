@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#242735">
+<title>Test RC Pair</title>
+<meta name="description" content="Setup notes for TestFlight testers of RC Pair, with the commands for your computer and a list of what does not work yet.">
+<link rel="icon" href="../brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+
+  :root{
+    --navy:#242735; --navy-hi:#2D3148; --navy-lo:#1C1E2A;
+    --orange:#FF5600; --chalk:#F0F2F7; --white:#FFFFFF;
+    --ink:#242735; --ink-dim:#4A5068; --line:#D8DCE6;
+    --on-navy:#F0F2F7; --on-navy-dim:#B8BED0; --navy-line:#3A3F57;
+    --maxw:1080px; --gutter:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--chalk); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:Manrope,Inter,sans-serif; line-height:1.15; margin:0; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  a{color:inherit; text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:2px; text-underline-offset:3px}
+  a:hover{text-decoration-thickness:3px}
+  :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:4px}
+  .dark :focus-visible{outline-color:var(--orange)}
+  .wrap{max-width:calc(var(--maxw) + 2*var(--gutter)); margin:0 auto; padding:0 var(--gutter)}
+  .skip{position:absolute; left:-999px; top:8px; background:var(--orange); color:var(--navy); padding:8px 12px; border-radius:8px; font-weight:700; z-index:10}
+  .skip:focus{left:8px}
+  .dark{background:var(--navy); color:var(--on-navy)}
+  .dark .dim{color:var(--on-navy-dim)}
+  .dim{color:var(--ink-dim)}
+
+  /* buttons: navy text on orange, bold */
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:16px; line-height:1.2; padding:13px 20px; border-radius:12px; text-decoration:none; white-space:nowrap}
+  .btn-solid{background:var(--orange); color:var(--navy)}
+  .btn-solid:hover{background:#FF6A1A; text-decoration:none}
+  .btn-ghost{color:var(--on-navy); box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--on-navy-dim); text-decoration:none}
+  .btn .node{width:10px; height:10px; border-radius:50%; background:var(--navy)}
+
+  /* top */
+  .top{background:linear-gradient(180deg,var(--navy-hi) 0%,var(--navy) 55%,var(--navy-lo) 100%)}
+  nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+  .logo{display:block; line-height:0; text-decoration:none}
+  .logo img{display:block; height:64px; width:auto; margin:-14px 0 -14px -30px}
+  .nav-links{display:flex; gap:24px; align-items:center; font-size:15px}
+  .nav-links a{color:var(--on-navy-dim); text-decoration:none}
+  .nav-links a:hover{color:var(--on-navy)}
+  .nav-links a.btn{color:var(--navy); padding:10px 16px; font-size:15px}
+  .menu{display:none; position:relative}
+  .menu summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--on-navy); padding:10px 14px; border-radius:12px; box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu summary::after{content:""; width:8px; height:8px; margin-top:-4px; border-right:2.5px solid var(--orange); border-bottom:2.5px solid var(--orange); transform:rotate(45deg); transition:transform .2s}
+  .menu[open] summary::after{transform:rotate(225deg); margin-top:4px}
+  .menu-panel{position:absolute; right:0; top:calc(100% + 8px); z-index:20; width:min(260px, calc(100vw - 32px)); background:var(--navy-lo); border:1px solid var(--navy-line); border-radius:16px; padding:8px; box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .menu-panel a{display:block; padding:12px 14px; border-radius:10px; color:var(--on-navy); text-decoration:none; font-size:16px}
+  .menu-panel a:hover{background:var(--navy-hi)}
+  .menu-panel a.btn{display:flex; justify-content:center; margin-top:6px; color:var(--navy)}
+  .menu-panel a.btn:hover{background:#FF6A1A}
+  /* The lockup file has clear space around the art. This box crops to the art so it lines up with text. */
+  .lockup{position:relative; overflow:hidden; aspect-ratio:1041/276; display:block; width:150px}
+  .lockup img{position:absolute; width:153.70%; max-width:none; left:-26.90%; top:-40.58%; height:auto}
+
+
+  .phero{padding:36px 0 60px; max-width:780px}
+  .phero .eyebrow{display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; margin:0 0 14px}
+  .phero .eyebrow::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange)}
+  .phero h1{font-size:clamp(34px,5.6vw,50px); font-weight:800; margin-bottom:18px}
+  .phero p{color:var(--on-navy-dim); font-size:17px}
+  .doc{overflow-wrap:anywhere; padding-top:56px; padding-bottom:72px}
+  .doc section.block{padding:0 0 48px}
+  .doc section.block + section.block{border-top:1px solid var(--line); padding-top:48px}
+  .doc h2{font-size:clamp(24px,3.6vw,32px); font-weight:800; margin-bottom:14px; display:flex; align-items:center; gap:12px}
+  .doc h2::before{content:""; width:12px; height:12px; border-radius:50%; background:var(--orange); flex:none}
+  .doc p{color:var(--ink-dim); max-width:46em}
+  .doc ol,.doc ul{color:var(--ink-dim); max-width:46em; margin:0 0 14px; padding-left:24px}
+  .doc li{margin:0 0 8px}
+  .codes{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:26px}
+  .code{background:var(--white); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; min-width:0}
+  .code h3{font-size:20px; margin-bottom:8px}
+  .code p{font-size:15px}
+  .code img{display:block; width:100%; max-width:280px; height:auto; margin:8px auto 18px; border-radius:10px; image-rendering:pixelated; background:#fff; border:1px solid var(--line)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; line-height:1.55;
+    background:var(--navy); border-radius:12px; padding:14px 16px; color:var(--on-navy)!important;
+    overflow-wrap:anywhere; word-break:break-all; margin:auto 0 0; max-width:none!important}
+  .mono a{color:var(--on-navy); text-decoration-color:var(--orange)}
+  pre.mono{white-space:pre-wrap; word-break:normal; margin:0}
+  .doc .btn{background:var(--orange); color:var(--navy); margin:6px 0 20px; text-decoration:none}
+  .doc .btn:hover{background:#FF6A1A}
+  footer.dark{background:var(--navy-lo); color:var(--on-navy-dim); padding:44px 0 56px; font-size:14px}
+  .foot-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+  .foot-links{display:flex; gap:10px 22px; flex-wrap:wrap}
+  .foot-links a{color:var(--on-navy); text-decoration-color:var(--orange)}
+  .fine{margin:18px 0 0; max-width:640px; line-height:1.6}
+
+
+  @media (max-width:760px){
+    .codes{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu{display:block}
+    .logo img{height:54px; margin:-12px 0 -12px -25px}
+    .nav-links a.btn{padding:9px 13px; font-size:14px}
+    .phero{padding:20px 0 44px}
+    .code{padding:20px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="top dark">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="../"><img src="../brand/lockup-dark.svg" alt="RC Pair" width="205" height="64"></a>
+      <div class="nav-links">
+        <a href="../">Home</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+      </div>
+      <details class="menu">
+        <summary>Menu</summary>
+        <div class="menu-panel">
+          <a href="../">Home</a>
+          <a href="../privacy.html">Privacy</a>
+          <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question" class="btn btn-solid">Contact</a>
+        </div>
+      </details>
+    </nav>
+    <header class="phero">
+      <p class="eyebrow">TestFlight</p>
+      <h1>Test RC Pair</h1>
+      <p>RC Pair pairs an iPhone or iPad with a computer you choose, so an AI coding agent on that computer can work with the phone. This page is for developers who installed the TestFlight build and have a computer with an agent such as Claude Code or Codex.</p>
+      <p>The five steps on the phone take about five minutes. Building the tools and getting Apple's disk image take longer. The list near the bottom says what is still rough.</p>
+    </header>
+  </div>
+</div>
+<main class="doc wrap">
+
+    <section class="block" id="need">
+      <h2>What you need</h2>
+      <p>An iPhone or iPad on iOS or iPadOS 17 or later, and the TestFlight build.</p>
+      <a class="btn" href="https://testflight.apple.com/join/jECT6VHj">Open the TestFlight link</a>
+      <p>The phone has to be on Wi-Fi. A hotspot from another phone works. The phone's own cellular data does not.</p>
+      <p>A Mac or Linux computer the phone can reach on a private address, usually the same Wi-Fi. It needs Python 3.9 or later, git, and an AI coding agent. The phone sends only to a private address and refuses a public one.</p>
+      <p>To go past pairing you also need a recent Rust toolchain (1.85 or later, from rustup) and a C compiler to build the tools, Apple's developer disk image, and for the one-time disk image step a USB cable to the computer. On Linux that step also needs the usbmuxd service. The computer section below covers each one.</p>
+    </section>
+
+    <section class="block" id="phone">
+      <h2>Set up the phone</h2>
+      <p>RC Pair walks you through five steps. Allow Local Network access when the phone asks.</p>
+      <ol>
+        <li>Allow notifications.</li>
+        <li>Show Developer Mode. Tap Start in RC Pair.</li>
+        <li>Turn on Developer Mode in Settings. The phone restarts once. Open RC Pair again after the restart.</li>
+        <li>Pair. In Settings, go to Privacy &amp; Security &gt; Developer Mode, tap RC Pair under Other Devices, then tap Pair. RC Pair shows a 6-digit code, and you type it in Settings.</li>
+        <li>Send to your computer. Start the receiver from the computer section below first, because this step needs it running.</li>
+      </ol>
+      <p>On iOS 17 to 25, RC Pair gets about 30 seconds once you leave it, so go straight to Settings when it sends you there. On 26 and later it keeps running while you are in Settings.</p>
+    </section>
+
+    <section class="block" id="computer">
+      <h2>Set up your computer</h2>
+      <p>Step 5 needs rcpair-receive running on your computer. It is in phone-open, the companion repo for RC Pair, which is source available under the Functional Source License. Clone it and start the receiver. On Debian or Ubuntu, install python3-venv first.</p>
+      <pre class="mono">git clone https://github.com/rcpair/phone-open.git
+cd phone-open
+python3 -m venv .venv
+.venv/bin/pip install cryptography qrcode
+.venv/bin/python scripts/rcpair-receive.py</pre>
+      <p style="margin-top:14px">The script shows a QR code and a link, then waits ten minutes for one upload. On the phone, scan the QR code with the Camera app and tap Open in RC Pair, or copy the link and tap Paste link in RC Pair. Check the computer's name and address, then tap Send. The script saves the pairing in ~/.rcpair and exits. If you only want the script, it is also at <a href="../review/rcpair-receive.py">rcpair.si/review/rcpair-receive.py</a>.</p>
+      <p>Next, in the same folder, get the tools and Apple's disk image.</p>
+      <pre class="mono">scripts/fetch-deps.sh
+scripts/ddi-from-xcode.sh --mac you@your-mac
+scripts/connect.sh</pre>
+      <p style="margin-top:14px">The second line copies the disk image from a Mac with Xcode over ssh. Run it without --mac if you are on that Mac. Xcode has to have prepared a device once (Window &gt; Devices and Simulators shows it ready) before the image is there to copy. Skip the second line if you have no Mac. When the image folder is empty, connect.sh runs scripts/ddi-from-github.sh for you, which pulls a pinned copy of Apple's file from a third party's GitHub repo and checks it against hashes in phone-open. Set RCPAIR_DDI_FETCH=0 to stop that.</p>
+      <p>The third line builds the tools, which is slow the first time, and prints the remaining steps. The README and docs/ARCHITECTURE.md in the repo go through each one.</p>
+    </section>
+
+    <section class="block" id="try">
+      <h2>What to try once it works</h2>
+      <p>First, finish step 5 and check that ~/.rcpair holds a .rppair.plist file and a .json file for your phone. That is the pairing hand-off, and it is the part the app covers.</p>
+      <p>Then follow the steps connect.sh prints to open the tunnel and put the disk image on the phone. After that, give your agent the idevice tools for reading the screen, tapping, dragging, typing and launching apps, and see how far it gets on a simple task such as opening an app and searching in it.</p>
+    </section>
+
+    <section class="block" id="rough">
+      <h2>What does not work yet</h2>
+      <ul>
+        <li>There is no packaged driver, MCP server or agent hookup. phone-open gives your agent the tools. What to tap is up to your agent.</li>
+        <li>With the pinned tools the disk image goes onto the phone over USB, or from Xcode on a Mac. An iOS update removes it, and it goes back on the same way.</li>
+        <li>Changing networks can mean pairing again. Across a VPN such as Tailscale, use the computer's IP address, because device discovery does not cross a VPN.</li>
+        <li>scripts/rcpair-session.sh cannot work with the pinned tools and exits with status 3.</li>
+      </ul>
+    </section>
+
+    <section class="block" id="feedback">
+      <h2>Tell us where you got stuck</h2>
+      <p>The most useful report is the step where you stopped, what the screen or terminal showed, and the phone model, iOS version and computer you used. Send it to <a href="mailto:support@rcpair.si?subject=RC%20Pair%20TestFlight%20feedback">support@rcpair.si</a>, or take a screenshot in RC Pair and send it as TestFlight feedback. A short note is enough. Please do not send the saved pairing files.</p>
+    </section>
+  </main>
+<footer class="dark">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="lockup" href="../"><img src="../brand/lockup-dark.svg" alt="RC Pair" width="1600" height="500"></a>
+      <div class="foot-links">
+        <a href="../">Home</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20question">support@rcpair.si</a>
+      </div>
+    </div>
+    <p class="fine">RC Pair is made by Rising Creek Construction LLC, a Texas company. Apple, iPhone, iPad, iPadOS, Mac, Xcode, TestFlight, App Store and the other Apple product names on this site are trademarks of Apple Inc., registered in the U.S. and other countries. iOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license. RC Pair is not affiliated with or endorsed by Apple.</p>
+    <p class="fine">© 2026 Rising Creek Construction LLC. RC Pair™ is a trademark of Rising Creek Construction LLC. Patent pending.</p>
+  </div>
+</footer>
+<script>
+  // Close the phone menu after a link in it is chosen.
+  document.querySelectorAll('.menu-panel a').forEach(function(a){
+    a.addEventListener('click', function(){ var d=a.closest('details'); if(d){ d.open=false; } });
+  });
+</script>
+<script src="../t.js" defer></script>
+</body>
+</html>
