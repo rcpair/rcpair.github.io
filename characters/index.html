@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#242735">
+<title>Pick your agent's face | RC Pair</title>
+<meta name="description" content="Pick a face for the agent that drives your phone, or drop in your own character file. It stays in your browser and is never uploaded.">
+<link rel="icon" href="../brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  :root{
+    --navy:#242735; --navy-hi:#2D3148; --navy-lo:#1C1E2A;
+    --orange:#FF5600; --chalk:#F0F2F7; --white:#FFFFFF;
+    --ink:#242735; --ink-dim:#4A5068; --line:#D8DCE6;
+    --on-navy:#F0F2F7; --on-navy-dim:#B8BED0; --navy-line:#3A3F57;
+    --ok:#1E7B4A; --bad:#B3261E;
+    --maxw:1080px; --gutter:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--chalk); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:Manrope,Inter,sans-serif; line-height:1.15; margin:0; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  a{color:inherit; text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:2px; text-underline-offset:3px}
+  :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:4px}
+  .dark :focus-visible{outline-color:var(--orange)}
+  .wrap{max-width:calc(var(--maxw) + 2*var(--gutter)); margin:0 auto; padding:0 var(--gutter)}
+  .dark{background:var(--navy); color:var(--on-navy)}
+  .dim{color:var(--ink-dim)}
+  .dark .dim{color:var(--on-navy-dim)}
+  .btn{display:inline-flex; align-items:center; gap:10px; font:inherit; font-weight:700; line-height:1.2; padding:13px 20px; border-radius:12px; text-decoration:none; border:0; cursor:pointer}
+  .btn-solid{background:var(--orange); color:var(--navy)}
+  .btn-solid:hover{background:#FF6A1A}
+  .btn-line{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 2px var(--line)}
+  .btn-line:hover{box-shadow:inset 0 0 0 2px var(--ink-dim)}
+  [hidden]{display:none!important}
+  .btn[disabled]{opacity:.45; cursor:not-allowed}
+
+  .top{background:linear-gradient(180deg,var(--navy-hi) 0%,var(--navy) 60%,var(--navy-lo) 100%); padding:0 0 44px}
+  nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0 34px}
+  nav a.back{font-weight:600; font-size:15px}
+  .top h1{font-size:clamp(30px,5vw,46px); max-width:16ch}
+  .top p.lead{font-size:18px; max-width:56ch; margin-top:16px; color:var(--on-navy-dim)}
+
+  section.block{padding:52px 0}
+  section.block.alt{background:var(--white)}
+  section.block h2{font-size:clamp(24px,3.6vw,32px); margin-bottom:10px}
+  section.block p.sub{max-width:62ch; color:var(--ink-dim); margin-bottom:26px}
+
+  .faces{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px; list-style:none; margin:0; padding:0}
+  .face{width:100%; text-align:left; font:inherit; color:inherit; background:var(--white); border:2px solid var(--line); border-radius:16px; padding:14px; cursor:pointer; display:flex; flex-direction:column; gap:8px; height:100%}
+  .alt .face{background:var(--chalk)}
+  .face:hover{border-color:var(--ink-dim)}
+  .face[aria-pressed="true"]{border-color:var(--orange); box-shadow:0 0 0 3px rgba(255,86,0,.22)}
+  .face .art{background:var(--navy); border-radius:10px; aspect-ratio:6/7; display:flex; align-items:center; justify-content:center; overflow:hidden}
+  .face .art svg,.face .art img{width:78%; height:auto; max-height:92%}
+  .face .art img{image-rendering:pixelated; object-fit:contain}
+  .face b{font-family:Manrope,Inter,sans-serif; font-size:17px}
+  .face span.note{font-size:14px; line-height:1.45; color:var(--ink-dim)}
+  .face .tick{font-size:13px; font-weight:700; color:var(--ok); min-height:1.2em}
+
+  .drop{border:3px dashed var(--ink-dim); border-radius:18px; padding:34px 20px; text-align:center; background:var(--chalk); transition:background .12s,border-color .12s}
+  .drop.over{border-color:var(--orange); background:#FFF1E8}
+  .drop p{margin:0 0 12px}
+  .drop .types{font-size:14px; color:var(--ink-dim); margin-top:14px}
+  input[type=file]{position:absolute; width:1px; height:1px; opacity:0; pointer-events:none}
+
+  .mine{margin-top:22px; display:none; grid-template-columns:minmax(120px,200px) 1fr; gap:22px; align-items:start; background:var(--chalk); border:2px solid var(--line); border-radius:16px; padding:18px}
+  .mine.on{display:grid}
+  .mine .prev{background:var(--navy); border-radius:12px; aspect-ratio:6/7; display:flex; align-items:center; justify-content:center; color:var(--on-navy-dim); font-size:13px; text-align:center; padding:10px; overflow:hidden}
+  .mine .prev img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
+  .mine h3{font-size:20px; margin-bottom:6px; overflow-wrap:anywhere}
+  .meta{font-size:14px; color:var(--ink-dim); margin:0 0 10px; overflow-wrap:anywhere}
+  .meta code{font-size:12px}
+  .msg{font-weight:600; margin:0 0 10px}
+  .msg.bad{color:var(--bad)}
+  .msg.ok{color:var(--ok)}
+  .row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+  .keepnote{font-size:14px; color:var(--ink-dim); margin-top:12px; max-width:60ch}
+
+  .use{background:var(--navy); color:var(--on-navy); border-radius:18px; padding:26px}
+  .use h3{font-size:22px; margin-bottom:10px}
+  .use ol{margin:0 0 10px; padding-left:22px}
+  .use li{margin-bottom:8px}
+  .use code{background:var(--navy-hi); padding:2px 7px; border-radius:6px; font-size:14px; overflow-wrap:anywhere}
+  .use .btn-line{color:var(--on-navy); box-shadow:inset 0 0 0 2px var(--navy-line)}
+  .use .btn-line:hover{box-shadow:inset 0 0 0 2px var(--on-navy-dim)}
+  .use :focus-visible{outline-color:var(--orange)}
+  .use .dl{margin-top:14px}
+  .status-note{margin-top:18px; font-size:14px; color:var(--on-navy-dim); max-width:62ch}
+
+  footer{padding:30px 0; font-size:14px}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:8px 22px}
+  @media (max-width:640px){
+    .mine.on{grid-template-columns:1fr}
+    .mine .prev{max-width:200px}
+    .btn{white-space:normal}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important; scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top dark">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a href="../"><img src="../brand/lockup-dark.svg" alt="RC Pair" width="164" height="51"></a>
+      <a class="back" href="../">Back to rcpair.si</a>
+    </nav>
+    <h1>Pick your agent's face.</h1>
+    <p class="lead">When your agent drives your phone, a small character on your desktop shows what it is doing. Choose one of ours, or drop in your own file. We never generate or replace it.</p>
+  </div>
+</header>
+
+<main>
+  <section class="block" aria-labelledby="pick-h">
+    <div class="wrap">
+      <h2 id="pick-h">Choose a face.</h2>
+      <p class="sub">Tap one. Your choice is the name you will pick in the companion's menu, and it can change any time.</p>
+      <ul class="faces" id="faces"></ul>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="own-h">
+    <div class="wrap">
+      <h2 id="own-h">Or bring your own.</h2>
+      <p class="sub">A pixel-art PNG, a 3D model, or a 3D capture of your own face, your dog or your logo. We read the file here in your browser to check it and give it back unchanged. It is not uploaded.</p>
+      <div class="drop" id="drop">
+        <p><strong>Drop a character file here</strong></p>
+        <p><label for="file" class="btn btn-solid" id="pickbtn" tabindex="0" role="button">Choose a file</label></p>
+        <input type="file" id="file" accept=".png,.glb,.gltf,.vrm,.ply,.spz,.splat,.ksplat,.sog,.zip">
+        <div class="types">.png (pixel art, up to 64 pixels on the long side) &middot; .glb .gltf .vrm (3D models) &middot; .ply .spz .splat .ksplat .sog .zip (3D captures) &middot; up to 150 MB</div>
+      </div>
+      <div class="mine" id="mine" aria-live="polite">
+        <div class="prev" id="prev"></div>
+        <div>
+          <h3 id="mname"></h3>
+          <p class="meta" id="mmeta"></p>
+          <p class="msg" id="mmsg"></p>
+          <div class="row">
+            <button class="btn btn-solid" id="keep" type="button">Keep it in this browser</button>
+            <button class="btn btn-line" id="forget" type="button" hidden>Remove it from this browser</button>
+          </div>
+          <p class="keepnote" id="keepnote">Keeping it saves the file in this browser only, so it is still here when you come back. Nothing is sent to us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="use-h">
+    <div class="wrap">
+      <div class="use" id="use" aria-live="polite">
+        <h3 id="use-h">Put it on your desktop.</h3>
+        <div id="usebody"></div>
+        <p class="status-note">The companion is Rising Creek's desktop character for RC Pair. It runs on Windows today and is in testing, so this page is a preview of how you will choose.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="dark">
+  <div class="wrap">
+    <a href="../">rcpair.si</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="mailto:support@rcpair.si?subject=RC%20Pair%20characters">Questions about characters</a>
+    <span class="dim">Made by Rising Creek Construction LLC.</span>
+  </div>
+</footer>
+
+<script src="characters-core.js"></script>
+<script src="characters.js"></script>
+<script src="../t.js" defer></script>
+</body>
+</html>
