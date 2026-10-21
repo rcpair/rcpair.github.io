@@ -315,13 +315,13 @@
           <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
           <a href="#how" class="btn btn-ghost">See the five steps</a>
         </div>
-        <p class="hero-note dim">Free during early access. No public download yet. A developer tool, so expect rough edges.</p>
+        <p class="hero-note dim">Free during early access. The computer app for Linux and Mac is <a href="computer.html">ready to download</a>. A developer tool, so expect rough edges.</p>
       </div>
 
       <figure class="hero-fig">
         <svg viewBox="0 0 560 340" role="img" aria-labelledby="heroT heroD">
           <title id="heroT">The phone and its orange node, paired with a computer</title>
-          <desc id="heroD">An iPhone on the left with an orange node docked into its edge. A dotted orange line carries the pairing key over your own network to a laptop on the right, which shows a QR code from rcpair-receive.</desc>
+          <desc id="heroD">An iPhone on the left with an orange node docked into its edge. A dotted orange line carries the pairing key over your own network to a laptop on the right, which shows a QR code from rcpair receive.</desc>
           <defs>
             <linearGradient id="hNode" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A1A"/><stop offset="1" stop-color="#F24E00"/></linearGradient>
             <mask id="hSocket"><rect width="560" height="340" fill="#fff"/><circle cx="180" cy="158" r="43" fill="#000"/></mask>
@@ -330,7 +330,7 @@
           <rect x="300" y="58" width="240" height="178" rx="14" fill="#1C1E2A" stroke="#F0F2F7" stroke-width="6"/>
           <rect x="316" y="76" width="208" height="24" rx="6" fill="#2D3148"/>
           <circle cx="330" cy="88" r="4.5" fill="#FF5600"/>
-          <text x="342" y="94" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" fill="#F0F2F7">rcpair-receive</text>
+          <text x="342" y="94" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" fill="#F0F2F7">rcpair receive</text>
           <use href="#qr" x="330" y="112" width="112" height="112"/>
           <rect x="458" y="122" width="62" height="8" rx="4" fill="#B8BED0"/>
           <rect x="458" y="140" width="46" height="8" rx="4" fill="#5A6078"/>
@@ -365,7 +365,7 @@
           <li class="mid"><strong>Your own network</strong>Wi-Fi or another phone's hotspot</li>
           <li><strong>Your computer</strong>Runs your agent</li>
         </ol>
-        <figcaption class="dim">The orange node is the pairing. Your computer runs rcpair-receive, which shows a QR code. The pairing goes to it only when you tap Send.</figcaption>
+        <figcaption class="dim">The orange node is the pairing. Your computer runs rcpair receive, which shows a QR code. The pairing goes to it only when you tap Send.</figcaption>
       </figure>
     </header>
   </div>
@@ -376,7 +376,7 @@
   <section class="block" id="what" aria-labelledby="what-h">
     <div class="wrap">
       <p class="kicker">What it is</p>
-      <h2 id="what-h">An app on your device and a script on your computer.</h2>
+      <h2 id="what-h">An app on your device and an app on your computer.</h2>
       <p class="lead dim">Together they give your computer the pairing it needs to work with your iPhone or iPad through Apple's developer services. It is not a jailbreak. RC Pair does not include or host any Apple software.</p>
 
       <div class="parts">
@@ -396,10 +396,11 @@
           </div>
           <div>
             <p class="tag">On your computer</p>
-            <h3>rcpair-receive</h3>
-            <p>A small Python script you <a href="review/rcpair-receive.py" download>download from this site</a>
-              and can read before you run it. It shows the QR code, receives the pairing from your phone over your own network, and saves it
-              on your computer. You run it, and you run your own agent. Its source, the setup steps and the tests are on
+            <h3>The RC Pair computer app</h3>
+            <p>One program, <code>rcpair</code>, that you <a href="computer.html">download for Linux</a> and check against its published checksum and signature.
+              <code>rcpair receive</code> shows the QR code, receives the pairing from your phone over your own network, and saves it
+              on your computer. You run it, and you run your own agent. Its terms and notices come in the download.
+              It also runs as a Mac app. The older pairing script and its setup steps are on
               <a href="https://github.com/rcpair/phone-open" data-t="repo">GitHub</a>.</p>
           </div>
         </div>
@@ -427,7 +428,7 @@
           <div>
             <h3>Save the pairing</h3>
             <p>Your phone sends the pairing to your computer, and it is saved there.</p>
-            <p class="who">Today this is rcpair-receive, a script you download from this site.</p>
+            <p class="who">Today this is <code>rcpair receive</code> in the computer app, or the older script on GitHub.</p>
           </div>
         </li>
         <li class="cs">
@@ -443,7 +444,7 @@
           <div>
             <h3>Open a link to the phone</h3>
             <p>A tool uses the pairing to reach the phone over Wi-Fi, or a hotspot from another phone. The phone's own cellular data does not work for this link.</p>
-            <p class="who"><span>Today, open tools such as <a href="https://github.com/jkcoxson/idevice">idevice</a>, an open-source toolkit for Apple's developer services. Planned, the RC Pair computer app.</span></p>
+            <p class="who"><span>The RC Pair computer app does this on <a href="computer.html">Linux</a>. It also runs on <a href="computer.html#mac">a Mac</a>. You can also use open tools such as <a href="https://github.com/jkcoxson/idevice">idevice</a>.</span></p>
           </div>
         </li>
         <li class="cs">
@@ -458,7 +459,7 @@
           <div>
             <h3>Put Apple's disk image on the phone</h3>
             <p>The control tools need Apple's developer disk image on the phone. On our iPhone running iOS 27 it stayed through a restart. An iOS update removes it, and you put it back from the same folder.</p>
-            <p class="who">You do this, and we never host or supply the file.</p>
+            <p class="who">The image is not bundled in the app. RC Pair can copy it from Xcode or download a pinned copy from GitHub. Apple's terms govern the file.</p>
           </div>
         </li>
         <li class="cs">
@@ -477,7 +478,7 @@
           <div>
             <h3>See the screen and tap</h3>
             <p>Control tools see the screen, tap, type and open apps.</p>
-            <p class="who">Today, open tools such as idevice. Planned, the RC Pair computer app.</p>
+            <p class="who">The RC Pair computer app on <a href="computer.html">Linux or Mac</a>, or open tools such as idevice.</p>
           </div>
         </li>
         <li class="cs">
@@ -498,10 +499,9 @@
 
       <div class="app-note">
         <h3>The RC Pair computer app</h3>
-        <p>We are building a computer app that will open the link to your phone, keep it open and give your own
-          agent the tools to see the screen and tap. That covers opening the link and seeing the screen. It will not include Apple's
-          developer disk image, so that part stays with you. For now, early access uses rcpair-receive and open
-          tools such as idevice.</p>
+        <p>The computer app opens the link to your phone, keeps it open and gives your own agent the tools to see the
+          screen and tap. It runs on Linux today, on a laptop or a server you reach over SSH. It also runs as a Mac app, and Windows comes after that. Apple's developer disk image is not bundled in the app. RC Pair can copy it from Xcode or download a pinned copy from GitHub when you choose, or when <code>rcpair serve</code> runs with no image present. Apple's terms govern the file.
+          <a href="computer.html">Download and set up</a>.</p>
         <p>RC Pair itself runs no service that receives your phone's data.</p>
       </div>
     </div>
@@ -528,7 +528,7 @@
           </li>
           <li>
             <span class="ni"><svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="none" stroke="#F0F2F7" stroke-width="2"/><circle cx="11" cy="11" r="3.4" fill="#FF5600"/></svg></span>
-            <div><b>Apple's disk image, once per device and after iOS updates</b><span>From Xcode on a Mac (recommended), or a pinned public GitHub copy of Apple's file on any computer. rcpair-receive runs on a Mac or on a Linux computer on the same Wi-Fi, with Python 3.9 or later, the cryptography package, and qrcode or the qrencode command to show the QR code.</span></div>
+            <div><b>The RC Pair computer app and Apple's disk image</b><span>Use the Mac app or Linux program. The disk image is needed once per device and after iOS updates. RC Pair can copy it from Xcode on a Mac or download a pinned public GitHub copy. The older rcpair-receive pairing script is an alternative. It needs Python 3.9 or later, the cryptography package, and qrcode or the qrencode command to show the QR code.</span></div>
           </li>
           <li>
             <span class="ni"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M4 6l5 5-5 5" fill="none" stroke="#F0F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="15" r="2.6" fill="#FF5600"/></svg></span>
@@ -542,7 +542,7 @@
         <div class="mac">
           <p>A computer is needed after pairing too. The app pairs the phone. Your computer then talks to
             Apple's developer services on the device, as described under <a href="#computer">On your computer</a>.
-            Apple's disk image stayed through a restart on our iPhone running iOS 27. An iOS update removes it, and you put it back from the same folder. We do not host or supply the disk image.</p>
+            Apple's disk image stayed through a restart on our iPhone running iOS 27. An iOS update removes it, and you put it back from the same folder. The image is not bundled. RC Pair can download it from GitHub or import it from Xcode.</p>
         </div>
       </div>
     </div>
@@ -601,8 +601,8 @@
               </svg>
             </div>
             <div class="txt">
-              <h3>Make Developer Mode appear</h3>
-              <p>iOS keeps the Developer Mode switch hidden until an app needs it. In RC Pair, tap Make it appear. If iOS asks to find devices on your local network, tap Allow. RC Pair then shows you the way to
+              <h3>Show Developer Mode</h3>
+              <p>In RC Pair, tap Start. If iOS asks to find devices on your local network, tap Allow. RC Pair then shows you the way to
                 <b>Settings &gt; Privacy &amp; Security &gt; Developer Mode</b>.</p>
             </div>
           </div>
@@ -623,7 +623,7 @@
               </svg>
             </div>
             <div class="txt">
-              <h3>Turn on Developer Mode and restart</h3>
+              <h3>Turn on Developer Mode</h3>
               <p>In <b>Settings &gt; Privacy &amp; Security &gt; Developer Mode</b>, turn the switch on and tap Restart.</p>
               <p>When the device is back on, unlock it. iOS warns that Developer Mode lowers security and asks
                 you to tap Turn On and enter your passcode. RC Pair never asks for your passcode. Then open
@@ -678,15 +678,13 @@
               </svg>
             </div>
             <div class="txt">
-              <h3>Scan your computer&#8217;s QR code</h3>
-              <p>On your Mac or Linux computer, run rcpair-receive. It shows a QR code and waits for the
+              <h3>Send to your computer</h3>
+              <p>Run <code>rcpair receive</code> on Linux, or open the Mac app. It shows a QR code and waits for the
                 pairing. You can run it yourself, or have your agent run it.</p>
-              <p>Open the Camera app on the device, point it at the QR code and tap the RC Pair button that pops
-                up. RC Pair shows the computer's name and address. Check them, then tap Send. Nothing leaves
+              <p>Point the device's Camera at the code and tap Open in RC Pair, or copy the link and tap Paste
+                link. RC Pair shows the computer's name and address. Check them, then tap Send. Nothing leaves
                 your device until you do, and RC Pair sends only to a private address.</p>
-              <p>If the Camera can't read the code, get the link onto the device, for example by texting it to
-                yourself. Copy it, then tap Paste link in RC Pair.</p>
-              <p>RC Pair says All set. rcpair-receive saves the pairing on your computer, by default in a
+              <p>RC Pair says All set. The computer app saves the pairing on your computer, by default in a
                 .rcpair folder in your home folder.</p>
             </div>
           </div>
@@ -704,7 +702,7 @@
     <div class="wrap">
       <p class="kicker">What stays private</p>
       <h2 id="private-h">The app sends nothing to us.</h2>
-      <p class="lead dim">RC Pair has no account, no analytics and no ads. We run no server for it.</p>
+      <p class="lead dim">You do not need an account to use RC Pair. The app has no ads and does not collect analytics. We run no server for it.</p>
       <div class="grid">
         <div class="tile wide">
           <h3>Treat the key as full access</h3>
@@ -758,8 +756,8 @@
           <p>When the controlling computer reports a session, the app shows a "being controlled" banner that
             names the computer. Tapping it opens a screen that explains how to stop. The computer has to start
             the banner, and iOS lets the holder dismiss it. It is a notice. It does not enforce anything.
-            With the open tools we point you to today, no computer can start the banner yet, so you will not
-            see it. You can always stop control on the device.</p>
+            The RC Pair computer app starts it when an agent begins driving the device. Other tools may not,
+            so you may not see it. You can always stop control on the device.</p>
         </div>
         <div class="point">
           <h3>Stoppable from the device</h3>
@@ -790,7 +788,7 @@
         <div>
           <ol class="stoplist">
             <li><span><b>Turn off Developer Mode</b> in Settings &gt; Privacy &amp; Security. Control stops.</span></li>
-            <li><span><b>Delete both pairing files</b> rcpair-receive saved on every computer you sent a pairing to. By default they are in ~/.rcpair. If Developer Mode is turned on again, a computer that still has the key may be able to connect again.</span></li>
+            <li><span><b>Delete both pairing files</b> the computer app saved on every computer you sent a pairing to. By default they are in ~/.rcpair. If Developer Mode is turned on again, a computer that still has the key may be able to connect again.</span></li>
             <li><span><b>Tap Delete RC Pair data on this device</b> in the app. It removes RC Pair's identity and keys, any pairing not yet sent and your consent record. Do this before you remove the app, because RC Pair's keys can stay on the device after it is removed.</span></li>
           </ol>
           <p class="dim" style="margin-top:16px">Turning off Wi-Fi also stops control while it is off.</p>
@@ -814,8 +812,7 @@
         </details>
         <details>
           <summary>Do I need a Mac?</summary>
-          <div class="a"><p>Not to run it. Day to day, your agent drives the phone from a Linux or Mac computer, and no Mac has to stay on. For the disk image, Xcode on a Mac is the recommended source. Without one, the setup scripts can pull a pinned public GitHub copy of Apple's file instead. On our iPhone running iOS 27 the image stayed through a restart. rcpair-receive itself runs on a Mac or
-            Linux computer. We do not host or supply the disk image, and the RC Pair computer app will not include it.</p></div>
+          <div class="a"><p>Not to run it. Use the RC Pair Linux program or Mac app. Your agent can drive the phone from Linux, so no Mac has to stay on. For the disk image, Xcode on a Mac is the recommended source. Without one, the computer app can download a pinned public GitHub copy of Apple's file instead. On our iPhone running iOS 27 the image stayed through a restart. The image is not bundled in the app, and Apple's terms govern the file. The older rcpair-receive pairing script is an alternative for Mac or Linux that needs Python.</p></div>
         </details>
         <details>
           <summary>How is this different from tools that use iPhone Mirroring?</summary>
@@ -829,19 +826,18 @@
           <summary>Which agent can I use?</summary>
           <div class="a"><p>Your own, such as Claude Code or Codex. RC Pair does not include an agent. In early access, open
             tools such as idevice talk to Apple's developer services on your computer, and you point your agent
-            at them. The RC Pair computer app we are building will give your agent the tools to see the screen
+            at them. The RC Pair computer app gives your agent the tools to see the screen
             and tap. Your agent may send what it sees to the company that runs it.</p></div>
         </details>
         <details>
           <summary>Is there a computer app?</summary>
-          <div class="a"><p>One is in development, and there is no date for it yet. It will open the link to your phone, keep
-            it open and give your own agent the tools to see the screen and tap. It will not include Apple's developer disk image. For now, early access uses rcpair-receive and open
-            tools such as idevice.</p></div>
+          <div class="a"><p>Yes, for Linux. It opens the link to your phone, keeps it open and gives your own agent the tools to
+            see the screen and tap. It does not include Apple's developer disk image. A Mac app is out too, Windows after.
+            There is no graphical window on Linux. You run it from a terminal, or as a background service. <a href="computer.html">Download and set up</a>.</p></div>
         </details>
         <details>
           <summary>Will I see when a computer is in control?</summary>
-          <div class="a"><p>Not yet. RC Pair has a "being controlled" banner, but the computer has to start it, and the
-            open tools we point you to today cannot. You can always stop control on the device, as described
+          <div class="a"><p>The RC Pair computer app starts a "being controlled" banner when an agent begins driving the device. Other tools may not start it, so you may not see it. iOS lets you dismiss the banner. You can always stop control on the device, as described
             under <a href="#stop">How to stop</a>.</p></div>
         </details>
         <details>
@@ -852,9 +848,9 @@
         </details>
         <details>
           <summary>How do I get it?</summary>
-          <div class="a"><p>RC Pair is in early release, and there is no public download link yet. Email
-            <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" data-t="ask-access">support@rcpair.si</a> to ask about access.
-            Free during early access. No public download yet. We answer by email, and early access is through Apple's TestFlight.</p></div>
+          <div class="a"><p>The phone app is in early access through Apple's TestFlight. Email
+            <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" data-t="ask-access">support@rcpair.si</a> to ask for an invite.
+            The computer app for Linux and Mac is a free download from <a href="computer.html">the computer page</a>. We answer by email.</p></div>
         </details>
         <details>
           <summary>Who makes RC Pair?</summary>
@@ -868,7 +864,7 @@
     <div class="wrap inner">
       <div>
         <h2 id="access-h">Ask about access.</h2>
-        <p class="dim">Free during early access. No public download yet. Write to support@rcpair.si and we will answer by email.</p>
+        <p class="dim">Free during early access. The phone app is by TestFlight invite and the Linux and Mac computer apps are <a href="computer.html">downloads</a>. Write to support@rcpair.si and we will answer by email.</p>
       </div>
       <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Email support@rcpair.si</a>
     </div>
