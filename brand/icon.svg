@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
   <!-- RC Pair app icon: a phone (Dynamic Island pill at the top) with an outside node (orange) docked into a socket in its edge across a constant gap. Full-bleed opaque square, no baked corners; the OS masks it. -->
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D3148"/><stop offset="1" stop-color="#1C1E2A"/></linearGradient><radialGradient id="hl" cx="0.5" cy="0" r="0.85"><stop offset="0" stop-color="#4A5070" stop-opacity="0.5"/><stop offset="1" stop-color="#4A5070" stop-opacity="0"/></radialGradient>
-    <linearGradient id="dev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6E9F1"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27272a"/><stop offset="1" stop-color="#18181b"/></linearGradient><radialGradient id="hl" cx="0.5" cy="0" r="0.85"><stop offset="0" stop-color="#27272a" stop-opacity="0.5"/><stop offset="1" stop-color="#27272a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="dev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fafafa"/><stop offset="1" stop-color="#e4e4e7"/></linearGradient>
     <linearGradient id="node" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6A1A"/><stop offset="1" stop-color="#F24E00"/></linearGradient>
   </defs>
   <rect width="1024" height="1024" fill="url(#bg)"/>

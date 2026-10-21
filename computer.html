@@ -6,7 +6,7 @@
 <title>Download the RC Pair computer app | RC Pair</title>
 <meta name="description" content="Download the RC Pair computer app for Linux and Mac. It opens the link to your own iPhone or iPad and gives your own agent tools to see the screen and tap.">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#242735">
+<meta name="theme-color" content="#0f1117">
 <link rel="canonical" href="https://rcpair.si/computer.html">
 <!-- Open Graph -->
 <meta property="og:title" content="RC Pair">
@@ -20,180 +20,37 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="brand/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<link rel="stylesheet" href="fonts/fonts.css">
-<style>
-  :root{
-    --navy:#242735; --navy-hi:#2D3148; --navy-lo:#1C1E2A;
-    --orange:#FF5600; --chalk:#F0F2F7; --white:#FFFFFF;
-    --ink:#242735; --ink-dim:#4A5068; --line:#D8DCE6;
-    --on-navy:#F0F2F7; --on-navy-dim:#B8BED0; --navy-line:#3A3F57;
-    --maxw:1080px; --gutter:16px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:24px}
-  body{margin:0; background:var(--chalk); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased}
-  img,svg{max-width:100%}
-  h1,h2,h3{font-family:Manrope,sans-serif; line-height:1.2; margin:0; letter-spacing:-.01em}
-  h1{font-size:clamp(34px,5.6vw,56px); font-weight:800; max-width:16em}
-  h2{font-size:clamp(26px,3.5vw,36px); font-weight:800; margin-bottom:12px}
-  h3{font-size:20px; font-weight:700; margin-bottom:10px}
-  p{margin:0 0 14px}
-  a{color:inherit; text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:2px; text-underline-offset:3px}
-  a:hover{text-decoration-thickness:3px}
-  :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:4px}
-  .dark :focus-visible,.command :focus-visible{outline-color:var(--orange)}
-  .wrap{max-width:calc(var(--maxw) + 2*var(--gutter)); margin:0 auto; padding:0 var(--gutter)}
-  .skip{position:absolute; left:-999px; top:8px; background:var(--orange); color:var(--navy); padding:8px 12px; border-radius:8px; font-weight:700; z-index:30}
-  .skip:focus{left:8px}
-  .dark{background:var(--navy); color:var(--on-navy)}
-  .dark .dim{color:var(--on-navy-dim)}
-  .dim{color:var(--ink-dim)}
-
-  /* buttons: navy text on orange, bold */
-  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; font-weight:700; font-size:16px; line-height:1.3; padding:13px 20px; border-radius:12px; text-decoration:none; text-align:center}
-  .btn-solid{background:var(--orange); color:var(--navy)}
-  .btn-solid:hover{background:#FF6A1A; text-decoration:none}
-  .btn-ghost{color:var(--ink); box-shadow:inset 0 0 0 2px var(--line)}
-  .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--ink-dim); text-decoration:none}
-
-  /* top */
-  .top{background:linear-gradient(180deg,var(--navy-hi) 0%,var(--navy) 55%,var(--navy-lo) 100%)}
-  nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
-  .logo{display:block; line-height:0; text-decoration:none}
-  .logo img{display:block; height:64px; width:auto; margin:-14px 0 -14px -30px}
-  .nav-links{display:flex; gap:24px; align-items:center; font-size:15px}
-  .nav-links a{color:var(--on-navy-dim); text-decoration:none}
-  .nav-links a:hover{color:var(--on-navy)}
-  .nav-links a.btn{color:var(--navy); padding:10px 16px; font-size:15px}
-  /* phone menu: a folding list, no script needed to open it */
-  .menu{display:none; position:relative}
-  .menu summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--on-navy); padding:10px 14px; border-radius:12px; box-shadow:inset 0 0 0 2px var(--navy-line)}
-  .menu summary::-webkit-details-marker{display:none}
-  .menu summary::after{content:""; width:8px; height:8px; margin-top:-4px; border-right:2.5px solid var(--orange); border-bottom:2.5px solid var(--orange); transform:rotate(45deg); transition:transform .2s}
-  .menu[open] summary::after{transform:rotate(225deg); margin-top:4px}
-  .menu-panel{position:absolute; right:0; top:calc(100% + 8px); z-index:20; width:min(260px, calc(100vw - 32px)); background:var(--navy-lo); border:1px solid var(--navy-line); border-radius:16px; padding:8px; box-shadow:0 18px 40px rgba(0,0,0,.35)}
-  .menu-panel a{display:block; padding:12px 14px; border-radius:10px; color:var(--on-navy); text-decoration:none; font-size:16px}
-  .menu-panel a:hover{background:var(--navy-hi)}
-  .menu-panel a.btn{display:flex; justify-content:center; margin-top:6px; color:var(--navy)}
-  .menu-panel a.btn:hover{background:#FF6A1A}
-
-  /* downloads */
-  .intro{padding:56px 0 36px}
-  .intro p{max-width:44em; margin:20px 0 0; font-size:18px}
-  .intro .eyebrow{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; margin:0 0 16px}
-  .eyebrow::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--orange); flex:none}
-  .downloads{padding:32px 0 56px}
-  .downloads h2{font-size:22px; margin-bottom:20px}
-  .platforms{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
-  .platform{min-width:0; background:var(--white); border:1px solid var(--line); border-top:3px solid var(--orange); border-radius:18px; padding:26px; display:flex; flex-direction:column}
-  .platform h3{font-size:26px}
-  .platform p{color:var(--ink-dim)}
-  .platform .version{font-size:14px; margin-bottom:18px}
-  .downloads-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:auto; padding-top:8px}
-  .platform .steps-link{margin:18px 0 0; font-weight:600}
-  .platform.waiting{grid-column:1 / -1; border-top:1px solid var(--line); background:transparent; display:block; padding:20px 26px}
-  .waiting h3{font-size:20px}
-  .waiting p:last-child{margin-bottom:0}
-
-  /* setup */
-  .setup{padding:56px 0; border-top:1px solid var(--line)}
-  .setup .wrap{max-width:calc(820px + 2*var(--gutter))}
-  .setup-intro{color:var(--ink-dim); max-width:42em}
-  .files{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin:24px 0; color:var(--ink-dim)}
-  .files p:last-child{margin-bottom:0}
-  .steps{list-style:none; counter-reset:step; padding:0; margin:32px 0 0}
-  .step{counter-increment:step; position:relative; padding:0 0 30px 60px; min-width:0}
-  .step + .step{padding-top:30px; border-top:1px solid var(--line)}
-  .step::before{content:counter(step); position:absolute; left:0; top:0; width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:var(--orange); color:var(--navy); font-family:Manrope,sans-serif; font-size:18px; font-weight:800}
-  .step + .step::before{top:30px}
-  .step p{color:var(--ink-dim)}
-  .step p:last-child{margin-bottom:0}
-  .note{border-left:3px solid var(--orange); padding:4px 0 4px 18px; margin-top:22px}
-  .note p:last-child{margin-bottom:0}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9em; overflow-wrap:anywhere}
-  .command{background:var(--navy-lo); color:var(--on-navy); border:1px solid var(--navy-line); border-radius:12px; margin:16px 0; overflow:hidden; min-width:0}
-  .command-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 16px; min-height:52px; border-bottom:1px solid var(--navy-line); color:var(--on-navy-dim); font-size:13px}
-  .copy{font:inherit; font-weight:600; color:var(--on-navy); background:transparent; border:1px solid var(--on-navy-dim); border-radius:7px; padding:8px 12px; min-height:36px; cursor:pointer}
-  .copy:hover{background:var(--navy-hi)}
-  pre{margin:0; padding:16px; max-width:100%; overflow-x:auto; font-size:14px; line-height:1.6; tab-size:2}
-  pre code{font-size:inherit; overflow-wrap:normal; white-space:pre}
-
-  footer.dark{background:var(--navy-lo); color:var(--on-navy-dim); padding:44px 0 56px; font-size:14px}
-  .foot-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
-  /* The lockup file has clear space around the art. This box crops to the art so it lines up with text. */
-  .lockup{position:relative; overflow:hidden; aspect-ratio:1041/276; display:block; width:150px}
-  .lockup img{position:absolute; width:153.70%; max-width:none; left:-26.90%; top:-40.58%; height:auto}
-  .foot-links{display:flex; gap:10px 22px; flex-wrap:wrap}
-  .foot-links a{color:var(--on-navy); text-decoration-color:var(--orange)}
-  .fine{margin:18px 0 0; max-width:640px; line-height:1.6}
-
-  @media (max-width:760px){
-    .nav-links{display:none}
-    .menu{display:block}
-    .logo img{height:54px; margin:-12px 0 -12px -25px}
-    .intro{padding:36px 0 28px}
-    .intro p{font-size:17px}
-    .platforms{grid-template-columns:1fr}
-    .platform,.platform.waiting{padding:22px 20px}
-    .downloads,.setup{padding:32px 0}
-    .step{padding-left:48px}
-    .step::before{width:34px; height:34px; font-size:16px}
-    .files{padding:16px}
-  }
-  @media (max-width:440px){
-    .downloads-actions{flex-direction:column}
-    .step{padding-left:0}
-    .step h3{padding-left:48px; min-height:34px}
-  }
-  @media (prefers-color-scheme:dark){
-    :root{--chalk:#1C1E2A; --white:#242735; --ink:#F0F2F7; --ink-dim:#B8BED0; --line:#3A3F57}
-    :focus-visible{outline-color:var(--orange)}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .menu summary::after{transition:none}
-  }
-</style>
+<link rel="stylesheet" href="family.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<header class="top dark" aria-label="Site header">
-  <div class="wrap">
-    <nav aria-label="Main">
-      <a class="logo" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="205" height="64"></a>
-      <div class="nav-links">
-        <a href="./#how">How it works</a>
-        <a href="./#private">Privacy</a>
-        <a href="./#stop">How to stop</a>
-        <a href="./#faq">FAQ</a>
-        <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
-      </div>
-      <details class="menu">
-        <summary>Menu</summary>
-        <div class="menu-panel">
-          <a href="./#how">How it works</a>
-          <a href="./#private">Privacy</a>
-          <a href="./#stop">How to stop</a>
-          <a href="./#faq">FAQ</a>
-          <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
-        </div>
-      </details>
-    </nav>
-  </div>
+<header class="site-header">
+  <nav class="wrap site-nav" aria-label="Main">
+    <div class="brand-row">
+      <a class="logo lockup" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="1600" height="500"></a>
+      <a class="family" href="https://treadconnection.si/">Part of Tread Connection</a>
+    </div>
+    <div class="nav-links">
+      <a href="./#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="./#stop">How to stop</a>
+      <a href="./#faq">FAQ</a>
+      <a href="computer.html">Computer app</a>
+    </div>
+    <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
+  </nav>
 </header>
 
 <main id="main" aria-labelledby="download-h">
-<section class="intro dark" aria-labelledby="download-h"><div class="wrap">
+<section id="intro" class="intro dark" aria-labelledby="download-h"><div class="wrap">
   <p class="eyebrow">Free during early access</p>
   <h1 id="download-h">Download RC Pair for your computer</h1>
   <p class="dim">Connect your own iPhone or iPad to your computer. RC Pair keeps the link open and gives your agent tools to see the screen and tap.</p>
   <p class="dim">You also need the <a href="beta/">RC Pair phone app in TestFlight</a>. Apple's developer disk image is not included.</p>
+  <a class="next" href="#downloads">Next: Choose your computer →</a>
 </div></section>
 
-<section class="downloads" aria-labelledby="choose-h"><div class="wrap">
+<section id="downloads" class="downloads" aria-labelledby="choose-h"><div class="wrap">
   <h2 id="choose-h">Choose your computer</h2>
   <div class="platforms">
     <article class="platform" aria-labelledby="mac-card-h">
@@ -220,10 +77,13 @@
       <p>It still needs a real test on a Windows computer and a signing certificate. Email <a href="mailto:support@rcpair.si?subject=RC%20Pair%20for%20Windows">support@rcpair.si</a> and we will write when it is ready.</p>
     </article>
   </div>
+  <a class="next" href="#mac">Next: Mac setup →</a>
 </div></section>
 
-<section class="setup" aria-labelledby="mac"><div class="wrap">
-  <h2 id="mac">Set up on Mac</h2>
+<section class="setup" aria-labelledby="mac-h"><div class="wrap">
+  <details class="sec" id="mac">
+    <summary><h2 id="mac-h">Set up on Mac</h2></summary>
+    <div class="section-body">
   <p class="setup-intro">Install the app, then use its window to pair your phone.</p>
   <p>Your phone needs Wi-Fi, or a hotspot from another phone, to reach the Mac. The phone's own cellular data does not work.</p>
   <div class="files">
@@ -231,7 +91,9 @@
   </div>
   <ol class="steps" role="list">
     <li class="step">
-      <h3>Check the download</h3>
+      <details open>
+        <summary><span class="num">1</span><span>Check the download</span></summary>
+        <div class="step-body">
       <p>Open Terminal and go to your Downloads folder.</p>
       <div class="command" data-label="Mac checksum command">
         <div class="command-head"><span>Terminal</span></div>
@@ -244,37 +106,60 @@ shasum -a 256 -c --ignore-missing SHA256SUMS</code></pre>
         <pre tabindex="0" aria-label="Mac signature command"><code>minisign -Vm SHA256SUMS -P RWRoIORzl8Yx6rI5jJ+t7T3ugGMRyDwW0S2y7fvAQ5uiL9+lJkyt/9wx</code></pre>
       </div>
       <p>The signature check must report a valid signature. If either check fails, stop before opening the disk image.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Install and open</h3>
+      <details>
+        <summary><span class="num">2</span><span>Install and open</span></summary>
+        <div class="step-body">
       <p>Open the dmg and drag RC Pair to Applications. Open it from there. macOS asks once whether you want to open an app downloaded from the internet. Choose Open.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Pair your phone</h3>
+      <details>
+        <summary><span class="num">3</span><span>Pair your phone</span></summary>
+        <div class="step-body">
       <p>Complete the phone app's setup through pairing in Settings, then come back here to send the pairing.</p>
       <p>Check the box to confirm this is your phone or its user agreed. Follow the app window to its QR code.</p>
       <p>On the phone, open Apple's Camera app (not RC Pair) and point it at the code. Tap the link it shows to open RC Pair. Check the computer's name and address, then tap Send.</p>
       <p>Your phone and Mac must reach each other over a private network, such as the same Wi-Fi.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Get the disk image</h3>
+      <details>
+        <summary><span class="num">4</span><span>Get the disk image</span></summary>
+        <div class="step-body">
       <p>The window has a button to copy Apple's developer disk image from Xcode on this Mac. You need Xcode installed to use that button. Another button downloads a pinned public copy from GitHub.</p>
       <p>RC Pair checks every file against fixed checksums. We host nothing. Apple's terms govern the file.</p>
       <p>The download contacts GitHub. With either source, preparing the image for your phone contacts Apple's signing server, which receives your device's identifiers.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Connect your agent</h3>
+      <details>
+        <summary><span class="num">5</span><span>Connect your agent</span></summary>
+        <div class="step-body">
       <p>Under Connect your agent, the window shows commands that add RC Pair to your agent. The agent and RC Pair must run on the same computer. Running the agent on a different computer is not supported yet. Copy the one for your agent and run it in a terminal on this Mac.</p>
       <div class="note">
         <p>RC Pair tells your agent not to tap Apple's consent screens. It cannot stop an agent that does, so watch the phone while it works. Your agent may send what it sees to the company that runs it.</p>
       </div>
+        </div>
+      </details>
     </li>
   </ol>
   <p class="dim">The signing and notarization checks passed, but we have not yet opened this build on a real Mac, on either Apple silicon or Intel. Tell us what breaks at support@rcpair.si.</p>
+    </div>
+  </details>
+  <a class="next" href="#linux">Next: Linux setup →</a>
 </div></section>
 
-<section class="setup" aria-labelledby="linux"><div class="wrap">
-  <h2 id="linux">Set up on Linux or a server</h2>
+<section class="setup" aria-labelledby="linux-h"><div class="wrap">
+  <details class="sec" id="linux">
+    <summary><h2 id="linux-h">Set up on Linux or a server</h2></summary>
+    <div class="section-body">
   <p class="setup-intro">Use a terminal on your laptop. For a server, download the files on your laptop and copy them with <code>scp</code>, then run the setup steps over SSH. Or fetch the files on the server as shown below.</p>
   <div class="files">
     <p>Download <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS">SHA256SUMS</a> and <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
@@ -288,7 +173,9 @@ curl -LO "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.
   </div>
   <ol class="steps" role="list">
     <li class="step">
-      <h3>Check the download</h3>
+      <details open>
+        <summary><span class="num">1</span><span>Check the download</span></summary>
+        <div class="step-body">
       <p>First install <a href="https://jedisct1.github.io/minisign/">minisign</a>. On Ubuntu or Debian, run <code>sudo apt install minisign</code>. Then check the files from the folder where you saved them.</p>
       <div class="command" data-label="Linux checksum and signature commands">
         <div class="command-head"><span>Terminal</span></div>
@@ -296,9 +183,13 @@ curl -LO "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.
 minisign -Vm SHA256SUMS -P RWRoIORzl8Yx6rI5jJ+t7T3ugGMRyDwW0S2y7fvAQ5uiL9+lJkyt/9wx</code></pre>
       </div>
       <p>The first line must say OK for your file. The second must say the signature is valid. The public key is the string after <code>-P</code>.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Unpack and put it on your path</h3>
+      <details>
+        <summary><span class="num">2</span><span>Unpack and put it on your path</span></summary>
+        <div class="step-body">
       <p>Use the unpack command that matches your <code>uname -m</code> result.</p>
       <div class="command" data-label="Linux x86_64 unpack command">
         <div class="command-head"><span>x86_64</span></div>
@@ -317,15 +208,23 @@ export PATH="$HOME/.local/bin:$PATH"
 rcpair --version</code></pre>
       </div>
       <p>Add that <code>export</code> line to your shell profile so it stays.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Make the connection private</h3>
+      <details>
+        <summary><span class="num">3</span><span>Make the connection private</span></summary>
+        <div class="step-body">
       <p>Your phone and computer must reach each other over a private network. At home, the same Wi-Fi is enough.</p>
       <p>For a VPS, put <a href="https://tailscale.com/">Tailscale</a> on the server and phone, sign both into the same Tailscale network, and confirm both show as online before you continue. Use the server's Tailscale address. Run <code>tailscale ip -4</code> on the server to see it. Guest and hotel Wi-Fi often blocks devices from reaching each other. Use Tailscale there too. Even with Tailscale, the phone needs Wi-Fi, or a hotspot from another phone, to reach the computer. The phone's own cellular data does not work.</p>
       <p>The phone sends the pairing only to a private address. RC Pair runs no service in between.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Send the pairing to the computer</h3>
+      <details>
+        <summary><span class="num">4</span><span>Send the pairing to the computer</span></summary>
+        <div class="step-body">
       <p>Complete the phone app's setup through pairing in Settings, then come back here to send the pairing.</p>
       <div class="command" data-label="Linux pairing command">
         <div class="command-head"><span>Terminal</span></div>
@@ -335,9 +234,13 @@ rcpair --version</code></pre>
       <p>On a server, add <code>--host</code> with the server's Tailscale IP address if RC Pair picks the wrong one. The phone still needs Wi-Fi, or a hotspot from another phone. Its own cellular data does not work.</p>
       <p>On the phone, open Apple's Camera app (not RC Pair) and point it at the code. Tap the link it shows to open RC Pair. Check the computer's name and address, then tap Send.</p>
       <p>Over SSH, the QR code shows in the terminal. Or copy the <code>rcpair://</code> link it prints and tap Paste link in the phone app.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Check it and get the disk image</h3>
+      <details>
+        <summary><span class="num">5</span><span>Check it and get the disk image</span></summary>
+        <div class="step-body">
       <div class="command" data-label="Linux phone and image status commands">
         <div class="command-head"><span>Terminal</span></div>
         <pre tabindex="0" aria-label="Linux phone and image status commands"><code>rcpair status
@@ -350,9 +253,13 @@ rcpair image status</code></pre>
       <div class="note">
         <p>The download contacts GitHub. With either source, preparing the image for your phone contacts Apple's signing server, which receives your device's identifiers. Apple's terms govern the file.</p>
       </div>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Keep it running</h3>
+      <details>
+        <summary><span class="num">6</span><span>Keep it running</span></summary>
+        <div class="step-body">
       <p>These background service steps need systemd. Once started, the service downloads Apple's disk image from GitHub if none is imported. If you do not want that, set up the optional download setting at the end of this step before you run the commands below.</p>
       <div class="command" data-label="Linux background service commands">
         <div class="command-head"><span>Terminal</span></div>
@@ -375,9 +282,13 @@ Environment=RCPAIR_DDI_FETCH=0
 EOF</code></pre>
       </div>
       <p>Then run <code>systemctl --user daemon-reload</code> and <code>systemctl --user restart rcpair</code> to apply it.</p>
+        </div>
+      </details>
     </li>
     <li class="step">
-      <h3>Give your agent the tools</h3>
+      <details>
+        <summary><span class="num">7</span><span>Give your agent the tools</span></summary>
+        <div class="step-body">
       <p>Do this after step 4. <code>rcpair mcp</code> stops with "No stored phones" until a phone is paired. These commands need the agent and RC Pair on the same computer. Running the agent on a different computer is not supported yet. Run the command for your agent on the computer where you installed RC Pair.</p>
       <div class="command" data-label="Claude connection command">
         <div class="command-head"><span>Claude</span></div>
@@ -391,8 +302,13 @@ EOF</code></pre>
       <div class="note">
         <p>RC Pair tells your agent not to tap Apple's consent screens. It cannot stop an agent that does, so watch the phone while it works. Your agent may send what it sees to the company that runs it.</p>
       </div>
+        </div>
+      </details>
     </li>
   </ol>
+    </div>
+  </details>
+  <a class="next" href="privacy.html">Next: Privacy →</a>
 </div></section>
 </main>
 <footer class="dark" aria-label="Site information">
@@ -407,6 +323,7 @@ EOF</code></pre>
         <a href="mailto:support@rcpair.si?subject=RC%20Pair%20misuse%20report" data-t="report-misuse">Report misuse</a>
       </div>
     </div>
+    <p class="fine family-line">RC Pair is part of <a href="https://treadconnection.si/">Tread Connection</a>, from Rising Creek.</p>
     <p class="fine">RC Pair is made by Rising Creek Construction LLC, a Texas company. Apple, iPhone, iPad, iPadOS, Mac, Xcode, TestFlight, App Store and the other Apple product names on this site are trademarks of Apple Inc., registered in the U.S. and other countries. iOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license. RC Pair is not affiliated with or endorsed by Apple.</p>
     <p class="fine">Operate only your own device, or one whose user knows about it and agreed. Using
       software to access, watch, or control someone's phone without their knowledge and
@@ -415,10 +332,6 @@ EOF</code></pre>
   </div>
 </footer>
 <script>
-  // Close the phone menu after a link in it is chosen.
-  document.querySelectorAll('.menu-panel a').forEach(function(a){
-    a.addEventListener('click', function(){ var d=a.closest('details'); if(d){ d.open=false; } });
-  });
   // Commands stay selectable when JavaScript or clipboard access is unavailable.
   document.querySelectorAll('.command').forEach(function(block){
     var code=block.querySelector('code');
@@ -462,6 +375,7 @@ EOF</code></pre>
     block.querySelector('.command-head').appendChild(button);
   });
 </script>
+<script src="details.js" defer></script>
 <script src="t.js" defer></script>
 </body>
 </html>
