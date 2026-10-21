@@ -12,7 +12,7 @@ h1{font-size:clamp(30px,5.6vw,52px); font-weight:800; line-height:1.1; letter-sp
 h2{font-size:clamp(22px,3.6vw,30px); font-weight:700; margin-bottom:12px}
 h3{font-size:17px; font-weight:700; margin-bottom:8px}
 p{margin:0 0 12px}
-a{display:inline-block; min-height:40px; align-content:center; color:inherit; text-decoration-color:var(--orange); text-underline-offset:3px}
+a{color:inherit; text-decoration-color:var(--orange); text-underline-offset:3px}
 a:hover{color:var(--white)}
 :focus-visible{outline:3px solid var(--orange); outline-offset:3px; border-radius:4px}
 .wrap{max-width:var(--maxw); margin:0 auto; min-width:0}
@@ -34,7 +34,7 @@ a:hover{color:var(--white)}
 .lockup img{position:absolute; width:153.70%; max-width:none; left:-26.90%; top:-40.58%; height:auto}
 .logo{width:110px; min-height:40px}
 .logo img{top:50%; transform:translateY(-50%)}
-.family{display:flex; align-items:center; min-height:40px; max-width:112px; font-size:12px; line-height:1.4; color:var(--muted); text-decoration:none}
+.family{display:flex; align-items:center; min-height:40px; font-size:12px; line-height:1.4; color:var(--muted); text-decoration:none; white-space:nowrap}
 .nav-links{display:flex; justify-content:center; gap:6px; min-width:0}
 .nav-links a,.toc a{display:flex; align-items:center; flex:none; min-height:40px; padding:7px 10px; border:1px solid var(--line); border-radius:14px; color:var(--muted); font-size:13px; text-decoration:none; white-space:nowrap}
 .nav-links a:hover,.toc a:hover{background:var(--card); color:var(--white)}
@@ -148,13 +148,13 @@ summary h2{display:inline; font-size:inherit; line-height:inherit; font-weight:7
 .files p:last-child{margin-bottom:0}
 .step-body{padding:0 16px 16px; font-size:14px; color:var(--muted)}
 .note{border-left:3px solid var(--orange); padding-left:12px; margin-top:14px}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9em; overflow-wrap:anywhere}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9em; line-height:inherit; padding:1px 5px; overflow-wrap:anywhere}
 .command{background:var(--page); color:var(--text); border:1px solid var(--line); border-radius:14px; margin:14px 0; overflow:hidden; min-width:0}
 .command-head{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 14px; min-height:56px; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px}
 .copy{font:inherit; font-weight:600; color:var(--text); background:var(--card); border:1px solid var(--muted); border-radius:8px; padding:8px 12px; min-height:40px; cursor:pointer}
 .copy:hover{background:var(--line)}
 pre{margin:0; padding:14px; max-width:100%; overflow-x:auto; font-size:14px; line-height:1.6; tab-size:2}
-pre code{font-size:inherit; overflow-wrap:normal; white-space:pre}
+pre code{font-size:inherit; padding:0; overflow-wrap:normal; white-space:pre}
 
 /* Privacy contents stay visible as a scrolling row above the disclosures. */
 .phero .date{font-size:14px; margin-top:12px}
@@ -162,7 +162,7 @@ pre code{font-size:inherit; overflow-wrap:normal; white-space:pre}
 .layout{max-width:calc(var(--maxw) + 40px); padding:0 20px 24px}
 .toc{padding:14px 0}
 .toc p{color:var(--muted); font-size:13px; margin:0 0 8px}
-.toc ol{list-style:none; display:flex; gap:12px; overflow-x:auto; margin:0; padding:3px 3px 8px}
+.toc ol{list-style:none; display:flex; gap:12px; overflow-x:auto; margin:0; padding:3px 24px 8px 3px; -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent); mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent)}
 .doc{min-width:0; overflow-wrap:anywhere}
 .doc section.block{padding:8px 0; border:0}
 .doc .section-body{font-size:15px; color:var(--muted)}
@@ -184,15 +184,15 @@ footer{border-top:1px solid var(--line); padding:clamp(22px,4vw,40px) 20px; font
   .brand-row{grid-column:1}
   .family{max-width:none}
   .site-nav > .btn{grid-column:2; grid-row:1}
-  .nav-links{grid-column:1 / -1; grid-row:2; justify-content:flex-start; overflow-x:auto; padding:3px; margin:0 -3px}
+  .nav-links{grid-column:1 / -1; grid-row:2; justify-content:flex-start; overflow-x:auto; padding:3px 24px 3px 3px; margin:0 -3px; -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent); mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent)}
 }
 @media (max-width:640px){
   section.block,section.setup,section.intro,section.downloads,section.access,.hero,.phero{padding:14px 16px}
   .site-header{padding:8px 16px}
   .site-nav{gap:4px 10px}
-  .brand-row{gap:10px}
-  .family{min-height:40px; min-width:0; font-size:11px; max-width:84px}
-  .logo{width:84px}
+  .brand-row{flex-direction:column; align-items:flex-start; gap:0}
+  .family{min-height:0; font-size:12px}
+  .logo{width:84px; min-height:28px}
   .site-nav > .btn{padding:9px 12px; font-size:12px}
   .nav-links{gap:8px}
   .hero{grid-template-columns:1fr; gap:12px}
