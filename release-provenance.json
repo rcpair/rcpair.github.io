@@ -1,7 +1,8 @@
 {
   "sourceRepository": "Tread-Connection/platform",
   "sourceManifest": "mcp-server/public/releases.json",
-  "sourceRevision": "89c3ca59c12ce631c8e14a9e40cc2c10c03a03dd",
-  "manifestSha256": "9638b7c499ad0860d02e725bb276a431c8032b63b4c4bb592fac33b5624cc015",
-  "clientSha256": "3ebd988f0e8128fc094d470bb17e19785330d85dbe4ee06c064573c7f3740432"
+  "sourceRevision": "bb8d6d874514b6e2687167c051521e961aa4db91",
+  "manifestSha256": "8b7b4ab19a55e863e81c5de730d1935b3e9880d59b954cd15e6da2e1e45ee45d",
+  "clientSha256": "3ebd988f0e8128fc094d470bb17e19785330d85dbe4ee06c064573c7f3740432",
+  "canonicalManifestSha256": "9638b7c499ad0860d02e725bb276a431c8032b63b4c4bb592fac33b5624cc015"
 }

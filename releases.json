@@ -3,75 +3,6 @@
   "maxAgeHours": 24,
   "records": [
     {
-      "id": "tc-ios-stable",
-      "product": "tc",
-      "platform": "iPhone, iPad and Watch",
-      "channel": "stable",
-      "state": "not_released",
-      "version": null,
-      "build": null,
-      "url": null,
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "PREPARE_FOR_SUBMISSION"
-      }
-    },
-    {
-      "id": "tc-ios-internal",
-      "product": "tc",
-      "platform": "iPhone, iPad and Watch",
-      "channel": "internal",
-      "state": "available",
-      "version": "1.0.123",
-      "build": "1636",
-      "url": null,
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "IN_BETA_TESTING"
-      }
-    },
-    {
-      "id": "tc-ios-external",
-      "product": "tc",
-      "platform": "iPhone, iPad and Watch",
-      "channel": "external",
-      "state": "pending",
-      "version": null,
-      "build": null,
-      "url": "https://testflight.apple.com/join/3RK8v8yE",
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "READY_FOR_BETA_SUBMISSION"
-      }
-    },
-    {
-      "id": "tc-android-stable",
-      "product": "tc",
-      "platform": "Android",
-      "channel": "stable",
-      "state": "unverified",
-      "version": null,
-      "build": null,
-      "url": null,
-      "verifiedAt": "2026-11-03T17:21:00Z",
-      "proof": {}
-    },
-    {
-      "id": "tc-android-internal",
-      "product": "tc",
-      "platform": "Android",
-      "channel": "internal",
-      "state": "unverified",
-      "version": null,
-      "build": null,
-      "url": null,
-      "verifiedAt": "2026-11-03T17:21:00Z",
-      "proof": {}
-    },
-    {
       "id": "rc-ios-stable",
       "product": "rcpair",
       "platform": "iPhone and iPad",
@@ -174,38 +105,8 @@
       "proof": {}
     }
   ],
-  "features": [
-    {
-      "name": "Agents and tools",
-      "availability": "Depends on account access and connected permissions."
-    },
-    {
-      "name": "Project Rooms",
-      "availability": "Pilot. A JobTread connection is required for the current pilot."
-    },
-    {
-      "name": "RC Pair Windows",
-      "availability": "Private testing is separate from public releases. Check the verified computer download status."
-    }
-  ],
-  "demos": [
-    {
-      "id": "tc-demo-ask-job",
-      "label": "Earlier recording from November 3, 2026: Ask about a job. Sample company and prepared replies; source c4a4cab01. Exact installed app build was not captured.",
-      "build": null,
-      "compatibility": "historical",
-      "product": "tc",
-      "sourceRevision": "c4a4cab01"
-    },
-    {
-      "id": "tc-demo-room",
-      "label": "Earlier recording from November 3, 2026: Keep a job\u2019s conversation together. Sample people and files; source c4a4cab01. Exact installed app build was not captured.",
-      "build": null,
-      "compatibility": "historical",
-      "product": "tc",
-      "sourceRevision": "c4a4cab01"
-    }
-  ],
+  "features": [],
+  "demos": [],
   "privacyReview": {
     "status": "required_on_change",
     "note": "Tool permissions, collected data, retention, recipients and account controls must be reviewed when they change. This manifest does not amend the privacy policy."
