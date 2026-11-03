@@ -190,18 +190,20 @@
   ],
   "demos": [
     {
-      "id": "member-assistant",
-      "label": "Recorded sample. Earlier simplified layout; exact app build was not captured.",
+      "id": "tc-demo-ask-job",
+      "label": "Earlier recording from November 3, 2026: Ask about a job. Sample company and prepared replies; source c4a4cab01. Exact installed app build was not captured.",
       "build": null,
       "compatibility": "historical",
-      "product": "tc"
+      "product": "tc",
+      "sourceRevision": "c4a4cab01"
     },
     {
-      "id": "project-room",
-      "label": "Recorded sample. Earlier layout; exact app build was not captured.",
+      "id": "tc-demo-room",
+      "label": "Earlier recording from November 3, 2026: Keep a job\u2019s conversation together. Sample people and files; source c4a4cab01. Exact installed app build was not captured.",
       "build": null,
       "compatibility": "historical",
-      "product": "tc"
+      "product": "tc",
+      "sourceRevision": "c4a4cab01"
     }
   ],
   "privacyReview": {
