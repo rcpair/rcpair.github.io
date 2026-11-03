@@ -75,6 +75,14 @@
               : item.state === "pending"
                 ? "Not available to this tester group yet."
                 : "Current availability and version are not verified.";
+        if (
+          item.product === "rcpair" &&
+          item.platform === "Windows" &&
+          item.state !== "available"
+        ) {
+          p.textContent =
+            "Public Windows installer availability is not verified. Private test installers are separate.";
+        }
         date.textContent =
           item.state === "unverified"
             ? "No verified release information."
@@ -107,7 +115,7 @@
           const a = document.createElement("a");
           a.href =
             item.product === "rcpair"
-              ? item.platform.includes("iPhone")
+              ? item.platform.includes("iPhone") || item.platform === "Windows"
                 ? "https://rcpair.si/support/"
                 : "https://github.com/rcpair/rcpair-releases/releases/latest"
               : item.platform === "Android"
