@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "maxAgeHours": 24,
+  "records": [
+    {
+      "id": "rc-ios-stable",
+      "product": "rcpair",
+      "platform": "iPhone and iPad",
+      "channel": "stable",
+      "state": "not_released",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-ios-external",
+      "product": "rcpair",
+      "platform": "iPhone and iPad",
+      "channel": "external",
+      "state": "available",
+      "version": "1.1",
+      "build": "31",
+      "url": "https://testflight.apple.com/join/jECT6VHj",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-mac-stable",
+      "product": "rcpair",
+      "platform": "Mac",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-linux-stable",
+      "product": "rcpair",
+      "platform": "Linux x86-64",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-arm-stable",
+      "product": "rcpair",
+      "platform": "Linux arm64",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-aarch64-unknown-linux-gnu.tar.gz",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-windows-stable",
+      "product": "rcpair",
+      "platform": "Windows",
+      "channel": "stable",
+      "state": "unverified",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:21:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "rc-checksums",
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    },
+    {
+      "id": "rc-signature",
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig",
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
+    }
+  ],
+  "features": [],
+  "demos": []
+}
