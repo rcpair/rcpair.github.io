@@ -137,7 +137,7 @@
     </nav>
     <header class="phero">
       <p class="eyebrow">TestFlight</p>
-      <h1>Test RC Pair</h1>
+      <h1>Test RC Pair</h1><section aria-label="Current iPhone and iPad beta" data-release-product="rcpair" data-release-channel="external"><p>Current tester version is not verified yet. <a href="https://treadconnection.si/downloads?product=rcpair">Check release status</a>.</p></section>
       <p>RC Pair pairs an iPhone or iPad with a computer you choose, so an AI coding agent on that computer can work with the phone. This page is for developers who installed the TestFlight build and have a computer with an agent such as Claude Code or Codex.</p>
       <p>The five steps on the phone take about five minutes. On a Mac, the computer side is now an app you download and open. The list near the bottom says what is still rough.</p>
     </header>
@@ -148,7 +148,7 @@
     <section class="block" id="need">
       <h2>What you need</h2>
       <p>An iPhone or iPad on iOS or iPadOS 17 or later, and the TestFlight build.</p>
-      <a class="btn" href="https://testflight.apple.com/join/jECT6VHj">Open the TestFlight link</a>
+      <a class="btn" href="#" aria-disabled="true" data-release-resource="rc-ios-external">Open the TestFlight link</a>
       <p>The phone has to be on Wi-Fi. A hotspot from another phone works. The phone's own cellular data does not.</p>
       <p>A Mac the phone can reach on a private address, usually the same Wi-Fi, with an AI coding agent such as Claude Code or Codex. The phone sends only to a private address and refuses a public one. Linux has a downloadable program with no window, on the <a href="../computer.html#linux">computer page</a>. Windows is not ready yet.</p>
       <p>Apple's developer disk image goes on the phone before an agent can drive it. The Mac app gets it for you from Xcode or from GitHub. The source route on Linux also needs a Rust toolchain, a C compiler and, for the one-time disk image step, a USB cable and the usbmuxd service.</p>
@@ -170,7 +170,7 @@
     <section class="block" id="computer">
       <h2>Set up your Mac</h2>
       <p>Download the RC Pair computer app. No terminal, Python or Xcode needed for this part.</p>
-      <a class="btn" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg">Download RC Pair for Mac</a>
+      <a class="btn" href="../computer.html#downloads" aria-disabled="true" data-release-resource="rc-mac-stable">Download RC Pair for Mac</a>
       <p class="dim">macOS 12 or later, Apple silicon or Intel. 15 MB. Signed with our Apple Developer ID and notarized by Apple. The checksum and signature steps are on the <a href="../computer.html#mac">computer page</a>.</p>
       <ol>
         <li>Open the downloaded file and drag RC Pair to Applications.</li>
@@ -243,5 +243,6 @@ scripts/connect.sh</pre>
   });
 </script>
 <script src="../t.js" defer></script>
+<script src="https://treadconnection.si/release-status.js" defer></script>
 </body>
 </html>
