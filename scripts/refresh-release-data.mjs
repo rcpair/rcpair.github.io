@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
 const serialize = (value) => JSON.stringify(value, null, 2) + "\n";
@@ -50,6 +51,21 @@ export function projection(source, now = Date.now()) {
         throw Error("Stale record");
       if (record.url) safeUrl(record.url);
       if (record.state === "available") {
+        const url = new URL(record.url);
+        if (
+          record.proof?.provider === "github" &&
+          (url.hostname !== "github.com" ||
+            !url.pathname.includes("/rcpair-v" + record.version + "/"))
+        )
+          throw Error("Release version does not match artifact");
+        if (
+          record.proof?.provider === "apple" &&
+          url.hostname !==
+            (record.channel === "external"
+              ? "testflight.apple.com"
+              : "apps.apple.com")
+        )
+          throw Error("Release channel does not match link");
         const expected =
           record.proof?.provider === "github"
             ? "PUBLISHED_RELEASE"
@@ -106,13 +122,18 @@ export function projection(source, now = Date.now()) {
     demos: [],
   };
 }
-async function refresh() {
-  const response = await fetch("https://treadconnection.si/releases.json", {
+export async function refresh({
+  fetcher = fetch,
+  directory = ".",
+  now = Date.now(),
+} = {}) {
+  const response = await fetcher("https://treadconnection.si/releases.json", {
     signal: AbortSignal.timeout(30000),
   });
   if (!response.ok) throw Error("Release source unavailable");
-  const source = await response.json();
-  const mirror = projection(source);
+  const sourceBytes = await response.text();
+  const source = JSON.parse(sourceBytes);
+  const mirror = projection(source, now);
   if (
     mirror.records.some(
       (record) =>
@@ -127,16 +148,26 @@ async function refresh() {
       "::warning::Some release records could not be verified; their links were withheld.",
     );
   }
-  const client = fs.readFileSync("release-status.js");
+  const proofFile = path.join(directory, "release-provenance.json");
+  const prior = JSON.parse(fs.readFileSync(proofFile, "utf8"));
+  const client = fs.readFileSync(path.join(directory, "release-status.js"));
+  if (prior.clientSha256 !== hash(client))
+    throw Error("Client changed without a reviewed provenance update");
+  const timestamps = [...mirror.records, ...mirror.resources]
+    .map((record) => Date.parse(record.verifiedAt))
+    .filter(Number.isFinite);
+  const verifiedAt = new Date(Math.max(...timestamps)).toISOString();
   const proof = {
+    ...prior,
     sourceUrl: "https://treadconnection.si/releases.json",
+    sourceResponseSha256: hash(sourceBytes),
     canonicalManifestSha256: hash(serialize(source)),
     manifestSha256: hash(serialize(mirror)),
-    clientSha256: hash(client),
-    verifiedAt: new Date().toISOString(),
+    verifiedAt,
   };
-  fs.writeFileSync("releases.json", serialize(mirror));
-  fs.writeFileSync("release-provenance.json", serialize(proof));
+  fs.writeFileSync(path.join(directory, "releases.json"), serialize(mirror));
+  fs.writeFileSync(proofFile, serialize(proof));
 }
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href)
   await refresh();

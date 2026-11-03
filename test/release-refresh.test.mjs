@@ -58,11 +58,70 @@ test("projection does not change source evidence while dropping unrelated resour
   assert.equal(JSON.stringify(m), before);
 });
 
-test('one invalid Apple record cannot remove a verified computer download', () => {
+test("one invalid Apple record cannot remove a verified computer download", () => {
   const manifest = source();
-  manifest.records[0].proof.state = 'PROCESSING';
-  manifest.records.push({id:'rc-mac-stable',product:'rcpair',channel:'stable',platform:'Mac',state:'available',version:'0.1.0',url:'https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/app.dmg',verifiedAt:new Date(now).toISOString(),proof:{provider:'github',state:'PUBLISHED_RELEASE'}});
+  manifest.records[0].proof.state = "PROCESSING";
+  manifest.records.push({
+    id: "rc-mac-stable",
+    product: "rcpair",
+    channel: "stable",
+    platform: "Mac",
+    state: "available",
+    version: "0.1.0",
+    url: "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/app.dmg",
+    verifiedAt: new Date(now).toISOString(),
+    proof: { provider: "github", state: "PUBLISHED_RELEASE" },
+  });
   const result = projection(manifest, now);
-  assert.equal(result.records.find(record => record.id === 'rc-ios-external').state, 'unverified');
-  assert.equal(result.records.find(record => record.id === 'rc-mac-stable').state, 'available');
+  assert.equal(
+    result.records.find((record) => record.id === "rc-ios-external").state,
+    "unverified",
+  );
+  assert.equal(
+    result.records.find((record) => record.id === "rc-mac-stable").state,
+    "available",
+  );
+});
+
+test("refresh preserves the reviewed client hash and is unchanged for identical source", async () => {
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const { createHash } = await import("node:crypto");
+  const { refresh } = await import("../scripts/refresh-release-data.mjs");
+  const directory = fs.mkdtempSync(
+    path.join(os.tmpdir(), "rc-release-refresh-"),
+  );
+  const hash = (value) => createHash("sha256").update(value).digest("hex");
+  try {
+    const client = "reviewed client";
+    fs.writeFileSync(path.join(directory, "release-status.js"), client);
+    fs.writeFileSync(
+      path.join(directory, "release-provenance.json"),
+      JSON.stringify({
+        clientSha256: hash(client),
+        sourceRevision: "reviewed-revision",
+      }),
+    );
+    const raw = JSON.stringify(source());
+    const fetcher = async () => ({ ok: true, text: async () => raw });
+    await refresh({ directory, fetcher, now });
+    const file = path.join(directory, "release-provenance.json");
+    const first = fs.readFileSync(file, "utf8");
+    assert.equal(JSON.parse(first).sourceResponseSha256, hash(raw));
+    assert.equal(JSON.parse(first).sourceRevision, "reviewed-revision");
+    await refresh({ directory, fetcher, now });
+    assert.equal(fs.readFileSync(file, "utf8"), first);
+    fs.writeFileSync(
+      path.join(directory, "release-status.js"),
+      "unreviewed change",
+    );
+    await assert.rejects(
+      refresh({ directory, fetcher, now }),
+      /reviewed provenance/,
+    );
+    assert.equal(fs.readFileSync(file, "utf8"), first);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
 });
