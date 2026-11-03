@@ -95,6 +95,12 @@
           a.textContent =
             item.channel === "external" ? "Open TestFlight" : "Download";
           a.rel = "noopener";
+          const tracking = {
+            Mac: "dl-mac",
+            "Linux x86-64": "dl-linux-x64",
+            "Linux arm64": "dl-linux-arm64",
+          }[item.platform];
+          if (tracking) a.dataset.t = tracking;
           article.append(a);
         }
         if (!fresh || item.state !== "available") {
@@ -137,6 +143,19 @@
           (r) => fresh(r) && r.url.includes("/rcpair-v" + version + "/"),
         );
       block.hidden = !okay;
+      if (okay && location.hash) {
+        try {
+          const target = document.getElementById(
+            decodeURIComponent(location.hash.slice(1)),
+          );
+          if (target && block.contains(target)) {
+            if (target.tagName === "DETAILS") target.open = true;
+            target.scrollIntoView();
+          }
+        } catch {
+          /* Ignore malformed URL fragments. */
+        }
+      }
       const note = block.previousElementSibling?.previousElementSibling;
       if (note?.hasAttribute("data-release-instruction-note"))
         note.hidden = okay;
@@ -160,6 +179,9 @@
         continue;
       link.href = u.href;
       link.removeAttribute("aria-disabled");
+      link.removeAttribute("tabindex");
+      if (link.dataset.releaseLabel)
+        link.textContent = link.dataset.releaseLabel;
     }
   } catch {
     /* Keep the explicit unavailable fallback; never reuse cached version claims. */

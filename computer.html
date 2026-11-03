@@ -22,7 +22,7 @@
 <link rel="icon" href="brand/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="stylesheet" href="family.css">
-</head>
+<style>[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}</style></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -68,7 +68,7 @@
   <p class="setup-intro">Install the app, then use its window to pair your phone.</p>
   <p>Your phone needs Wi-Fi, or a hotspot from another phone, to reach the Mac. The phone's own cellular data does not work.</p>
   <div class="files">
-    <p>Download <a href="#downloads" aria-disabled="true" data-release-resource="rc-checksums">SHA256SUMS</a> and <a href="#downloads" aria-disabled="true" data-release-resource="rc-signature">SHA256SUMS.minisig</a> to check the download. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
+    <p>Download <a aria-disabled="true" data-release-resource="rc-checksums" tabindex="-1" data-release-label="SHA256SUMS">SHA256SUMS</a> and <a aria-disabled="true" data-release-resource="rc-signature" tabindex="-1" data-release-label="SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
   </div>
   <ol class="steps" role="list">
     <li class="step">
@@ -143,7 +143,7 @@ shasum -a 256 -c --ignore-missing SHA256SUMS</code></pre>
     <div class="section-body">
   <p class="setup-intro">Use a terminal on your laptop. For a server, download the files on your laptop and copy them with <code>scp</code>, then run the setup steps over SSH. Or fetch the files on the server as shown below.</p>
   <div class="files">
-    <p>Download <a href="#downloads" aria-disabled="true" data-release-resource="rc-checksums">SHA256SUMS</a> and <a href="#downloads" aria-disabled="true" data-release-resource="rc-signature">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
+    <p>Download <a aria-disabled="true" data-release-resource="rc-checksums" tabindex="-1" data-release-label="SHA256SUMS">SHA256SUMS</a> and <a aria-disabled="true" data-release-resource="rc-signature" tabindex="-1" data-release-label="SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
     <p>On a laptop, save both files and the matching archive in Downloads, then run <code>cd ~/Downloads</code>. Run <code>uname -m</code> on the computer that will run RC Pair to choose x86_64 or aarch64.</p>
     <p>To fetch all three files on the server, save them in your home folder with these commands. The archive name uses the server's <code>uname -m</code> result.</p>
     <div class="command" data-label="Linux server download commands">
