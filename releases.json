@@ -11,11 +11,7 @@
       "version": null,
       "build": null,
       "url": null,
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "WAITING_FOR_REVIEW"
-      }
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-ios-external",
@@ -26,26 +22,7 @@
       "version": "1.1",
       "build": "31",
       "url": "https://testflight.apple.com/join/jECT6VHj",
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "IN_BETA_TESTING"
-      }
-    },
-    {
-      "id": "rc-ios-internal",
-      "product": "rcpair",
-      "platform": "iPhone and iPad",
-      "channel": "internal",
-      "state": "available",
-      "version": "1.1",
-      "build": "31",
-      "url": null,
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "apple",
-        "state": "IN_BETA_TESTING"
-      }
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-mac-stable",
@@ -56,11 +33,7 @@
       "version": "0.1.0",
       "build": null,
       "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg",
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "github",
-        "state": "PUBLISHED_RELEASE"
-      }
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-linux-stable",
@@ -71,11 +44,7 @@
       "version": "0.1.0",
       "build": null,
       "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "github",
-        "state": "PUBLISHED_RELEASE"
-      }
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-arm-stable",
@@ -86,11 +55,7 @@
       "version": "0.1.0",
       "build": null,
       "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-aarch64-unknown-linux-gnu.tar.gz",
-      "verifiedAt": "2026-11-03T17:40:54.447Z",
-      "proof": {
-        "provider": "github",
-        "state": "PUBLISHED_RELEASE"
-      }
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-windows-stable",
@@ -101,26 +66,21 @@
       "version": null,
       "build": null,
       "url": null,
-      "verifiedAt": "2026-11-03T17:21:00Z",
-      "proof": {}
+      "verifiedAt": "2026-11-03T17:21:00Z"
     }
   ],
-  "features": [],
-  "demos": [],
-  "privacyReview": {
-    "status": "required_on_change",
-    "note": "Tool permissions, collected data, retention, recipients and account controls must be reviewed when they change. This manifest does not amend the privacy policy."
-  },
   "resources": [
     {
       "id": "rc-checksums",
       "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS",
-      "verifiedAt": "2026-11-03T17:40:54.447Z"
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     },
     {
       "id": "rc-signature",
       "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig",
-      "verifiedAt": "2026-11-03T17:40:54.447Z"
+      "verifiedAt": "2026-11-03T23:16:23.022Z"
     }
-  ]
+  ],
+  "features": [],
+  "demos": []
 }

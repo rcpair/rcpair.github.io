@@ -4,4 +4,8 @@ import { projection } from '../scripts/refresh-release-data.mjs';
 const now=Date.parse('2026-11-03T18:00:00Z');
 function source(){return{schemaVersion:1,maxAgeHours:24,records:[{id:'rc-ios-external',product:'rcpair',channel:'external',state:'available',version:'1.1',build:'31',url:'https://testflight.apple.com/join/jECT6VHj',verifiedAt:new Date(now).toISOString(),proof:{provider:'apple',state:'IN_BETA_TESTING'}},{id:'internal',product:'rcpair',channel:'internal'},{id:'tc',product:'tc',channel:'stable'}],resources:[]};}
 test('refresh publishes only verified public RC records',()=>{const m=projection(source(),now);assert.equal(m.records.length,1);assert.equal(m.records[0].proof,undefined);});
-test('stale, unapproved and unsafe source cannot replace data',()=>{for(const change of[{verifiedAt:'2000-01-01T00:00:00Z'},{proof:{provider:'apple',state:'PROCESSING'}},{url:'https://example.com/download'}]){const m=source();Object.assign(m.records[0],change);assert.throws(()=>projection(m,now));}});
+test('unapproved and unsafe source cannot replace data',()=>{for(const change of[{proof:{provider:'apple',state:'PROCESSING'}},{url:'https://example.com/download'}]){const m=source();Object.assign(m.records[0],change);assert.throws(()=>projection(m,now));}});
+
+test('stale records become unavailable while fresh other records remain',()=>{const m=source();m.records[0].verifiedAt='2000-01-01T00:00:00Z';const projected=projection(m,now);assert.equal(projected.records[0].state,'unverified');assert.equal(projected.records[0].url,null);});
+
+test('projection does not change source evidence while dropping unrelated resources',()=>{const m=source();m.resources=[{id:'other-product',url:'https://example.com/file',verifiedAt:'old'}];const before=JSON.stringify(m);assert.deepEqual(projection(m,now).resources,[]);assert.equal(JSON.stringify(m),before);});

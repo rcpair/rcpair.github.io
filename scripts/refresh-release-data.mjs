@@ -15,11 +15,18 @@ export function projection(source, now = Date.now()) {
   if (source.schemaVersion !== 1 || source.maxAgeHours !== 24 || !Array.isArray(source.records)) throw Error('Invalid source manifest');
   const records = source.records.filter(r => r.product === 'rcpair' && ['stable','external'].includes(r.channel));
   if (!records.length) throw Error('RC release records missing');
-  const resources = source.resources || [];
-  for (const record of [...records, ...resources]) {
+  const publicRecords = records.map(record => ({...record}));
+  const resources = (source.resources || []).filter(resource => ['rc-checksums','rc-signature'].includes(resource.id)).map(resource => ({...resource}));
+  for (const record of [...publicRecords, ...resources]) {
     if (record.state !== 'unverified') {
       const age = now - Date.parse(record.verifiedAt);
-      if (!Number.isFinite(age) || age < -300000 || age > 86400000) throw Error('Stale release source');
+      if (!Number.isFinite(age) || age < -300000 || age > 86400000) {
+        record.state = 'unverified';
+        record.url = null;
+        record.version = null;
+        record.build = null;
+        continue;
+      }
     }
     if (record.url) safeUrl(record.url);
     if (record.state === 'available') {
@@ -28,7 +35,9 @@ export function projection(source, now = Date.now()) {
       if (!expected || !record.version || !record.url || ![expected, ...(expected === 'READY_FOR_SALE' ? ['READY_FOR_DISTRIBUTION'] : [])].includes(record.proof?.state)) throw Error('Availability is not verified');
     }
   }
-  return {schemaVersion:1,maxAgeHours:24,records:records.map(({proof,...record})=>record),resources,features:[],demos:[]};
+    const versions = new Set(publicRecords.filter(record => record.state === 'available' && record.proof?.provider === 'github').map(record => record.version));
+  const verifiedResources = resources.filter(resource => resource.url && [...versions].some(version => resource.url.includes('/rcpair-v' + version + '/')));
+  return {schemaVersion:1,maxAgeHours:24,records:publicRecords.map(({proof,...record})=>record),resources:verifiedResources,features:[],demos:[]};
 }
 async function refresh() {
   const response = await fetch('https://treadconnection.si/releases.json', {signal:AbortSignal.timeout(30000)});
