@@ -33,6 +33,13 @@
           !url.password &&
           !url.hash &&
           allowed.includes(url.hostname) &&
+          (url.hostname !== "github.com" ||
+            url.pathname.startsWith(
+              "/rcpair/rcpair-releases/releases/download/",
+            )) &&
+          (url.hostname !== "testflight.apple.com" ||
+            (/^\/join\/[A-Za-z0-9]{6,16}$/.test(url.pathname) &&
+              !url.search)) &&
           (!resource ||
             (url.hostname === "github.com" &&
               url.pathname.startsWith(
