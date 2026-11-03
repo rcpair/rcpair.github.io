@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "maxAgeHours": 24,
+  "records": [
+    {
+      "id": "tc-ios-stable",
+      "product": "tc",
+      "platform": "iPhone, iPad and Watch",
+      "channel": "stable",
+      "state": "not_released",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "PREPARE_FOR_SUBMISSION"
+      }
+    },
+    {
+      "id": "tc-ios-internal",
+      "product": "tc",
+      "platform": "iPhone, iPad and Watch",
+      "channel": "internal",
+      "state": "available",
+      "version": "1.0.123",
+      "build": "1636",
+      "url": null,
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "IN_BETA_TESTING"
+      }
+    },
+    {
+      "id": "tc-ios-external",
+      "product": "tc",
+      "platform": "iPhone, iPad and Watch",
+      "channel": "external",
+      "state": "pending",
+      "version": null,
+      "build": null,
+      "url": "https://testflight.apple.com/join/3RK8v8yE",
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "READY_FOR_BETA_SUBMISSION"
+      }
+    },
+    {
+      "id": "tc-android-stable",
+      "product": "tc",
+      "platform": "Android",
+      "channel": "stable",
+      "state": "unverified",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:21:00Z",
+      "proof": {}
+    },
+    {
+      "id": "tc-android-internal",
+      "product": "tc",
+      "platform": "Android",
+      "channel": "internal",
+      "state": "unverified",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:21:00Z",
+      "proof": {}
+    },
+    {
+      "id": "rc-ios-stable",
+      "product": "rcpair",
+      "platform": "iPhone and iPad",
+      "channel": "stable",
+      "state": "not_released",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "WAITING_FOR_REVIEW"
+      }
+    },
+    {
+      "id": "rc-ios-external",
+      "product": "rcpair",
+      "platform": "iPhone and iPad",
+      "channel": "external",
+      "state": "available",
+      "version": "1.1",
+      "build": "31",
+      "url": "https://testflight.apple.com/join/jECT6VHj",
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "IN_BETA_TESTING"
+      }
+    },
+    {
+      "id": "rc-ios-internal",
+      "product": "rcpair",
+      "platform": "iPhone and iPad",
+      "channel": "internal",
+      "state": "available",
+      "version": "1.1",
+      "build": "31",
+      "url": null,
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "apple",
+        "state": "IN_BETA_TESTING"
+      }
+    },
+    {
+      "id": "rc-mac-stable",
+      "product": "rcpair",
+      "platform": "Mac",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg",
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "github",
+        "state": "PUBLISHED_RELEASE"
+      }
+    },
+    {
+      "id": "rc-linux-stable",
+      "product": "rcpair",
+      "platform": "Linux x86-64",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "github",
+        "state": "PUBLISHED_RELEASE"
+      }
+    },
+    {
+      "id": "rc-arm-stable",
+      "product": "rcpair",
+      "platform": "Linux arm64",
+      "channel": "stable",
+      "state": "available",
+      "version": "0.1.0",
+      "build": null,
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-aarch64-unknown-linux-gnu.tar.gz",
+      "verifiedAt": "2026-11-03T17:40:54.447Z",
+      "proof": {
+        "provider": "github",
+        "state": "PUBLISHED_RELEASE"
+      }
+    },
+    {
+      "id": "rc-windows-stable",
+      "product": "rcpair",
+      "platform": "Windows",
+      "channel": "stable",
+      "state": "unverified",
+      "version": null,
+      "build": null,
+      "url": null,
+      "verifiedAt": "2026-11-03T17:21:00Z",
+      "proof": {}
+    }
+  ],
+  "features": [
+    {
+      "name": "Agents and tools",
+      "availability": "Depends on account access and connected permissions."
+    },
+    {
+      "name": "Project Rooms",
+      "availability": "Pilot. A JobTread connection is required for the current pilot."
+    },
+    {
+      "name": "RC Pair Windows",
+      "availability": "Private testing is separate from public releases. Check the verified computer download status."
+    }
+  ],
+  "demos": [
+    {
+      "id": "member-assistant",
+      "label": "Recorded sample. Earlier simplified layout; exact app build was not captured.",
+      "build": null,
+      "compatibility": "historical",
+      "product": "tc"
+    },
+    {
+      "id": "project-room",
+      "label": "Recorded sample. Earlier layout; exact app build was not captured.",
+      "build": null,
+      "compatibility": "historical",
+      "product": "tc"
+    }
+  ],
+  "privacyReview": {
+    "status": "required_on_change",
+    "note": "Tool permissions, collected data, retention, recipients and account controls must be reviewed when they change. This manifest does not amend the privacy policy."
+  },
+  "resources": [
+    {
+      "id": "rc-checksums",
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS",
+      "verifiedAt": "2026-11-03T17:40:54.447Z"
+    },
+    {
+      "id": "rc-signature",
+      "url": "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig",
+      "verifiedAt": "2026-11-03T17:40:54.447Z"
+    }
+  ]
+}
