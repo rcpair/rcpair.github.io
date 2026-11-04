@@ -170,6 +170,11 @@ export async function refresh({
       "::warning::Release verification files could not be confirmed; version-specific setup remains hidden.",
     );
   }
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const withheld = mirror.records.filter(record => record.state === "unverified").length;
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+      `Release data validated. ${withheld} download entries have unverified availability and remain withheld. A successful refresh does not mean every download is available.\n`);
+  }
   const proofFile = path.join(directory, "release-provenance.json");
   const prior = JSON.parse(fs.readFileSync(proofFile, "utf8"));
   const client = fs.readFileSync(path.join(directory, "release-status.js"));
