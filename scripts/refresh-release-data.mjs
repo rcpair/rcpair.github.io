@@ -126,6 +126,7 @@ export async function refresh({
   fetcher = fetch,
   directory = ".",
   now = Date.now(),
+  report = false,
 } = {}) {
   const response = await fetcher("https://treadconnection.si/releases.json", {
     signal: AbortSignal.timeout(30000),
@@ -135,7 +136,7 @@ export async function refresh({
   const source = JSON.parse(sourceBytes);
   const mirror = projection(source, now);
   if (
-    mirror.records.some(
+    report && mirror.records.some(
       (record) =>
         record.state === "unverified" &&
         source.records.some(
@@ -155,13 +156,13 @@ export async function refresh({
       Math.max(
         ...value.records
           .map((record) => Date.parse(record.verifiedAt))
-          .filter(Number.isFinite),
+          .filter((time) => Number.isFinite(time) && time <= now + 300000),
       );
-    if (newest(mirror) < newest(previous))
+    if (Number.isFinite(newest(mirror)) && newest(mirror) < newest(previous))
       throw Error("Release source is older than the current mirror");
   }
   if (
-    mirror.resources.length <
+    report && mirror.resources.length <
     (source.resources || []).filter((resource) =>
       ["rc-checksums", "rc-signature"].includes(resource.id),
     ).length
@@ -170,6 +171,11 @@ export async function refresh({
       "::warning::Release verification files could not be confirmed; version-specific setup remains hidden.",
     );
   }
+  if (report && process.env.GITHUB_STEP_SUMMARY) {
+    const withheld = mirror.records.filter(record => record.state === "unverified").length;
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+      `Release data validated. ${withheld} download entries have unverified availability and remain withheld. A successful refresh does not mean every download is available.\n`);
+  }
   const proofFile = path.join(directory, "release-provenance.json");
   const prior = JSON.parse(fs.readFileSync(proofFile, "utf8"));
   const client = fs.readFileSync(path.join(directory, "release-status.js"));
@@ -177,8 +183,8 @@ export async function refresh({
     throw Error("Client changed without a reviewed provenance update");
   const timestamps = [...mirror.records, ...mirror.resources]
     .map((record) => Date.parse(record.verifiedAt))
-    .filter(Number.isFinite);
-  const verifiedAt = new Date(Math.max(...timestamps)).toISOString();
+    .filter((time) => Number.isFinite(time) && time <= now + 300000);
+  const verifiedAt = timestamps.length ? new Date(Math.max(...timestamps)).toISOString() : null;
   const proof = {
     ...prior,
     clientSourceRevision: prior.clientSourceRevision || prior.sourceRevision,
@@ -195,4 +201,4 @@ export async function refresh({
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href)
-  await refresh();
+  await refresh({ report: true });

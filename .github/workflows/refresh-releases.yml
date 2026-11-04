@@ -30,11 +30,17 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- releases.json release-provenance.json
           git commit -m 'Update verified public release data'
-          git push origin HEAD:main
+          git push origin HEAD:main || {
+            echo '::error::Reviewed site changed during this refresh. No force push was attempted. Rerun this workflow from current main; the existing three-hour dispatch also retries.'
+            exit 1
+          }
       - name: Request existing Pages build
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           latest=$(gh api repos/rcpair/rcpair.github.io/pages/builds/latest --jq '[.status,.commit] | @tsv' 2>/dev/null || true)
-          if [[ "$latest" == $'built\t'"$(git rev-parse HEAD)" ]]; then exit 0; fi
+          head=$(git rev-parse HEAD)
+          for state in built building queued; do
+            if [[ "$latest" == "$state"$'\t'"$head" ]]; then exit 0; fi
+          done
           gh api --method POST repos/rcpair/rcpair.github.io/pages/builds

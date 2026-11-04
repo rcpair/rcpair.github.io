@@ -93,6 +93,7 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
     path.join(os.tmpdir(), "rc-release-refresh-"),
   );
   const hash = (value) => createHash("sha256").update(value).digest("hex");
+  const priorSummary = process.env.GITHUB_STEP_SUMMARY;
   try {
     const client = "reviewed client";
     fs.writeFileSync(path.join(directory, "release-status.js"), client);
@@ -103,6 +104,8 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
         sourceRevision: "reviewed-revision",
       }),
     );
+    const summary = path.join(directory, "workflow-summary");
+    process.env.GITHUB_STEP_SUMMARY = summary;
     const raw = JSON.stringify(source());
     const fetcher = async () => ({ ok: true, text: async () => raw });
     await refresh({ directory, fetcher, now });
@@ -126,6 +129,13 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /older than/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    const futureSource = source();
+    futureSource.records[0].verifiedAt = "2027-01-01T00:00:00Z";
+    await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(futureSource) }) });
+    assert.equal(JSON.parse(fs.readFileSync(path.join(directory, "releases.json"))).records[0].state, "unverified");
+    assert.equal(JSON.parse(fs.readFileSync(file)).verifiedAt, null);
+    await refresh({ directory, fetcher, now });
+    assert.equal(fs.readFileSync(file, "utf8"), first, "corrected source recovers after future-dated data");
     fs.writeFileSync(
       path.join(directory, "release-status.js"),
       "unreviewed change",
@@ -135,7 +145,10 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /reviewed provenance/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    assert.equal(fs.existsSync(summary), false, "fixture calls never append a workflow summary");
   } finally {
+    if (priorSummary === undefined) delete process.env.GITHUB_STEP_SUMMARY;
+    else process.env.GITHUB_STEP_SUMMARY = priorSummary;
     fs.rmSync(directory, { recursive: true, force: true });
   }
 });
