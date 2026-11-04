@@ -93,6 +93,7 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
     path.join(os.tmpdir(), "rc-release-refresh-"),
   );
   const hash = (value) => createHash("sha256").update(value).digest("hex");
+  const priorSummary = process.env.GITHUB_STEP_SUMMARY;
   try {
     const client = "reviewed client";
     fs.writeFileSync(path.join(directory, "release-status.js"), client);
@@ -104,7 +105,6 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       }),
     );
     const summary = path.join(directory, "workflow-summary");
-    const priorSummary = process.env.GITHUB_STEP_SUMMARY;
     process.env.GITHUB_STEP_SUMMARY = summary;
     const raw = JSON.stringify(source());
     const fetcher = async () => ({ ok: true, text: async () => raw });
@@ -146,9 +146,9 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
     assert.equal(fs.existsSync(summary), false, "fixture calls never append a workflow summary");
+  } finally {
     if (priorSummary === undefined) delete process.env.GITHUB_STEP_SUMMARY;
     else process.env.GITHUB_STEP_SUMMARY = priorSummary;
-  } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }
 });
