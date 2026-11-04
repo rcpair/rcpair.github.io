@@ -26,6 +26,8 @@
   img{width:64px;height:64px}
   h1{font-size:24px;margin:16px 0 8px}
   p{color:var(--dim);line-height:1.5;margin:0 0 20px}
+  a{color:var(--chalk);text-underline-offset:3px}
+  a:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
   a.go{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;font-weight:600;padding:14px 22px;border-radius:12px}
   a.home{display:block;margin-top:18px;color:var(--dim);font-size:14px}
 </style>
@@ -33,7 +35,7 @@
 <body>
 <main>
   <img src="../brand/icon.svg" alt="">
-  <h1>Join the RC Pair beta</h1><div data-release-product="rcpair" data-release-channel="external"><p>Current tester version has not been confirmed. Check release status before installing.</p></div>
+  <h1>Join the RC Pair beta</h1><div data-release-product="rcpair" data-release-channel="external"><p>Current tester version has not been confirmed. <a href="../support/">Check tester access</a> before installing.</p></div>
   <p>Check the verified tester status above before opening TestFlight on your iPhone or iPad. Apple decides which build your tester group can install.</p>
   <a class="go" aria-disabled="true" data-release-resource="rc-ios-external" tabindex="-1" data-release-label="Open TestFlight">TestFlight availability not confirmed</a>
   <a class="home" href="../">What RC Pair is</a>

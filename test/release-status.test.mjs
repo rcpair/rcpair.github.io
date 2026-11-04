@@ -4,3 +4,10 @@ test('computer downloads and tester pages use the shared verified manifest',()=>
 test('computer page has a visible unavailable fallback and separates Windows private testing',()=>{const s=fs.readFileSync(new URL('computer.html',root),'utf8');assert.match(s,/Current download versions cannot be confirmed/);assert.match(s,/Private test installers are separate from public releases/);assert.match(s,/aria-disabled="true" data-release-resource="rc-checksums"/);});
 
 test('version-specific commands are hidden until matching release proof',()=>{const s=fs.readFileSync(new URL('computer.html',root),'utf8');assert.match(s,/data-release-instructions="0.1.0"[^>]* hidden/);assert.ok(s.indexOf('data-release-instructions="0.1.0"')<s.indexOf('curl -LO'));assert.match(s,/for version 0.1.0 only/);assert.doesNotMatch(fs.readFileSync(new URL('beta/index.html',root),'utf8'),/location.replace|setTimeout|http-equiv="refresh"/);});
+
+
+test('beta fallback links have an explicit readable color and usable support destination', () => {
+  const html = fs.readFileSync(new URL('beta/index.html', root), 'utf8');
+  assert.match(html, /a\{color:var\(--chalk\)/);
+  assert.match(html, /<a href="\.\.\/support\/">Check tester access<\/a>/);
+});
