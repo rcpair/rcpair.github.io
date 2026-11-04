@@ -7,7 +7,6 @@
     "testflight.apple.com",
     "github.com",
     "apps.apple.com",
-    "play.google.com",
   ];
   try {
     const r = await fetch("/releases.json", {
@@ -24,7 +23,7 @@
     )
       throw Error("invalid status");
     const safeUrl = (value, resource = false) => {
-      if (!value) return true;
+      if (!value) return !resource;
       try {
         const url = new URL(value);
         return (
@@ -40,6 +39,7 @@
           (url.hostname !== "testflight.apple.com" ||
             (/^\/join\/[A-Za-z0-9]{6,16}$/.test(url.pathname) &&
               !url.search)) &&
+          (url.hostname !== "apps.apple.com" || url.pathname === "/app/id6822097686") &&
           (!resource ||
             (url.hostname === "github.com" &&
               url.pathname.startsWith(
@@ -155,7 +155,7 @@
           (r) => fresh(r) && r.state === "available" && r.version === version,
         ) &&
         files.every(
-          (r) => fresh(r) && r.url.includes("/rcpair-v" + version + "/"),
+          (r) => fresh(r) && typeof r.url === "string" && r.url.includes("/rcpair-v" + version + "/"),
         );
       block.hidden = !okay;
       if (okay && location.hash) {
