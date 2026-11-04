@@ -1,0 +1,46 @@
+name: Refresh verified release data
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [verified-release-updated]
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: verified-release-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read and validate canonical release data
+        run: node scripts/refresh-release-data.mjs
+      - name: Verify generated data and reviewed client
+        run: node --test test/*.test.mjs
+      - name: Commit only verified data
+        run: |
+          if git diff --quiet -- releases.json release-provenance.json; then exit 0; fi
+          git config user.name 'RC release data'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- releases.json release-provenance.json
+          git commit -m 'Update verified public release data'
+          git push origin HEAD:main || {
+            echo '::error::Reviewed site changed during this refresh. No force push was attempted. Rerun this workflow from current main; the existing three-hour dispatch also retries.'
+            exit 1
+          }
+      - name: Request existing Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest=$(gh api repos/rcpair/rcpair.github.io/pages/builds/latest --jq '[.status,.commit] | @tsv' 2>/dev/null || true)
+          head=$(git rev-parse HEAD)
+          for state in built building queued; do
+            if [[ "$latest" == "$state"$'\t'"$head" ]]; then exit 0; fi
+          done
+          gh api --method POST repos/rcpair/rcpair.github.io/pages/builds
