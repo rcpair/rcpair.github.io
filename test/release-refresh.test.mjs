@@ -126,6 +126,13 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /older than/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    const futureSource = source();
+    futureSource.records[0].verifiedAt = "2027-01-01T00:00:00Z";
+    await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(futureSource) }) });
+    assert.equal(JSON.parse(fs.readFileSync(path.join(directory, "releases.json"))).records[0].state, "unverified");
+    assert.equal(JSON.parse(fs.readFileSync(file)).verifiedAt, null);
+    await refresh({ directory, fetcher, now });
+    assert.equal(fs.readFileSync(file, "utf8"), first, "corrected source recovers after future-dated data");
     fs.writeFileSync(
       path.join(directory, "release-status.js"),
       "unreviewed change",

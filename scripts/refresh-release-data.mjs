@@ -155,9 +155,9 @@ export async function refresh({
       Math.max(
         ...value.records
           .map((record) => Date.parse(record.verifiedAt))
-          .filter(Number.isFinite),
+          .filter((time) => Number.isFinite(time) && time <= now + 300000),
       );
-    if (newest(mirror) < newest(previous))
+    if (Number.isFinite(newest(mirror)) && newest(mirror) < newest(previous))
       throw Error("Release source is older than the current mirror");
   }
   if (
@@ -177,8 +177,8 @@ export async function refresh({
     throw Error("Client changed without a reviewed provenance update");
   const timestamps = [...mirror.records, ...mirror.resources]
     .map((record) => Date.parse(record.verifiedAt))
-    .filter(Number.isFinite);
-  const verifiedAt = new Date(Math.max(...timestamps)).toISOString();
+    .filter((time) => Number.isFinite(time) && time <= now + 300000);
+  const verifiedAt = timestamps.length ? new Date(Math.max(...timestamps)).toISOString() : null;
   const proof = {
     ...prior,
     clientSourceRevision: prior.clientSourceRevision || prior.sourceRevision,
