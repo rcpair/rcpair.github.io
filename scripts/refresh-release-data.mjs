@@ -148,6 +148,28 @@ export async function refresh({
       "::warning::Some release records could not be verified; their links were withheld.",
     );
   }
+  const priorDataFile = path.join(directory, "releases.json");
+  if (fs.existsSync(priorDataFile)) {
+    const previous = JSON.parse(fs.readFileSync(priorDataFile, "utf8"));
+    const newest = (value) =>
+      Math.max(
+        ...value.records
+          .map((record) => Date.parse(record.verifiedAt))
+          .filter(Number.isFinite),
+      );
+    if (newest(mirror) < newest(previous))
+      throw Error("Release source is older than the current mirror");
+  }
+  if (
+    mirror.resources.length <
+    (source.resources || []).filter((resource) =>
+      ["rc-checksums", "rc-signature"].includes(resource.id),
+    ).length
+  ) {
+    console.warn(
+      "::warning::Release verification files could not be confirmed; version-specific setup remains hidden.",
+    );
+  }
   const proofFile = path.join(directory, "release-provenance.json");
   const prior = JSON.parse(fs.readFileSync(proofFile, "utf8"));
   const client = fs.readFileSync(path.join(directory, "release-status.js"));
@@ -159,12 +181,15 @@ export async function refresh({
   const verifiedAt = new Date(Math.max(...timestamps)).toISOString();
   const proof = {
     ...prior,
+    clientSourceRevision: prior.clientSourceRevision || prior.sourceRevision,
     sourceUrl: "https://treadconnection.si/releases.json",
     sourceResponseSha256: hash(sourceBytes),
     canonicalManifestSha256: hash(serialize(source)),
     manifestSha256: hash(serialize(mirror)),
     verifiedAt,
   };
+  delete proof.sourceRevision;
+  delete proof.sourceManifest;
   fs.writeFileSync(path.join(directory, "releases.json"), serialize(mirror));
   fs.writeFileSync(proofFile, serialize(proof));
 }
