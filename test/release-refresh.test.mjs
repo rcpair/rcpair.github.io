@@ -109,8 +109,22 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
     const file = path.join(directory, "release-provenance.json");
     const first = fs.readFileSync(file, "utf8");
     assert.equal(JSON.parse(first).sourceResponseSha256, hash(raw));
-    assert.equal(JSON.parse(first).sourceRevision, "reviewed-revision");
+    assert.equal(JSON.parse(first).clientSourceRevision, "reviewed-revision");
     await refresh({ directory, fetcher, now });
+    assert.equal(fs.readFileSync(file, "utf8"), first);
+    const olderSource = source();
+    olderSource.records[0].verifiedAt = new Date(now - 1000).toISOString();
+    await assert.rejects(
+      refresh({
+        directory,
+        now,
+        fetcher: async () => ({
+          ok: true,
+          text: async () => JSON.stringify(olderSource),
+        }),
+      }),
+      /older than/,
+    );
     assert.equal(fs.readFileSync(file, "utf8"), first);
     fs.writeFileSync(
       path.join(directory, "release-status.js"),

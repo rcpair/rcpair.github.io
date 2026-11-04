@@ -24,17 +24,17 @@ jobs:
       - name: Verify generated data and reviewed client
         run: node --test test/*.test.mjs
       - name: Commit only verified data
-        id: commit
         run: |
-          if git diff --quiet -- releases.json release-provenance.json; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if git diff --quiet -- releases.json release-provenance.json; then exit 0; fi
           git config user.name 'RC release data'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- releases.json release-provenance.json
           git commit -m 'Update verified public release data'
           git push origin HEAD:main
-          echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Request existing Pages build
-        if: steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh api --method POST repos/rcpair/rcpair.github.io/pages/builds
+        run: |
+          latest=$(gh api repos/rcpair/rcpair.github.io/pages/builds/latest --jq '[.status,.commit] | @tsv' 2>/dev/null || true)
+          if [[ "$latest" == $'built\t'"$(git rev-parse HEAD)" ]]; then exit 0; fi
+          gh api --method POST repos/rcpair/rcpair.github.io/pages/builds
