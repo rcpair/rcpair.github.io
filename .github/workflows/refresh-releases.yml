@@ -30,7 +30,10 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- releases.json release-provenance.json
           git commit -m 'Update verified public release data'
-          git push origin HEAD:main
+          git push origin HEAD:main || {
+            echo '::error::Reviewed site changed during this refresh. No force push was attempted. Rerun this workflow from current main; the existing three-hour dispatch also retries.'
+            exit 1
+          }
       - name: Request existing Pages build
         env:
           GH_TOKEN: ${{ github.token }}

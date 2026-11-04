@@ -103,6 +103,9 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
         sourceRevision: "reviewed-revision",
       }),
     );
+    const summary = path.join(directory, "workflow-summary");
+    const priorSummary = process.env.GITHUB_STEP_SUMMARY;
+    process.env.GITHUB_STEP_SUMMARY = summary;
     const raw = JSON.stringify(source());
     const fetcher = async () => ({ ok: true, text: async () => raw });
     await refresh({ directory, fetcher, now });
@@ -142,6 +145,9 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /reviewed provenance/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    assert.equal(fs.existsSync(summary), false, "fixture calls never append a workflow summary");
+    if (priorSummary === undefined) delete process.env.GITHUB_STEP_SUMMARY;
+    else process.env.GITHUB_STEP_SUMMARY = priorSummary;
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }
