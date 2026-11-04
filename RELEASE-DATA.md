@@ -21,3 +21,5 @@ node --test test/*.test.mjs
 ```
 
 The hash test intentionally fails if a changed client and its reviewed provenance disagree. This is separate from periodic data refresh. Version-specific old commands stay hidden once the version changes; the current-release guide remains available.
+
+The existing Pages build is requested through GitHub's supported build endpoint. Its documented fine-grained token requirement is Pages write, which this workflow declares. This applies to requesting the existing site build, not creating a Pages site. The endpoint builds the default branch and queues a request when another build is running. The joint rollout still requires actual workflow and public-file proof before activating the HTML client. Source: https://docs.github.com/en/rest/pages/pages#request-a-github-pages-build

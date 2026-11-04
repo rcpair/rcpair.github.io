@@ -129,6 +129,12 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /older than/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    const unverifiedSource = source();
+    unverifiedSource.records[0].state = "unverified";
+    unverifiedSource.records[0].verifiedAt = new Date(now + 100000).toISOString();
+    await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(unverifiedSource) }) });
+    await refresh({ directory, fetcher, now });
+    assert.equal(fs.readFileSync(file, "utf8"), first, "unverified timestamps never prevent verified recovery");
     const futureSource = source();
     futureSource.records[0].verifiedAt = "2027-01-01T00:00:00Z";
     await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(futureSource) }) });

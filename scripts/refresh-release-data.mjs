@@ -155,6 +155,7 @@ export async function refresh({
     const newest = (value) =>
       Math.max(
         ...value.records
+          .filter((record) => record.state !== "unverified")
           .map((record) => Date.parse(record.verifiedAt))
           .filter((time) => Number.isFinite(time) && time <= now + 300000),
       );
@@ -182,6 +183,7 @@ export async function refresh({
   if (prior.clientSha256 !== hash(client))
     throw Error("Client changed without a reviewed provenance update");
   const timestamps = [...mirror.records, ...mirror.resources]
+    .filter((record) => record.state !== "unverified")
     .map((record) => Date.parse(record.verifiedAt))
     .filter((time) => Number.isFinite(time) && time <= now + 300000);
   const verifiedAt = timestamps.length ? new Date(Math.max(...timestamps)).toISOString() : null;
