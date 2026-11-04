@@ -129,6 +129,18 @@ test("refresh preserves the reviewed client hash and is unchanged for identical 
       /older than/,
     );
     assert.equal(fs.readFileSync(file, "utf8"), first);
+    const mixed = source();
+    mixed.records.push({ id: "rc-mac-stable", product: "rcpair", channel: "stable", platform: "Mac",
+      state: "available", version: "0.1.0", url: "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/app.dmg",
+      verifiedAt: new Date(now - 1000).toISOString(), proof: { provider: "github", state: "PUBLISHED_RELEASE" } });
+    await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(mixed) }) });
+    mixed.records[0].verifiedAt = new Date(now + 1000).toISOString();
+    mixed.records[0].proof.state = "PROCESSING";
+    await refresh({ directory, now, fetcher: async () => ({ ok: true, text: async () => JSON.stringify(mixed) }) });
+    const partial = JSON.parse(fs.readFileSync(path.join(directory, "releases.json")));
+    assert.equal(partial.records[0].state, "unverified", "newly invalid Apple entry is withheld despite an older GitHub timestamp");
+    assert.equal(partial.records[1].state, "available");
+    await refresh({ directory, fetcher, now });
     const unverifiedSource = source();
     unverifiedSource.records[0].state = "unverified";
     unverifiedSource.records[0].verifiedAt = new Date(now + 100000).toISOString();

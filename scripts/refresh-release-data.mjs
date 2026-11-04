@@ -152,14 +152,19 @@ export async function refresh({
   const priorDataFile = path.join(directory, "releases.json");
   if (fs.existsSync(priorDataFile)) {
     const previous = JSON.parse(fs.readFileSync(priorDataFile, "utf8"));
-    const newest = (value) =>
+    const newest = (value, includeUnverified = false) =>
       Math.max(
         ...value.records
-          .filter((record) => record.state !== "unverified")
+          .filter((record) => includeUnverified || record.state !== "unverified")
           .map((record) => Date.parse(record.verifiedAt))
           .filter((time) => Number.isFinite(time) && time <= now + 300000),
       );
-    if (Number.isFinite(newest(mirror)) && newest(mirror) < newest(previous))
+    const incoming = { records: source.records.filter(record =>
+      record.product === "rcpair" && ["stable", "external"].includes(record.channel)) };
+    // A newly invalid record must still lose its link even when the other
+    // provider's last verified timestamp is older than the prior best record.
+    const sourceTime = newest(incoming, true);
+    if (Number.isFinite(sourceTime) && sourceTime < newest(previous))
       throw Error("Release source is older than the current mirror");
   }
   if (
