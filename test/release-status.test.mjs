@@ -1,0 +1,13 @@
+import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs';
+const root=new URL('../',import.meta.url);
+test('computer downloads and tester pages use the shared verified manifest',()=>{for(const file of['computer.html','index.html','test/index.html','beta/index.html']){const s=fs.readFileSync(new URL(file,root),'utf8');assert.match(s,/\/release-status.js/);assert.match(s,/data-release-product="rcpair"/);assert.match(s,/crossorigin="anonymous" referrerpolicy="no-referrer"/);assert.doesNotMatch(s,/href="https:\/\/github.com\/rcpair\/rcpair-releases\/releases\/download/);assert.doesNotMatch(s,/href="https:\/\/testflight.apple.com\/join/);}});
+test('computer page has a visible unavailable fallback and separates Windows private testing',()=>{const s=fs.readFileSync(new URL('computer.html',root),'utf8');assert.match(s,/Current download versions cannot be confirmed/);assert.match(s,/Private test installers are separate from public releases/);assert.match(s,/aria-disabled="true" data-release-resource="rc-checksums"/);});
+
+test('version-specific commands are hidden until matching release proof',()=>{const s=fs.readFileSync(new URL('computer.html',root),'utf8');assert.match(s,/data-release-instructions="0.1.0"[^>]* hidden/);assert.ok(s.indexOf('data-release-instructions="0.1.0"')<s.indexOf('curl -LO'));assert.match(s,/for version 0.1.0 only/);assert.doesNotMatch(fs.readFileSync(new URL('beta/index.html',root),'utf8'),/location.replace|setTimeout|http-equiv="refresh"/);});
+
+
+test('beta fallback links have an explicit readable color and usable support destination', () => {
+  const html = fs.readFileSync(new URL('beta/index.html', root), 'utf8');
+  assert.match(html, /a\{color:var\(--chalk\)/);
+  assert.match(html, /<a href="\.\.\/support\/">Check tester access<\/a>/);
+});

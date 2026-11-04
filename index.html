@@ -22,7 +22,7 @@
 <link rel="icon" href="brand/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="stylesheet" href="family.css">
-</head>
+<style>[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}</style></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -55,7 +55,7 @@
     <header class="hero">
       <div>
         <p class="eyebrow"><span class="node"></span>Early release for iPhone and iPad</p>
-        <h1>No Mac needed to drive your iPhone.</h1>
+        <h1>No Mac needed to drive your iPhone.</h1><section aria-label="Current iPhone and iPad beta" data-release-product="rcpair" data-release-channel="external"><p>Current tester version is not verified yet. <a href="https://treadconnection.si/downloads?product=rcpair">Check release status</a>.</p></section>
         <p class="sub">RC Pair pairs your iPhone or iPad straight to a Linux or Mac computer you choose, over your own network. An agent or program on that computer can then see the screen and tap and type on it. No mirroring window, and no Mac left running.</p>
         <details class="more-details hero-details">
           <summary>Before you start</summary>
@@ -284,7 +284,7 @@
       <div class="app-note">
         <h3>The RC Pair computer app</h3>
         <p>The computer app opens the link to your phone, keeps it open and gives your own agent the tools to see the
-          screen and tap. It runs on Linux today, on a laptop or a server you reach over SSH. It also runs as a Mac app, and Windows comes after that. Apple's developer disk image is not bundled in the app. RC Pair can copy it from Xcode or download a pinned copy from GitHub when you choose, or when <code>rcpair serve</code> runs with no image present. Apple's terms govern the file.
+          screen and tap. It runs on Linux today, on a laptop or a server you reach over SSH. It also runs as a Mac app, with current Windows availability listed on the computer page. Apple's developer disk image is not bundled in the app. RC Pair can copy it from Xcode or download a pinned copy from GitHub when you choose, or when <code>rcpair serve</code> runs with no image present. Apple's terms govern the file.
           <a href="computer.html">Download and set up</a>.</p>
         <p>RC Pair itself runs no service that receives your phone's data.</p>
       </div>
@@ -669,5 +669,6 @@
 </footer>
 <script src="details.js" defer></script>
 <script src="t.js" defer></script>
+<script src="/release-status.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </body>
 </html>

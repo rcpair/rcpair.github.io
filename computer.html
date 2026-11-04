@@ -22,7 +22,7 @@
 <link rel="icon" href="brand/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="stylesheet" href="family.css">
-</head>
+<style>[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}</style></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -53,34 +53,14 @@
 
 <section id="downloads" class="downloads" aria-labelledby="choose-h"><div class="wrap">
   <h2 id="choose-h">Choose your computer</h2>
-  <div class="platforms">
-    <article class="platform" aria-labelledby="mac-card-h">
-      <h3 id="mac-card-h">Mac</h3>
-      <p>A Mac app with a window. Signed with our Apple Developer ID and notarized by Apple.</p>
-      <p class="version">Version 0.1.0. Apple silicon and Intel. macOS 12 or later.</p>
-      <div class="downloads-actions">
-        <a class="btn btn-solid" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg" data-t="dl-mac">Download for Mac</a>
-      </div>
-      <p class="steps-link"><a href="#mac">Mac setup steps ↓</a></p>
-    </article>
-    <article class="platform" aria-labelledby="linux-card-h">
-      <h3 id="linux-card-h">Linux and servers</h3>
-      <p>The <code>rcpair</code> program for your terminal or a background service. It has no window.</p>
-      <p class="version">Version 0.1.0. x86-64 and arm64.</p>
-      <div class="downloads-actions">
-        <a class="btn btn-solid" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-x86_64-unknown-linux-gnu.tar.gz" data-t="dl-linux-x64">Download for Linux x86-64</a>
-        <a class="btn btn-ghost" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/rcpair-0.1.0-aarch64-unknown-linux-gnu.tar.gz" data-t="dl-linux-arm64">Download for Linux arm64</a>
-      </div>
-      <p class="steps-link"><a href="#linux">Linux and server setup steps ↓</a></p>
-    </article>
-    <article class="platform waiting" aria-labelledby="windows-h">
-      <h3 id="windows-h">Windows is not out yet</h3>
-      <p>It still needs a real test on a Windows computer and a signing certificate. Email <a href="mailto:support@rcpair.si?subject=RC%20Pair%20for%20Windows">support@rcpair.si</a> and we will write when it is ready.</p>
-    </article>
-  </div>
-  <a class="next" href="#mac">Next: Mac setup →</a>
+  <p>Public releases are listed below. Private test installers are separate from public releases.</p>
+  <div class="platforms" data-release-product="rcpair" data-release-channel="stable" data-release-platforms="Mac|Linux x86-64|Linux arm64|Windows"><article class="platform"><h3>Current release status</h3><p>Current download versions cannot be confirmed until release status loads. <a href="https://treadconnection.si/downloads?product=rcpair">Check verified releases</a>.</p></article></div>
+  <a class="next" href="https://github.com/rcpair/rcpair-releases/releases/latest">View current release details →</a>
 </div></section>
 
+<p class="wrap" data-release-instruction-note>Setup commands below are for version 0.1.0 only. They are hidden until that exact release is verified. <a href="https://github.com/rcpair/rcpair-releases/releases/latest">Check the current release and instructions</a>.</p>
+<style>[data-release-instructions][hidden]{display:none!important}</style>
+<div data-release-instructions="0.1.0" data-release-instruction-records="rc-mac-stable|rc-linux-stable|rc-arm-stable" hidden>
 <section class="setup" aria-labelledby="mac-h"><div class="wrap">
   <details class="sec" id="mac">
     <summary><h2 id="mac-h">Set up on Mac</h2></summary>
@@ -88,7 +68,7 @@
   <p class="setup-intro">Install the app, then use its window to pair your phone.</p>
   <p>Your phone needs Wi-Fi, or a hotspot from another phone, to reach the Mac. The phone's own cellular data does not work.</p>
   <div class="files">
-    <p>Download <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS">SHA256SUMS</a> and <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
+    <p>Download <a aria-disabled="true" data-release-resource="rc-checksums" tabindex="-1" data-release-label="SHA256SUMS">SHA256SUMS</a> and <a aria-disabled="true" data-release-resource="rc-signature" tabindex="-1" data-release-label="SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
   </div>
   <ol class="steps" role="list">
     <li class="step">
@@ -163,7 +143,7 @@ shasum -a 256 -c --ignore-missing SHA256SUMS</code></pre>
     <div class="section-body">
   <p class="setup-intro">Use a terminal on your laptop. For a server, download the files on your laptop and copy them with <code>scp</code>, then run the setup steps over SSH. Or fetch the files on the server as shown below.</p>
   <div class="files">
-    <p>Download <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS">SHA256SUMS</a> and <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
+    <p>Download <a aria-disabled="true" data-release-resource="rc-checksums" tabindex="-1" data-release-label="SHA256SUMS">SHA256SUMS</a> and <a aria-disabled="true" data-release-resource="rc-signature" tabindex="-1" data-release-label="SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
     <p>On a laptop, save both files and the matching archive in Downloads, then run <code>cd ~/Downloads</code>. Run <code>uname -m</code> on the computer that will run RC Pair to choose x86_64 or aarch64.</p>
     <p>To fetch all three files on the server, save them in your home folder with these commands. The archive name uses the server's <code>uname -m</code> result.</p>
     <div class="command" data-label="Linux server download commands">
@@ -311,6 +291,7 @@ EOF</code></pre>
   </details>
   <a class="next" href="privacy.html">Next: Privacy →</a>
 </div></section>
+</div>
 </main>
 <footer class="dark" aria-label="Site information">
   <div class="wrap">
@@ -378,5 +359,6 @@ EOF</code></pre>
 </script>
 <script src="details.js" defer></script>
 <script src="t.js" defer></script>
+<script src="/release-status.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </body>
 </html>

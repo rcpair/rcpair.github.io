@@ -115,7 +115,7 @@
     .code{padding:20px 18px}
   }
 </style>
-</head>
+<style>[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}</style></head>
 <body>
 <div class="top dark">
   <div class="wrap">
@@ -137,7 +137,7 @@
     </nav>
     <header class="phero">
       <p class="eyebrow">TestFlight</p>
-      <h1>Test RC Pair</h1>
+      <h1>Test RC Pair</h1><section aria-label="Current iPhone and iPad beta" data-release-product="rcpair" data-release-channel="external"><p>Current tester version is not verified yet. <a href="https://treadconnection.si/downloads?product=rcpair">Check release status</a>.</p></section>
       <p>RC Pair pairs an iPhone or iPad with a computer you choose, so an AI coding agent on that computer can work with the phone. This page is for developers who installed the TestFlight build and have a computer with an agent such as Claude Code or Codex.</p>
       <p>The five steps on the phone take about five minutes. On a Mac, the computer side is now an app you download and open. The list near the bottom says what is still rough.</p>
     </header>
@@ -148,9 +148,9 @@
     <section class="block" id="need">
       <h2>What you need</h2>
       <p>An iPhone or iPad on iOS or iPadOS 17 or later, and the TestFlight build.</p>
-      <a class="btn" href="https://testflight.apple.com/join/jECT6VHj">Open the TestFlight link</a>
+      <a class="btn" aria-disabled="true" data-release-resource="rc-ios-external" tabindex="-1" data-release-label="Open the TestFlight link">TestFlight availability not confirmed</a>
       <p>The phone has to be on Wi-Fi. A hotspot from another phone works. The phone's own cellular data does not.</p>
-      <p>A Mac the phone can reach on a private address, usually the same Wi-Fi, with an AI coding agent such as Claude Code or Codex. The phone sends only to a private address and refuses a public one. Linux has a downloadable program with no window, on the <a href="../computer.html#linux">computer page</a>. Windows is not ready yet.</p>
+      <p>A Mac the phone can reach on a private address, usually the same Wi-Fi, with an AI coding agent such as Claude Code or Codex. The phone sends only to a private address and refuses a public one. Linux has a downloadable program with no window, on the <a href="../computer.html#downloads">computer page</a>. Check the computer page for current Windows availability.</p>
       <p>Apple's developer disk image goes on the phone before an agent can drive it. The Mac app gets it for you from Xcode or from GitHub. The source route on Linux also needs a Rust toolchain, a C compiler and, for the one-time disk image step, a USB cable and the usbmuxd service.</p>
     </section>
 
@@ -170,8 +170,8 @@
     <section class="block" id="computer">
       <h2>Set up your Mac</h2>
       <p>Download the RC Pair computer app. No terminal, Python or Xcode needed for this part.</p>
-      <a class="btn" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.1.0/RC-Pair-0.1.0-macos.dmg">Download RC Pair for Mac</a>
-      <p class="dim">macOS 12 or later, Apple silicon or Intel. 15 MB. Signed with our Apple Developer ID and notarized by Apple. The checksum and signature steps are on the <a href="../computer.html#mac">computer page</a>.</p>
+      <a class="btn" aria-disabled="true" data-release-resource="rc-mac-stable" tabindex="-1" data-release-label="Download RC Pair for Mac">Mac download availability not confirmed</a>
+      <p class="dim">macOS 12 or later, Apple silicon or Intel. 15 MB. Signed with our Apple Developer ID and notarized by Apple. Check current downloads and setup guidance on the <a href="../computer.html#downloads">computer page</a>.</p>
       <ol>
         <li>Open the downloaded file and drag RC Pair to Applications.</li>
         <li>Open RC Pair from Applications. macOS asks once whether you want to open an app downloaded from the internet. Choose Open.</li>
@@ -185,7 +185,7 @@
       <p>While an agent is working the phone, its camera and microphone are paused. They come back about 10 seconds after the agent's last tap.</p>
       <details>
         <summary>Linux, or building from source</summary>
-        <p style="margin-top:14px">The simplest Linux route is the rcpair program on the <a href="../computer.html#linux">computer page</a>. There is no Windows app yet. This is the older route: the receiver script from phone-open, the companion repo for RC Pair, which is source available under the Functional Source License. On Debian or Ubuntu, install python3-venv first.</p>
+        <p style="margin-top:14px">The simplest Linux route is the rcpair program on the <a href="../computer.html#downloads">computer page</a>. Check the computer page for current Windows availability. This is the older route: the receiver script from phone-open, the companion repo for RC Pair, which is source available under the Functional Source License. On Debian or Ubuntu, install python3-venv first.</p>
         <pre class="mono">git clone https://github.com/rcpair/phone-open.git
 cd phone-open
 python3 -m venv .venv
@@ -210,7 +210,7 @@ scripts/connect.sh</pre>
       <ul>
         <li>The Mac app is signed and notarized, but we have not opened it on a real Mac yet.</li>
         <li>Driving a phone from the Mac app has not been run with a phone yet. Your report is the first.</li>
-        <li>Windows is not out yet. It needs a real test on a Windows computer and a signing certificate.</li>
+        <li>Check the computer page for verified Windows availability; private test builds are separate from public releases.</li>
         <li>An iOS update removes Apple's disk image from the phone, and it has to go back on.</li>
         <li>Changing networks can mean pairing again. Across a VPN such as Tailscale, use the computer's IP address, because device discovery does not cross a VPN.</li>
         <li>scripts/rcpair-session.sh cannot work with the pinned tools and exits with status 3.</li>
@@ -243,5 +243,6 @@ scripts/connect.sh</pre>
   });
 </script>
 <script src="../t.js" defer></script>
+<script src="/release-status.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </body>
 </html>
