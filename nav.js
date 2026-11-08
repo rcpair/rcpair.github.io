@@ -10,7 +10,9 @@
     links.classList.toggle('open', open);
   }
   btn.addEventListener('click', function () {
-    set(btn.getAttribute('aria-expanded') !== 'true');
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    set(open);
+    if (open) { var first = links.querySelector('a'); if (first) first.focus(); }
   });
   links.addEventListener('click', function (e) {
     if (e.target.closest('a')) set(false);
