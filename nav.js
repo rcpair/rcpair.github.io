@@ -30,7 +30,8 @@
     if (mq.addEventListener) mq.addEventListener('change', reset); else if (mq.addListener) mq.addListener(reset);
   }
   links.addEventListener('click', function (e) {
-    if (e.target.closest('a')) set(false);
+    // Close after the link's default action runs, so the tap navigates and focus lands on the target.
+    if (e.target.closest('a')) setTimeout(function () { set(false); }, 0);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); if (btn.offsetParent) btn.focus({ preventScroll: true }); }
