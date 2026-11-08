@@ -44,7 +44,7 @@
 
 <main id="main" aria-labelledby="download-h">
 <section id="intro" class="intro dark" aria-labelledby="download-h"><div class="wrap">
-  <p class="eyebrow">Free during early access</p>
+  <p class="eyebrow">Early access</p>
   <h1 id="download-h">Download RC Pair for your computer</h1>
   <p class="dim">Connect your own iPhone or iPad to your computer. RC Pair keeps the link open and gives your agent tools to see the screen and tap.</p>
   <p class="dim">You also need the <a href="beta/">RC Pair phone app in TestFlight</a>. Apple's developer disk image is not included.</p>
@@ -59,7 +59,7 @@
       <p>A Mac app with a window. Signed with our Apple Developer ID and notarized by Apple.</p>
       <p class="version">Version 0.2.0. Apple silicon and Intel. macOS 12 or later.</p>
       <div class="downloads-actions">
-        <a class="btn btn-solid" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/RC-Pair-0.2.0-macos.dmg" data-t="dl-mac">Download for Mac</a>
+        <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-mac">Sign up to download for Mac</a>
       </div>
       <p class="steps-link"><a href="#mac">Mac setup steps ↓</a></p>
     </article>
@@ -68,17 +68,17 @@
       <p>The <code>rcpair</code> program for your terminal or a background service. It has no window.</p>
       <p class="version">Version 0.2.0. x86-64 and arm64.</p>
       <div class="downloads-actions">
-        <a class="btn btn-solid" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/rcpair-0.2.0-x86_64-unknown-linux-gnu.tar.gz" data-t="dl-linux-x64">Download for Linux x86-64</a>
-        <a class="btn btn-ghost" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/rcpair-0.2.0-aarch64-unknown-linux-gnu.tar.gz" data-t="dl-linux-arm64">Download for Linux arm64</a>
+        <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-linux-x64">Sign up to download for Linux x86-64</a>
+        <a class="btn btn-ghost" href="https://setup.rcpair.si/" data-t="dl-linux-arm64">Sign up to download for Linux arm64</a>
       </div>
       <p class="steps-link"><a href="#linux">Linux and server setup steps ↓</a></p>
     </article>
     <article class="platform" aria-labelledby="windows-h">
       <h3 id="windows-h">Windows</h3>
-      <p>A Windows app with a window, signed by Rising Creek Construction. $12 a month, with the first 30 days free.</p>
+      <p>A Windows app with a window, signed by Rising Creek Construction.</p>
       <p class="version">Version 0.2.0. 64-bit Windows.</p>
       <div class="downloads-actions">
-        <a class="btn btn-solid" href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/RC-Pair-0.2.0-windows-x64.msi" data-t="dl-windows">Download for Windows</a>
+        <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-windows">Sign up to download for Windows</a>
       </div>
       <p class="steps-link"><a href="https://setup.rcpair.si/">Windows setup checklist</a></p>
     </article>
@@ -93,7 +93,7 @@
   <p class="setup-intro">Install the app, then use its window to pair your phone.</p>
   <p>Your phone needs Wi-Fi, or a hotspot from another phone, to reach the Mac. The phone's own cellular data does not work.</p>
   <div class="files">
-    <p>Download <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/SHA256SUMS">SHA256SUMS</a> and <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
+    <p>After you sign up at <a href="https://setup.rcpair.si/">setup.rcpair.si</a>, download the app with its SHA256SUMS and SHA256SUMS.minisig files to check it. Save both files and the dmg in your Downloads folder. The license and third-party notices are inside the app.</p>
   </div>
   <ol class="steps" role="list">
     <li class="step">
@@ -168,14 +168,9 @@ shasum -a 256 -c --ignore-missing SHA256SUMS</code></pre>
     <div class="section-body">
   <p class="setup-intro">Use a terminal on your laptop. For a server, download the files on your laptop and copy them with <code>scp</code>, then run the setup steps over SSH. Or fetch the files on the server as shown below.</p>
   <div class="files">
-    <p>Download <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/SHA256SUMS">SHA256SUMS</a> and <a href="https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/SHA256SUMS.minisig">SHA256SUMS.minisig</a> to check the download. The license and third-party notices are inside the download.</p>
+    <p>After you sign up at <a href="https://setup.rcpair.si/">setup.rcpair.si</a>, download the app with its SHA256SUMS and SHA256SUMS.minisig files to check it. The license and third-party notices are inside the download.</p>
     <p>On a laptop, save both files and the matching archive in Downloads, then run <code>cd ~/Downloads</code>. Run <code>uname -m</code> on the computer that will run RC Pair to choose x86_64 or aarch64.</p>
-    <p>To fetch all three files on the server, save them in your home folder with these commands. The archive name uses the server's <code>uname -m</code> result.</p>
-    <div class="command" data-label="Linux server download commands">
-      <div class="command-head"><span>Terminal on the server</span></div>
-      <pre tabindex="0" aria-label="Linux server download commands"><code>cd ~
-curl -LO "https://github.com/rcpair/rcpair-releases/releases/download/rcpair-v0.2.0/{rcpair-0.2.0-$(uname -m)-unknown-linux-gnu.tar.gz,SHA256SUMS,SHA256SUMS.minisig}"</code></pre>
-    </div>
+    <p>To fetch the files on a server, copy the download links from your account at setup.rcpair.si.</p>
   </div>
   <ol class="steps" role="list">
     <li class="step">
