@@ -9,16 +9,27 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     links.classList.toggle('open', open);
   }
-  btn.addEventListener('click', function () {
+  btn.addEventListener('click', function (e) {
     var open = btn.getAttribute('aria-expanded') !== 'true';
     set(open);
-    if (open) { var first = links.querySelector('a'); if (first) first.focus(); }
+    // Keyboard activation (detail 0) moves focus into the list; a tap leaves focus alone.
+    if (open && e.detail === 0) { var first = links.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
   });
+  // Tabbing out of the open list closes it.
+  links.addEventListener('focusout', function (e) {
+    if (!e.relatedTarget || !e.relatedTarget.closest('.site-nav')) set(false);
+  });
+  // Crossing to the desktop layout resets the menu.
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(min-width: 1001px)');
+    var reset = function () { if (mq.matches) set(false); };
+    if (mq.addEventListener) mq.addEventListener('change', reset); else if (mq.addListener) mq.addListener(reset);
+  }
   links.addEventListener('click', function (e) {
     if (e.target.closest('a')) set(false);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); if (btn.offsetParent) btn.focus(); }
   });
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.site-nav')) set(false);
