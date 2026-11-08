@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Download the RC Pair computer app | RC Pair</title>
-<meta name="description" content="Download the RC Pair computer app for Linux and Mac. It opens the link to your own iPhone or iPad and gives your own agent tools to see the screen and tap.">
+<meta name="description" content="Download the RC Pair computer app for Windows, Mac and Linux. It opens the link to your own iPhone or iPad and gives your own agent tools to see the screen and tap.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0f1117">
 <link rel="canonical" href="https://rcpair.si/computer.html">
@@ -22,6 +22,7 @@
 <link rel="icon" href="brand/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="stylesheet" href="family.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -31,14 +32,15 @@
       <a class="logo lockup" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="808" height="260"></a>
       <a class="family" href="https://treadconnection.si/">Part of Tread Connection</a>
     </div>
-    <div class="nav-links">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
       <a href="./#how">How it works</a>
       <a href="privacy.html">Privacy</a>
       <a href="./#stop">How to stop</a>
       <a href="./#faq">FAQ</a>
       <a href="computer.html">Computer app</a>
     </div>
-    <a href="mailto:support@rcpair.si?subject=RC%20Pair%20access%20request" class="btn btn-solid" data-t="ask-access">Ask about access</a>
+    <a href="https://apps.apple.com/app/id6822097686" class="btn btn-solid" data-t="app-store">Get the app</a>
   </nav>
 </header>
 
@@ -47,7 +49,12 @@
   <p class="eyebrow">Early access</p>
   <h1 id="download-h">Download RC Pair for your computer</h1>
   <p class="dim">Connect your own iPhone or iPad to your computer. RC Pair keeps the link open and gives your agent tools to see the screen and tap.</p>
-  <p class="dim">You also need the <a href="beta/">RC Pair phone app in TestFlight</a>. Apple's developer disk image is not included.</p>
+  <p class="dim">You also need the RC Pair phone app from the <a href="https://apps.apple.com/app/id6822097686" data-t="app-store">App Store</a>. Apple's developer disk image is not included.</p>
+  <div class="offers">
+    <p><strong>$36 covers your first 6 months, then $12 a month.</strong> Launch offer through January 7.</p>
+    <p>Or start with a 7-day trial on your card, then $12 a month. Cancel anytime.</p>
+    <p class="dim">Extra phones $5 a month. 3 phones and 2 computers included.</p>
+  </div>
   <a class="next" href="#downloads">Next: Choose your computer →</a>
 </div></section>
 
@@ -55,7 +62,7 @@
   <h2 id="choose-h">Choose your computer</h2>
   <div class="platforms">
     <article class="platform" aria-labelledby="mac-card-h">
-      <h3 id="mac-card-h">Mac</h3>
+      <h3 id="mac-card-h"><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#apple"/></svg>Mac</h3>
       <p>A Mac app with a window. Signed with our Apple Developer ID and notarized by Apple.</p>
       <p class="version">Version 0.2.0. Apple silicon and Intel. macOS 12 or later.</p>
       <div class="downloads-actions">
@@ -64,7 +71,7 @@
       <p class="steps-link"><a href="#mac">Mac setup steps ↓</a></p>
     </article>
     <article class="platform" aria-labelledby="linux-card-h">
-      <h3 id="linux-card-h">Linux and servers</h3>
+      <h3 id="linux-card-h"><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#linux"/></svg>Linux and servers</h3>
       <p>The <code>rcpair</code> program for your terminal or a background service. It has no window.</p>
       <p class="version">Version 0.2.0. x86-64 and arm64.</p>
       <div class="downloads-actions">
@@ -74,7 +81,7 @@
       <p class="steps-link"><a href="#linux">Linux and server setup steps ↓</a></p>
     </article>
     <article class="platform" aria-labelledby="windows-h">
-      <h3 id="windows-h">Windows</h3>
+      <h3 id="windows-h"><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#windows"/></svg>Windows</h3>
       <p>A Windows app with a window, signed by Rising Creek Construction.</p>
       <p class="version">Version 0.2.0. 64-bit Windows.</p>
       <div class="downloads-actions">
@@ -376,6 +383,7 @@ EOF</code></pre>
     block.querySelector('.command-head').appendChild(button);
   });
 </script>
+<script src="nav.js" defer></script>
 <script src="details.js" defer></script>
 <script src="t.js" defer></script>
 </body>

@@ -177,6 +177,26 @@ footer{border-top:1px solid var(--line); padding:clamp(22px,4vw,40px) 20px; font
 .fine{margin:12px 0 0; line-height:1.6}
 .family-line{color:var(--text)}
 
+/* Menu button: hidden on wide screens; replaces the chip row at 1000px and below when JavaScript runs. */
+.menu-btn{display:none; align-items:center; gap:8px; min-height:40px; padding:9px 14px; border:1px solid var(--line); border-radius:14px; background:var(--card); color:var(--text); font:inherit; font-size:14px; font-weight:700; cursor:pointer}
+.menu-btn::after{content:""; width:7px; height:7px; margin-top:-4px; border-right:2px solid var(--orange); border-bottom:2px solid var(--orange); transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"]::after{transform:rotate(225deg); margin-top:3px}
+
+/* Official App Store badge and OS glyphs. */
+.store-badge{display:inline-flex; align-items:center; min-height:44px; border-radius:9px}
+.store-badge img{display:block; width:150px; height:auto}
+.os{width:16px; height:16px; flex:none; fill:currentColor; vertical-align:-2px}
+.os-row{display:inline-flex; gap:6px; color:var(--muted)}
+.platform h3{display:flex; align-items:center; gap:10px}
+.platform h3 .os{width:22px; height:22px; color:var(--white)}
+.offers{margin:12px 0; padding:14px 16px; background:var(--card); border:1px solid var(--line); border-left:3px solid var(--orange); border-radius:14px; max-width:52em}
+.offers p{margin:0 0 6px; font-size:15px; color:var(--text)}
+.offers p:last-child{margin:0}
+.offers p.dim{color:var(--muted); font-size:14px}
+.access .offers p{font-size:15px}
+.access .offers p.dim{font-size:14px}
+.access-ctas{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+
 @media (max-width:1000px){
   body{padding-top:116px}
   html{scroll-padding-top:128px}
@@ -185,6 +205,16 @@ footer{border-top:1px solid var(--line); padding:clamp(22px,4vw,40px) 20px; font
   .family{max-width:none}
   .site-nav > .btn{grid-column:2; grid-row:1}
   .nav-links{grid-column:1 / -1; grid-row:2; justify-content:flex-start; overflow-x:auto; padding:3px 24px 3px 3px; margin:0 -3px; -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent); mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent)}
+  /* With JavaScript the chip row becomes a Menu button and a drop-down list. */
+  .js body{padding-top:68px}
+  html.js{scroll-padding-top:80px}
+  .js .site-nav{grid-template-columns:minmax(0,1fr) auto auto}
+  .js .site-nav > .btn{grid-column:3}
+  .js .menu-btn{display:inline-flex; grid-column:2; grid-row:1}
+  .js .nav-links{display:none; position:absolute; left:0; right:0; top:100%; flex-direction:column; gap:0; margin:0; padding:8px 16px 12px; overflow:visible; background:var(--page); border-bottom:1px solid var(--line); -webkit-mask-image:none; mask-image:none; box-shadow:0 12px 24px rgba(0,0,0,.45)}
+  .js .nav-links.open{display:flex}
+  .js .nav-links a{min-height:48px; padding:12px 4px; border:0; border-bottom:1px solid var(--line); border-radius:0; font-size:16px; color:var(--text)}
+  .js .nav-links a:last-child{border-bottom:0}
 }
 @media (max-width:640px){
   section.block,section.setup,section.intro,section.downloads,section.access,.hero,.phero{padding:14px 16px}

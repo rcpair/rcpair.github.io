@@ -22,6 +22,7 @@
 <link rel="icon" href="brand/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="stylesheet" href="family.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -31,7 +32,8 @@
       <a class="logo lockup" href="./"><img src="brand/lockup-dark.svg" alt="RC Pair" width="808" height="260"></a>
       <a class="family" href="https://treadconnection.si/">Part of Tread Connection</a>
     </div>
-    <div class="nav-links">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
       <a href="./#how">How it works</a>
       <a href="privacy.html">Privacy</a>
       <a href="./#stop">How to stop</a>
@@ -63,10 +65,10 @@
         <p class="sub dim">You set it up on the device itself, with your own Apple account. The app sends nothing to us. You bring the computer and the agent.</p>
         </details>
         <div class="cta-row">
-          <a href="https://apps.apple.com/app/id6822097686" class="btn btn-solid" data-t="app-store">Get it on the App Store</a>
-          <a href="https://setup.rcpair.si/" class="btn btn-ghost" data-t="windows">Get the Windows app</a>
+          <a href="https://apps.apple.com/app/id6822097686" class="store-badge" data-t="app-store"><img src="brand/app-store-badge.svg" alt="Download on the App Store" width="150" height="50"></a>
+          <a href="computer.html" class="btn btn-ghost" data-t="computer">Get the computer app <span class="os-row"><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#windows"/></svg><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#apple"/></svg><svg class="os" aria-hidden="true" focusable="false"><use href="brand/os-glyphs.svg#linux"/></svg></span></a>
         </div>
-        <p class="hero-note dim">The phone app is on the App Store. The computer app is $12 a month on <a href="computer.html">Windows, Mac and Linux</a>, from <a href="https://setup.rcpair.si/">setup.rcpair.si</a>. Want new builds before they ship? <a href="mailto:support@rcpair.si?subject=RC%20Pair%20beta" data-t="beta">Join the TestFlight beta</a>. <a href="#how">See the five steps</a>.</p>
+        <p class="hero-note dim">The phone app is on the App Store. The computer app runs on <a href="computer.html">Windows, Mac and Linux</a>. $36 covers your first 6 months, then $12 a month. <a href="#access">See both offers</a>. Want new builds before they ship? <a href="mailto:support@rcpair.si?subject=RC%20Pair%20beta" data-t="beta">Join the TestFlight beta</a>. <a href="#how">See the five steps</a>.</p>
       </div>
 
       <figure class="hero-fig">
@@ -606,7 +608,8 @@
           <summary>Is there a computer app?</summary>
           <div class="a"><p>Yes, for Windows, Linux and Mac. It opens the link to your phone, keeps it open and gives your own agent the tools to
             see the screen and tap. It does not include Apple's developer disk image.
-            It is $12 a month on Windows, Mac and Linux, from <a href="https://setup.rcpair.si/">setup.rcpair.si</a>.
+            $36 covers your first 6 months, then $12 a month. Launch offer through January 7. Or start with a 7-day trial on your card, then $12 a month. Cancel anytime.
+            Extra phones $5 a month. 3 phones and 2 computers included. Sign up at <a href="https://setup.rcpair.si/">setup.rcpair.si</a>.
             There is no graphical window on Linux. You run it from a terminal, or as a background service. <a href="computer.html">Download and set up</a>.</p></div>
         </details>
         <details>
@@ -640,9 +643,18 @@
     <div class="wrap inner">
       <div>
         <h2 id="access-h">Get RC Pair.</h2>
-        <p class="dim">The phone app is on the App Store. The computer app is <a href="https://setup.rcpair.si/">$12 a month</a> on <a href="computer.html">Windows, Mac and Linux</a>. Questions or a TestFlight beta invite: support@rcpair.si.</p>
+        <p class="dim">The phone app is on the App Store. The computer app runs on <a href="computer.html">Windows, Mac and Linux</a>.</p>
+        <div class="offers">
+          <p><strong>$36 covers your first 6 months, then $12 a month.</strong> Launch offer through January 7.</p>
+          <p>Or start with a 7-day trial on your card, then $12 a month. Cancel anytime.</p>
+          <p class="dim">Extra phones $5 a month. 3 phones and 2 computers included.</p>
+        </div>
+        <p class="dim">Questions or a TestFlight beta invite: support@rcpair.si.</p>
       </div>
-      <a href="https://apps.apple.com/app/id6822097686" class="btn btn-solid" data-t="app-store">Get it on the App Store</a>
+      <div class="access-ctas">
+        <a href="https://apps.apple.com/app/id6822097686" class="store-badge" data-t="app-store"><img src="brand/app-store-badge.svg" alt="Download on the App Store" width="150" height="50"></a>
+        <a href="https://setup.rcpair.si/" class="btn btn-solid" data-t="signup">Sign up for the computer app</a>
+      </div>
       <a class="next" href="computer.html">Next: Computer app →</a>
     </div>
   </section>
@@ -669,6 +681,7 @@
     <p class="fine">© 2026 Rising Creek Construction LLC. RC Pair™ is a trademark of Rising Creek Construction LLC. Patent pending.</p>
   </div>
 </footer>
+<script src="nav.js" defer></script>
 <script src="details.js" defer></script>
 <script src="t.js" defer></script>
 </body>
