@@ -16,9 +16,13 @@
     if (open && e.detail === 0) { var first = links.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
   });
   // Tabbing out of the open list closes it.
-  links.addEventListener('focusout', function (e) {
-    if (!e.relatedTarget || !e.relatedTarget.closest('.site-nav')) set(false);
-  });
+  function leave(e) {
+    var to = e.relatedTarget;
+    if (!to || links.contains(to) || to === btn) return; // no target = window blur or a tap; clicks handle those
+    set(false);
+  }
+  links.addEventListener('focusout', leave);
+  btn.addEventListener('focusout', leave);
   // Crossing to the desktop layout resets the menu.
   if (window.matchMedia) {
     var mq = window.matchMedia('(min-width: 1001px)');
@@ -29,7 +33,7 @@
     if (e.target.closest('a')) set(false);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); if (btn.offsetParent) btn.focus(); }
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); if (btn.offsetParent) btn.focus({ preventScroll: true }); }
   });
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.site-nav')) set(false);
