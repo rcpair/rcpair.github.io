@@ -13,7 +13,7 @@
     { id: 'buddy', name: 'Rising Creek', pick: 'Rising Creek', note: 'The first character. Blinks, looks at your cursor, waves when it needs a yes.' },
     { id: 'duck', name: 'Duck and ducklings', pick: 'Duck and ducklings', note: 'Waddles, quacks when the agent talks, three ducklings follow in a line.' },
     { id: 'pixel', name: 'Pixel duck', pick: 'Pixel', file: 'files/pixel-duck.png', note: 'Pixel art. This is the sample file, so you can see what to draw yourself.' },
-    { id: 'robot', name: 'Robot', pick: 'Robot', file: 'files/robot-expressive.glb', note: 'A free 3D robot (CC0, Quaternius and Don McCurdy).' }
+    { id: 'robot', name: 'Robot', pick: 'Robot', file: 'files/robot-expressive.glb', note: 'A public-domain 3D robot (CC0, Quaternius and Don McCurdy).' }
   ];
 
   function ext(name) {
