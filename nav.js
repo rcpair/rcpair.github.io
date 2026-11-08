@@ -1,4 +1,6 @@
 // Phone and tablet menu: one Menu button opens the page links as a list.
+// Runs right after the header (not deferred). The collapsed menu CSS keys on html.js, which is added only after the
+// handlers are bound, so if this file fails to load the plain link row stays visible.
 (function () {
   var btn = document.querySelector('.menu-btn');
   var links = document.getElementById('nav-links');
@@ -19,4 +21,5 @@
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.site-nav')) set(false);
   });
+  document.documentElement.classList.add('js');
 })();

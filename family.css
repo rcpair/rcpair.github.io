@@ -183,7 +183,8 @@ footer{border-top:1px solid var(--line); padding:clamp(22px,4vw,40px) 20px; font
 .menu-btn[aria-expanded="true"]::after{transform:rotate(225deg); margin-top:3px}
 
 /* Official App Store badge and OS glyphs. */
-.store-badge{display:inline-flex; align-items:center; min-height:44px; border-radius:9px}
+.store-badge{display:inline-flex; align-items:center; min-height:44px; border-radius:9px; text-decoration:none}
+.store-badge:focus-visible{outline:3px solid var(--orange); outline-offset:3px}
 .store-badge img{display:block; width:150px; height:auto}
 .os{width:16px; height:16px; flex:none; fill:currentColor; vertical-align:-2px}
 .os-row{display:inline-flex; gap:6px; color:var(--muted)}
