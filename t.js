@@ -17,7 +17,7 @@
   function hit(e, extra) {
     var u = T + "?e=" + e + "&p=" + encodeURIComponent(location.pathname) + (r ? "&r=" + r : "") +
       (ref ? "&ref=" + encodeURIComponent(ref) : "") + (extra || "");
-    try { fetch(u, { mode: "no-cors", keepalive: true, credentials: "omit", cache: "no-store" }); }
+    try { fetch(u, { mode: "no-cors", keepalive: true, credentials: "omit", cache: "no-store" }).catch(function () {}); }
     catch (x) { new Image().src = u; }
   }
   hit("view", from ? "&from=" + encodeURIComponent(from) : "");
