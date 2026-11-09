@@ -56,7 +56,7 @@
       b.setAttribute('aria-pressed', String(state.pick === f.id));
       b.innerHTML = '<div class="art"></div><b></b><span class="note"></span><span class="tick"></span>';
       if (ART[f.id]) b.querySelector('.art').innerHTML = ART[f.id];
-      else { var im = new Image(96, 96); im.className = 'thumb'; im.src = f.thumb; im.alt = f.alt || f.name; im.loading = 'lazy'; b.querySelector('.art').appendChild(im); }
+      else if (f.thumb) { var im = new Image(96, 96); im.className = 'thumb'; im.loading = 'lazy'; im.alt = f.alt || f.name; im.src = f.thumb; b.querySelector('.art').appendChild(im); }
       b.querySelector('b').textContent = f.name;
       if (f.note) b.querySelector('.note').textContent = f.note; else b.querySelector('.note').remove();
       b.querySelector('.tick').textContent = state.pick === f.id ? 'Your pick' : '';
