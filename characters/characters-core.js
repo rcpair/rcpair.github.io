@@ -13,7 +13,29 @@
     { id: 'buddy', name: 'Rising Creek', pick: 'Rising Creek', note: 'The first character. Blinks, looks at your cursor, waves when it needs a yes.' },
     { id: 'duck', name: 'Duck and ducklings', pick: 'Duck and ducklings', note: 'Waddles, quacks when the agent talks, three ducklings follow in a line.' },
     { id: 'pixel', name: 'Pixel duck', pick: 'Pixel', file: 'files/pixel-duck.png', note: 'Pixel art. This is the sample file, so you can see what to draw yourself.' },
-    { id: 'robot', name: 'Robot', pick: 'Robot', file: 'files/robot-expressive.glb', note: 'A public-domain 3D robot (CC0, Quaternius and Don McCurdy).' }
+    { id: 'robot', name: 'Robot', pick: 'Robot', file: 'files/robot-expressive.glb', note: 'A public-domain 3D robot (CC0, Quaternius and Don McCurdy).' },
+    // 11/08: the rest of the companion's characters, names and pictures only (pictures rendered from the companion).
+    { id: 'elder', name: 'Little old cowboy', pick: 'Little old cowboy', thumb: 'files/thumbs/elder.png', alt: 'A little old cowboy with a white mustache and a felt hat' },
+    { id: 'ranch', name: 'Ranch hand', pick: 'Ranch hand', thumb: 'files/thumbs/ranch.png', alt: 'A cartoon ranch hand in a cowboy hat and olive shirt' },
+    { id: 'foreman', name: 'Foreman', pick: 'Foreman', thumb: 'files/thumbs/crew-foreman.png', alt: 'A foreman in a white hard hat and orange safety vest' },
+    { id: 'surveyor', name: 'Surveyor', pick: 'Surveyor', thumb: 'files/thumbs/crew-surveyor.png', alt: 'A surveyor in a teal cap and lime safety vest' },
+    { id: 'electrician', name: 'Electrician', pick: 'Electrician', thumb: 'files/thumbs/crew-electrician.png', alt: 'An electrician with red hair in a blue hard hat' },
+    { id: 'super', name: 'Superintendent', pick: 'Superintendent', thumb: 'files/thumbs/crew-super.png', alt: 'A superintendent with grey curls and round glasses' },
+    { id: 'welder', name: 'Welder', pick: 'Welder', thumb: 'files/thumbs/crew-welder.png', alt: 'A welder with a full beard in a red knit cap' },
+    { id: 'duckhat', name: 'Duck in a hard hat', pick: 'Duck in a hard hat', thumb: 'files/thumbs/duck-hat.png', alt: 'A yellow duck wearing a hard hat' },
+    { id: 'rooster', name: 'Rooster', pick: 'Rooster', thumb: 'files/thumbs/rooster.png', alt: 'A red rooster' },
+    { id: 'cow', name: 'Spotted cow', pick: 'Spotted cow', thumb: 'files/thumbs/cow.png', alt: 'A black and white spotted cow' },
+    { id: 'longhorn', name: 'Texas Longhorn', pick: 'Texas Longhorn', thumb: 'files/thumbs/longhorn.png', alt: 'A rust and white Texas Longhorn' },
+    { id: 'dog', name: 'Wiener dog', pick: 'Wiener dog', thumb: 'files/thumbs/dog.png', alt: 'A brown wiener dog' },
+    { id: 'teddy', name: 'Teddy bear', pick: 'Teddy bear', thumb: 'files/thumbs/teddy.png', alt: 'A honey-brown teddy bear' },
+    { id: 'axolotl', name: 'Axolotl', pick: 'Axolotl', thumb: 'files/thumbs/axolotl.png', alt: 'A pink axolotl' },
+    { id: 'orb', name: 'Orb', pick: 'Orb', thumb: 'files/thumbs/orb.png', alt: 'A glowing teal ball with a smiling face and a ring' },
+    { id: 'bolt', name: 'Bolt the robot', pick: 'Bolt the robot', thumb: 'files/thumbs/bolt.png', alt: 'A boxy grey robot with a screen face' },
+    { id: 'pxpainter', name: 'Pixel painter', pick: 'Pixel painter', thumb: 'files/thumbs/pixel-painter.png', alt: 'A pixel-art painter in a white cap' },
+    { id: 'pxcat', name: 'Pixel cat', pick: 'Pixel cat', thumb: 'files/thumbs/pixel-cat.png', alt: 'A pixel-art grey tabby cat' },
+    { id: 'pxarmadillo', name: 'Pixel armadillo', pick: 'Pixel armadillo', thumb: 'files/thumbs/pixel-armadillo.png', alt: 'A pixel-art armadillo' },
+    { id: 'pxowl', name: 'Pixel owl', pick: 'Pixel owl', thumb: 'files/thumbs/pixel-owl.png', alt: 'A pixel-art brown owl' },
+    { id: 'pxbot', name: 'Pixel bot', pick: 'Pixel bot', thumb: 'files/thumbs/pixel-bot.png', alt: 'A pixel-art robot with a screen face' }
   ];
 
   function ext(name) {
