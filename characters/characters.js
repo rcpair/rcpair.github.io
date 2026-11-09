@@ -54,9 +54,11 @@
       var li = document.createElement('li'), b = document.createElement('button');
       b.type = 'button'; b.className = 'face'; b.dataset.id = f.id;
       b.setAttribute('aria-pressed', String(state.pick === f.id));
-      b.innerHTML = '<div class="art">' + ART[f.id] + '</div><b></b><span class="note"></span><span class="tick"></span>';
+      b.innerHTML = '<div class="art"></div><b></b><span class="note"></span><span class="tick"></span>';
+      if (ART[f.id]) b.querySelector('.art').innerHTML = ART[f.id];
+      else if (f.thumb) { var im = new Image(96, 96); im.className = 'thumb'; im.loading = 'lazy'; im.alt = f.alt || f.name; im.src = f.thumb; b.querySelector('.art').appendChild(im); }
       b.querySelector('b').textContent = f.name;
-      b.querySelector('.note').textContent = f.note;
+      if (f.note) b.querySelector('.note').textContent = f.note; else b.querySelector('.note').remove();
       b.querySelector('.tick').textContent = state.pick === f.id ? 'Your pick' : '';
       b.addEventListener('click', function () { state.pick = f.id; state.useMine = false; renderFaces(); renderUse(); var nb = facesEl.querySelector('[data-id="' + f.id + '"]'); if (nb) nb.focus(); });
       li.appendChild(b); facesEl.appendChild(li);
