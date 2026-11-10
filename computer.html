@@ -300,14 +300,14 @@ EOF</code></pre>
       <details>
         <summary><span class="num">7</span><span>Give your agent the tools</span></summary>
         <div class="step-body">
-      <p>Do this after step 4. <code>rcpair mcp</code> stops with "No stored phones" until a phone is paired. These commands need the agent and RC Pair on the same computer. Running the agent on a different computer is not supported yet. Run the command for your agent on the computer where you installed RC Pair.</p>
+      <p>Do this after step 4. <code>rcpair mcp</code> stops with "No stored phones" until a phone is paired. These commands need the agent and RC Pair on the same computer. Running the agent on a different computer is not supported yet. Run the command for your agent on the computer where you installed RC Pair. Each command makes a key for that agent with <code>rcpair agent add</code>, and the phone asks you to approve the agent the first time it uses it.</p>
       <div class="command" data-label="Claude connection command">
         <div class="command-head"><span>Claude</span></div>
-        <pre tabindex="0" aria-label="Claude connection command"><code>claude mcp add rcpair -- rcpair mcp</code></pre>
+        <pre tabindex="0" aria-label="Claude connection command"><code>claude mcp add rcpair -e RCPAIR_AGENT_TOKEN="$(rcpair agent add --label Claude)" -- rcpair mcp</code></pre>
       </div>
       <div class="command" data-label="Codex connection command">
         <div class="command-head"><span>Codex</span></div>
-        <pre tabindex="0" aria-label="Codex connection command"><code>codex mcp add rcpair -- rcpair mcp</code></pre>
+        <pre tabindex="0" aria-label="Codex connection command"><code>codex mcp add rcpair --env RCPAIR_AGENT_TOKEN="$(rcpair agent add --label Codex)" -- rcpair mcp</code></pre>
       </div>
       <p>Your agent then has eleven phone tools. They are screenshot, tap, drag, type, key, button, launch, apps, release, resume and health.</p>
       <div class="note">
