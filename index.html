@@ -563,7 +563,7 @@
         <div>
           <ol class="stoplist">
             <li><span><b>Turn off Developer Mode</b> in Settings &gt; Privacy &amp; Security. Control stops.</span></li>
-            <li><span><b>Delete the pairing</b> on every computer you sent one to. On a Mac or Windows computer set up with the RC Pair installer, run <code>rcpair service forget</code> with this device's ID as administrator. Stop all access in the RC Pair window keeps the key. With the Linux download, run <code>rcpair forget</code> with this device's name or ID. It deletes this device's files in ~/.rcpair. If Developer Mode is turned on again, a computer that still has the key may be able to connect again.</span></li>
+            <li><span><b>Delete the pairing</b> on every computer you sent one to. On a Mac set up with the RC Pair installer, run <code>sudo "/Applications/RC Pair.app/Contents/MacOS/rcpair" service forget</code> with this device's ID. On Windows, run <code>rcpair service forget</code> with this device's ID in a terminal opened as administrator. Stop all access in the RC Pair window keeps the key. With the Linux download, run <code>rcpair forget</code> with this device's name or ID. It deletes this device's files in ~/.rcpair. If Developer Mode is turned on again, a computer that still has the key may be able to connect again.</span></li>
             <li><span><b>Tap Delete RC Pair data on this device</b> in the app. It removes RC Pair's identity and keys, any pairing not yet sent and your consent record. Do this before you remove the app, because RC Pair's keys can stay on the device after it is removed.</span></li>
           </ol>
           <p class="dim" style="margin-top:16px">Turning off Wi-Fi also stops control while it is off.</p>
