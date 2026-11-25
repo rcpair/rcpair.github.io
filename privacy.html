@@ -44,7 +44,7 @@
     <header class="phero">
       <p class="eyebrow">Privacy</p>
       <h1>RC Pair privacy</h1>
-      <p class="date">Effective 15 November 2026</p>
+      <p class="date">Effective 25 November 2026</p>
       <p class="summary">RC Pair pairs your iPhone or iPad with a computer you own. We run no server for pairing. Apart from a daily app version check you can turn off, nothing about your device, its screen or the pairing comes to us unless you email us, share crash reports with developers or test RC Pair through TestFlight. If you email us, we use that email only to answer you and fix what you report.</p>
       <a class="next" href="#device">Next: What stays on your device →</a>
     </header>
@@ -135,12 +135,16 @@
       <ul>
         <li>Your screen or anything on it, except screenshots you choose to attach to an email or TestFlight feedback.</li>
         <li>The pairing key.</li>
-        <li>Your device's name, model, ID or network addresses, unless you send them in a support email. Crash reports and TestFlight data from Apple do include details about the device, such as its model and iOS version.</li>
+        <li>Your device's name, ID or network addresses, unless you send them in a support email. Anonymous usage diagnostics (below) include the device model, and crash reports and TestFlight data from Apple include details about the device, such as its model and iOS version.</li>
         <li>Your passcode or Apple Account password. RC Pair never asks for them.</li>
       </ul>
       <p>RC Pair has no ads and no outside code that collects data. There is nothing to sign up for. Rising Creek receives no data from RC Pair beyond what is described on this page. The computer app itself connects to GitHub and to Apple's signing server as described above, and we do not receive what it sends. We do not sell or share personal information.</p>
       <p>Once a day, starting the day after you install, RC Pair sends our counter at t.rcpair.si the app version and build, your App Store country (or unknown), whether the app came from the App Store or TestFlight, and a random install ID. The install ID is made for this installation. It is not linked to your name, your device ID or any account. Our server records this with the time and the app name and system version that iOS adds to the request. It removes the last part of your IP address before anything is saved. We use these records for analytics, to count how many installs run each version, and we delete them after 12 months. Our legal basis is our legitimate interest in knowing which versions are in use. To stop it, turn off Send app version once a day in RC Pair's Settings.</p>
-      <p>These companies handle personal data connected with RC Pair. Porkbun, in the US, receives email sent to support@rcpair.si and forwards it to our Microsoft 365 mailbox. Microsoft, in the US, stores that email for us. Each gets your email address, what you write and anything you attach. GitHub, in the US, hosts this website and gets your IP address when you visit it. DigitalOcean, in the US, hosts the server that counts visits to this website and RC Pair's daily app version checks, and stores the records described on this page. Apple handles crash reports and TestFlight data under its own terms.</p>
+      <h3 id="diagnostics">Diagnostics and usage data, not linked to you</h3>
+      <p>RC Pair shares anonymous usage counts so we can find and fix setup problems. They hold the app version and build, the device model (such as iPhone17,1), the iOS version, when the app opens, how long it stays open, which setup steps you finished, and crashes and errors, as fixed codes. They are keyed by a random install ID made on this device. It is not your device ID or any Apple or TestFlight identity, and a new one is made each time you turn the setting off and back on.</p>
+      <p>They never hold your name, email, what is on your screen, anything you type, or your location. Our server keeps no IP address or time of day with these reports, and we never join them with TestFlight tester records, emails or any account. We use them only to fix and improve RC Pair, never for ads, and we do not share them. They are deleted after 90 days.</p>
+      <p>This is on by default. In the EU, the EEA, the UK and Switzerland, or if RC Pair cannot tell the region, it stays off until you turn it on. To change it, use <b>Share anonymous usage</b> in RC Pair's Settings. Our legal basis is our legitimate interest in keeping the app working, and in those regions your consent.</p>
+      <p>These companies handle personal data connected with RC Pair. Porkbun, in the US, receives email sent to support@rcpair.si and forwards it to our Microsoft 365 mailbox. Microsoft, in the US, stores that email for us. Each gets your email address, what you write and anything you attach. GitHub, in the US, hosts this website and gets your IP address when you visit it. DigitalOcean, in the US, hosts the server that counts visits to this website, RC Pair's daily app version checks and its anonymous usage diagnostics, and stores the records described on this page. Apple handles crash reports and TestFlight data under its own terms.</p>
         </div>
       </details>
       <a class="next" href="#apple">Next: Apple's part →</a>
