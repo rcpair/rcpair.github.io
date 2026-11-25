@@ -99,7 +99,7 @@ summary h2{display:inline; font-size:inherit; line-height:inherit; font-weight:7
 .before{display:flex; gap:12px; align-items:flex-start; margin:14px 0; font-size:14px; color:var(--muted)}
 .before p{margin:0}
 .before b{color:var(--text)}
-.steps{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:12px}
+.steps{list-style:none; padding:0; margin:14px 0 0; display:grid; grid-template-columns:minmax(0,1fr); gap:12px}
 .step > details > summary{display:flex; align-items:center; gap:12px}
 .num{display:grid; place-items:center; flex:none; width:30px; height:30px; border-radius:50%; background:var(--orange); color:var(--white); font-size:14px; font-weight:800}
 .card{display:grid; grid-template-columns:180px minmax(0,1fr); gap:14px; padding:0 16px 16px; align-items:center}
