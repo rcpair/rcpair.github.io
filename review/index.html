@@ -134,7 +134,7 @@
       <p class="eyebrow">App Review</p>
       <h1>RC Pair for App Review</h1>
       <p>RC Pair pairs an iPhone or iPad with a computer the user chooses, from the device itself. The app sends nothing to us.</p>
-      <p>This page holds the two sample QR codes and the computer script named in the Review Notes.</p>
+      <p>This page holds the sample QR codes and the computer script named in the Review Notes.</p>
       <p>Steps 1 to 4 happen on the device, with no computer. Finish step 4 and see Paired first. If you scan a code before that, RC Pair says there is no pairing to send yet.</p>
     </header>
   </div>
@@ -143,7 +143,7 @@
 
     <section class="block" id="samples">
       <h2>Sample codes</h2>
-      <p>Scan each code with the Camera app on the device. If you opened this page on the device itself, tap the link under the code instead. Neither link has a receiver behind it, and both use keys whose private halves were thrown away, so nothing sent to them can be read.</p>
+      <p>Scan each code with the Camera app on the device. If you opened this page on the device itself, tap the link under the code instead. None of these links has a receiver behind it, and all use keys whose private halves were thrown away, so nothing sent to them can be read.</p>
       <div class="codes">
         <div class="code">
           <h3>A. Private address</h3>
@@ -156,6 +156,12 @@
           <p>This link points to a public address. RC Pair refuses it and sends nothing.</p>
           <img src="qr-b.png" width="342" height="342" alt="QR code B, a link to a public test address">
           <p class="mono"><a href="rcpair://send?v=1&amp;h=192.0.2.10&amp;p=47820&amp;k=usrGcd_uWj5AFSfc0HXVwYJd062Lfm3nT-0RYfeW5W8&amp;t=kUizoXMKi8OVA-hv7VQCdw&amp;n=Public%20address%20test">rcpair://send?v=1&amp;h=192.0.2.10&amp;p=47820&amp;k=usrGcd_uWj5AFSfc0HXVwYJd062Lfm3nT-0RYfeW5W8&amp;t=kUizoXMKi8OVA-hv7VQCdw&amp;n=Public%20address%20test</a></p>
+        </div>
+        <div class="code">
+          <h3>C. Screen page</h3>
+          <p>A sample screen broadcast link. RC Pair asks "Let App Review sample see this screen?" and lists what a broadcast sends. Tap Connect and confirm with Face ID or the passcode. The Screen button then appears at the top left of the home screen. Start screen broadcast opens Apple's broadcast sheet; nothing can be received at this address. Disconnect removes it.</p>
+          <img src="qr-c.png" width="342" height="342" alt="QR code C, a sample screen broadcast link to a private link-local address">
+          <p class="mono"><a href="rcpair://link?v=1&amp;h=169.254.77.77&amp;p=47821&amp;k=d7IdRmFf9daP8ErpwicwiyeygNYDUDG8VuuBTaQxkko&amp;s=eihd0gd54jyXRBJGQ9zEvV3S_pZfi6U1ZZGrblKk0mc&amp;i=7a_Zixi3tTup_0PPZ4ZbHQ&amp;n=App%20Review%20sample">rcpair://link?v=1&amp;h=169.254.77.77&amp;p=47821&amp;k=d7IdRmFf9daP8ErpwicwiyeygNYDUDG8VuuBTaQxkko&amp;s=eihd0gd54jyXRBJGQ9zEvV3S_pZfi6U1ZZGrblKk0mc&amp;i=7a_Zixi3tTup_0PPZ4ZbHQ&amp;n=App%20Review%20sample</a></p>
         </div>
       </div>
     </section>
