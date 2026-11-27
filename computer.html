@@ -67,7 +67,7 @@
     <article class="platform" aria-labelledby="mac-card-h">
       <h3 id="mac-card-h"><svg class="os" aria-hidden="true" focusable="false"><use href="#os-apple"/></svg>Mac</h3>
       <p>A Mac app with a window. Signed with our Apple Developer ID and notarized by Apple.</p>
-      <p class="version">Version 0.2.0. Apple silicon and Intel. macOS 12 or later.</p>
+      <p class="version">Version 0.2.2. Apple silicon and Intel. macOS 12 or later.</p>
       <div class="downloads-actions">
         <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-mac">Sign up to download for Mac</a>
       </div>
@@ -76,7 +76,7 @@
     <article class="platform" aria-labelledby="linux-card-h">
       <h3 id="linux-card-h"><svg class="os" aria-hidden="true" focusable="false"><use href="#os-linux"/></svg>Linux and servers</h3>
       <p>The <code>rcpair</code> program for your terminal or a background service. It has no window.</p>
-      <p class="version">Version 0.2.0. x86-64 and arm64.</p>
+      <p class="version">Version 0.2.2. x86-64 and arm64.</p>
       <div class="downloads-actions">
         <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-linux-x64">Sign up to download for Linux x86-64</a>
         <a class="btn btn-ghost" href="https://setup.rcpair.si/" data-t="dl-linux-arm64">Sign up to download for Linux arm64</a>
@@ -86,7 +86,7 @@
     <article class="platform" aria-labelledby="windows-h">
       <h3 id="windows-h"><svg class="os" aria-hidden="true" focusable="false"><use href="#os-windows"/></svg>Windows</h3>
       <p>A Windows app with a window, signed by Rising Creek Construction.</p>
-      <p class="version">Version 0.2.0. 64-bit Windows.</p>
+      <p class="version">Version 0.2.2. 64-bit Windows.</p>
       <div class="downloads-actions">
         <a class="btn btn-solid" href="https://setup.rcpair.si/" data-t="dl-windows">Sign up to download for Windows</a>
       </div>
@@ -204,17 +204,17 @@ minisign -Vm SHA256SUMS -P RWRoIORzl8Yx6rI5jJ+t7T3ugGMRyDwW0S2y7fvAQ5uiL9+lJkyt/
       <p>Use the unpack command that matches your <code>uname -m</code> result.</p>
       <div class="command" data-label="Linux x86_64 unpack command">
         <div class="command-head"><span>x86_64</span></div>
-        <pre tabindex="0" aria-label="Linux x86_64 unpack command"><code>tar xzf rcpair-0.2.0-x86_64-unknown-linux-gnu.tar.gz</code></pre>
+        <pre tabindex="0" aria-label="Linux x86_64 unpack command"><code>tar xzf rcpair-0.2.2-x86_64-unknown-linux-gnu.tar.gz</code></pre>
       </div>
       <div class="command" data-label="Linux aarch64 unpack command">
         <div class="command-head"><span>aarch64</span></div>
-        <pre tabindex="0" aria-label="Linux aarch64 unpack command"><code>tar xzf rcpair-0.2.0-aarch64-unknown-linux-gnu.tar.gz</code></pre>
+        <pre tabindex="0" aria-label="Linux aarch64 unpack command"><code>tar xzf rcpair-0.2.2-aarch64-unknown-linux-gnu.tar.gz</code></pre>
       </div>
       <p>Then install the program.</p>
       <div class="command" data-label="Linux install commands">
         <div class="command-head"><span>Terminal</span></div>
         <pre tabindex="0" aria-label="Linux install commands"><code>mkdir -p ~/.local/bin
-install -m 755 rcpair-0.2.0-*/rcpair ~/.local/bin/rcpair
+install -m 755 rcpair-0.2.2-*/rcpair ~/.local/bin/rcpair
 export PATH="$HOME/.local/bin:$PATH"
 rcpair --version</code></pre>
       </div>
@@ -275,7 +275,7 @@ rcpair image status</code></pre>
       <div class="command" data-label="Linux background service commands">
         <div class="command-head"><span>Terminal</span></div>
         <pre tabindex="0" aria-label="Linux background service commands"><code>mkdir -p ~/.config/systemd/user
-cp rcpair-0.2.0-*/rcpair.service ~/.config/systemd/user/
+cp rcpair-0.2.2-*/rcpair.service ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable --now rcpair
 loginctl enable-linger "$USER"</code></pre>
